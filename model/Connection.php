@@ -38,20 +38,7 @@ class Connection {
         return true;
     }
     
-     public function add($phone) {
-        $sql = "INSERT INTO " . $this->table_name . " (name) VALUES(:name)";
-        $statement = $this->getConnection()->prepare($sql);
-        $statement->bindParam(":name", $this->fullname);
-        return $statement->execute();
-    }
-    
-     public function update($id) {
-        $sql = "UPDATE " . $this->table_name . " SET name = :name WHERE id = :id";
-        $statement = $this->getConnection()->prepare($sql);
-        $statement->bindParam(":name", $this->name);
-        $statement->bindParam(":id", $this->id);
-        $statement->execute();
-    }
+
     
     
 

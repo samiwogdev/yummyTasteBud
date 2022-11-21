@@ -66,7 +66,7 @@ class Menu extends Connection {
         
         $statement->bindParam(":name", $this->name);
         $statement->bindParam(":id", $this->id);
-        $statement->execute();
+        return $statement->execute();
     }
     
      public function delete($id) {
