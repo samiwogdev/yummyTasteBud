@@ -6,7 +6,7 @@ define("DS", DIRECTORY_SEPARATOR);
 //Database connection info
 $USERNAME = "root";
 $PASSWORD = "";
-$CONNECTION_STRING = 'mysql:host=localhost;dbname=ojaja_homes';
+$CONNECTION_STRING = 'mysql:host=localhost;dbname=yummytastebud';
 
 //Auto include all classes file in model folder to all pages
 spl_autoload_register(function ($class_name) {

@@ -46,4 +46,37 @@ class Menu extends Connection {
         $data = trim($data); //Strip whitespace (or other characters) from the beginning and end of a string
         return $data;
     }
+
+    public function add($name) {
+        $sql = "INSERT INTO " . $this->table_name . " (name) VALUES(:name)";
+        $statement = $this->getConnection()->prepare($sql);
+        
+        $this->name = self::sanitize_input($name);
+        
+        $statement->bindParam(":name", $this->name);
+        return $statement->execute();
+    }
+
+    public function update($id, $name) {
+        $sql = "UPDATE " . $this->table_name . " SET name = :name WHERE id = :id";
+        $statement = $this->getConnection()->prepare($sql);
+        
+        $this->id = self::sanitize_input($id);
+        $this->name = self::sanitize_input($name);
+        
+        $statement->bindParam(":name", $this->name);
+        $statement->bindParam(":id", $this->id);
+        $statement->execute();
+    }
+    
+     public function delete($id) {
+        $sql = "DELETE FROM " . $this->table_name . " WHERE id = id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->id = self::sanitize_input($id);
+        
+        $statement->bindParam(":id", $this->id);
+        return $statement->execute();
+    }
+
+
 }
