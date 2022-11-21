@@ -871,7 +871,7 @@
 </html>
 
 
-
+MENU:
 Shawarma
 Pizza
 Chicken and Chips
@@ -884,6 +884,7 @@ Plantain Frittata
 Milk-Shake
 Gelato
 
+SHOP:
 Shawarma Regular: 
 
 Chicken Shawarma: 

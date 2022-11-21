@@ -1,10 +1,10 @@
 <?php 
 include_once '../includes/admin-header.php';
 $page = "def";
-if (!isset($_SESSION['username'])) {
-    header("location: signin");
-    exit;
-}
+//if (!isset($_SESSION['username'])) {
+//    header("location: signin");
+//    exit;
+//}
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>
@@ -12,7 +12,7 @@ include_once '../includes/admin-sidebar.php';
     <div class="block-header">
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2 style="font-size: 16px">Add New Assets               
+                <h2 style="font-size: 16px">Add New Menu Item               
                 </h2>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">
@@ -27,7 +27,7 @@ include_once '../includes/admin-sidebar.php';
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card shadow ">
                     <div class="header">
-                        <h2><strong>List of </strong> Assets </h2>
+                        <h2><strong>List of </strong> Menu </h2>
                     </div>
                 </div>
             </div>
@@ -38,32 +38,22 @@ include_once '../includes/admin-sidebar.php';
                             <tr>
                                 <th>SN</th>
                                 <th>Name</th>
-                                <th>Total Price (&#8358;)</th>
-                                <th>Initial Payment (&#8358;)</th>
-                                <th>Monthly Payment (&#8358;)</th>
-                                <th>Location</th>
-                                <th>Tenure (Years)</th>
                                 <th>Action</th>
                             </tr>
                         </thead>                            
                         <tbody>
                             <?php
                             $count = 1;
-                            $result = $assets->getAll();
-                            if($result != 0){
-                            foreach ($result as $row) {
+                            $menus = $menu->getAll();
+                            if($menus != 0){
+                            foreach ($menus as $menu) {
                                 ?>
                                 <tr>
                                     <td><?php echo $count ?></td>
-                                    <td><?php echo $row['name'] ?></td>
-                                    <td><?php echo number_format($row['total_price']) ?>.00</td>
-                                    <td><?php echo number_format($row['initial_payment']) ?>.00</td>
-                                    <td><?php echo number_format($row['monthly_payment']) ?>.00</td>
-                                    <td><?php echo $row['location'] ?></td>
-                                    <td><?php echo $row['tenure'] ?></td>
+                                    <td><?php echo $menu['name'] ?></td>
                                     <td>
-                                        <a href="updateFee?n=<?php echo $row['id'] ?>"><i class="zmdi zmdi-edit m-r-15 text-success"></i></a>
-                                        <a href="../controller/deleteFee?n=<?php echo $row['id'] ?>"><i class="zmdi zmdi-delete"></i></a>
+                                        <a href="update_menu?n=<?php echo $menu['id'] ?>"><i class="zmdi zmdi-edit m-r-15 text-success" title="update Menu"></i></a>
+                                        <a href="../controller/delete_menu?n=<?php echo $menu['id'] ?>"><i class="zmdi zmdi-delete" title="Delete Menu"></i></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -81,31 +71,31 @@ include_once '../includes/admin-sidebar.php';
 <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
-            <form action="../controller/assets-def" method="post">
+            <form action="../controller/menu_def" method="post">
                 <div class="modal-header">
-                    <h4 class="title" id="smallModalLabel">Add New Asset</h4>
+                    <h4 class="title" id="smallModalLabel">Add New Menu</h4>
                 </div>
                 <div class="modal-body"> 
                     <div class="col-lg-12 col-12">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="zmdi zmdi-home"></i>
+                                <i class="zmdi zmdi-menu"></i>
                             </span>
                             <input type="text" value="<?php
                             if (isset($_POST['name'])) {
                                 echo $_POST['name'];
                             }
-                            ?>" name="name" class="form-control" placeholder="Enter Asset Name ">
+                            ?>" name="name" class="form-control" placeholder="Enter Menu Name ">
                         </div>
                     </div>
-                    <div class="col-lg-12 col-12">
+<!--                    <div class="col-lg-12 col-12">
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-hotel"></i>
                             </span>
                             <input type="number" value="<?php
                             if (isset($_POST['total_price'])) {
-                                echo $_POST['total_price'];
+//                                echo $_POST['total_price'];
                             }
                             ?>" name="total_price" class="form-control" placeholder="Enter Property Price">
                         </div>
@@ -117,7 +107,7 @@ include_once '../includes/admin-sidebar.php';
                             </span>
                             <input type="number" value="<?php
                             if (isset($_POST['initial_payment'])) {
-                                echo $_POST['initial_payment'];
+//                                echo $_POST['initial_payment'];
                             }
                             ?>" name="initial_payment" class="form-control" placeholder="Enter Initial Payment">
                         </div>
@@ -129,7 +119,7 @@ include_once '../includes/admin-sidebar.php';
                             </span>
                             <input type="number" value="<?php
                             if (isset($_POST['monthly_payment'])) {
-                                echo $_POST['monthly_payment'];
+//                                echo $_POST['monthly_payment'];
                             }
                             ?>" name="monthly_payment" class="form-control" placeholder="Enter Monthly Payment">
                         </div>
@@ -141,7 +131,7 @@ include_once '../includes/admin-sidebar.php';
                             </span>
                             <input type="number" value="<?php
                             if (isset($_POST['tenure'])) {
-                                echo $_POST['tenure'];
+//                                echo $_POST['tenure'];
                             }
                             ?>" name="tenure" class="form-control" placeholder="Enter Tenure">
                         </div>
@@ -152,15 +142,37 @@ include_once '../includes/admin-sidebar.php';
                                 <option value="AKR">Akure</option>
                                 <option value="OSG">Oshogbo</option>
                         </select> 
-                    </div>
+                    </div>-->
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="asset_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">SAVE CHANGES</button>
+                    <button type="submit" name="menu_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">ADD MENU</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<!--<div class="modal fade" id="delModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <form action="../controller/menu_del" method="post">
+                <div class="modal-header">
+                    <h4 class="title" id="smallModalLabel">Add New Menu</h4>
+                </div>
+                <div class="modal-body"> 
+
+                    <div class="col-lg-12 col-12">
+                     <p>Are you sure you want to delete.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="menu_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">YES</button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>-->
 
 <?php include_once '../includes/admin-footer.php'; ?>
 <?php if (isset($auth) && $auth == "deleted") { ?>
@@ -268,22 +280,7 @@ include_once '../includes/admin-sidebar.php';
             })
         });
     </script>  
-<?php } elseif (isset($errorMsg) && $errorMsg == "level_empty") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Invalid Level"
-            })
-        });
-    </script>  
-<?php } elseif (isset($info) && $info == "success") { ?>
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "upt_success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -294,11 +291,11 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Fee Added Successfully"
+                title: "Menu updated successfully"
             })
         });
     </script>  
-<?php } elseif (isset($errorMsg) && $errorMsg == "failed") { ?>
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -308,8 +305,23 @@ include_once '../includes/admin-sidebar.php';
         });
         $(document).ready(function () {
             Toast.fire({
-                icon: 'error',
-                title: "Sorry! something went wrong"
+                icon: 'success',
+                title: "Menu Added Successfully"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "del_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Menu deleted successfully"
             })
         });
     </script>  
