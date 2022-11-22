@@ -67,7 +67,7 @@ include_once '../includes/admin-sidebar.php';
                                                 </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="shop_image?n=<?php echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
-                                                    <a class="dropdown-item" href="#"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
+                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop['id'] ?>"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
                                                 </div>
                                             </div>
                                              <a href="update_shop?n=<?php // echo $menu['id']  ?>"><i class="fa fa-edit m-r-15 text-success" title="update shop item"></i></a>

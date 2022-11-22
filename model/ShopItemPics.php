@@ -90,15 +90,15 @@ class ShopItemPics extends Connection {
         return $row;
     }
     
-    public function get_shop_pics_by_id($id) {
-        $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+    public function get_shop_pics_by_id($shop_id) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE shop_id = :shop_id";
         $statement = $this->getConnection()->prepare($sql);
-        $this->id = self::sanitize_input($id);
-        $statement->bindParam(":id", $this->id);
+        $this->shop_id = self::sanitize_input($shop_id);
+        $statement->bindParam(":shop_id", $this->shop_id);
         $statement->execute();
         $count = $statement->rowCount();
         if ($count > 0) {
-            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $row = $statement->fetchAll();
         } else {
             $row = 0;
         }
