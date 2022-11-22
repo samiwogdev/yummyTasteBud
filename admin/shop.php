@@ -66,7 +66,7 @@ include_once '../includes/admin-sidebar.php';
                                                     <i class="fa fa-folder-open m-r-15 text-info" title="attachment"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="add_shop_img?n=<?php echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
+                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
                                                     <a class="dropdown-item" href="#"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
                                                 </div>
                                             </div>

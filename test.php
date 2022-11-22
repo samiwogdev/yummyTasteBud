@@ -942,3 +942,96 @@ Milk-Shake: 2500
 
 
 Gelato: Not started yet
+
+
+<?php
+include_once '../controller/db_connect.php';
+include_once '../model/resizeimage.php';
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$product_name = test_input($_POST['name']);
+$description_raw = test_input($_POST['description']);
+$description = strip_tags($description_raw);
+$price =  test_input($_POST['price']);
+
+
+//photo
+$photo = "no_pic1";
+$photo2 = "no_pic2";
+
+//process Receipt
+try {
+     // Check if image was uploaded without errors
+        if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
+        $allowedImageType = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "gif" => "image/gif");
+        $imageFileName = $_FILES['photo']['name'];
+        $imageFileType = $_FILES['photo']['type'];
+        $imageFileSize = $_FILES['photo']['size'];
+        
+        $imageExtension = pathinfo($imageFileName, PATHINFO_EXTENSION);
+        if (!array_key_exists($imageExtension, $allowedImageType)) ;
+         // Verify MYME type of the file
+        if (in_array($imageFileType, $allowedImageType)) {
+            $photo = 'receipt_' . md5(rand()) . '_' . time() . '.' . $imageExtension;
+            move_uploaded_file($_FILES['photo']['tmp_name'], "../uploads/raw/" . $photo);
+            $imageFileName = copy('../uploads/raw/' . $photo, '../uploads/photos/' . $photo);
+            resize_image("../uploads/photos/" . $photo, 250, 250);
+        } else {
+            echo 'There was a problem in uploading your file! Please ensure you upload the correct file format.';
+        }
+    } else {
+       echo 'It seems something went wrong in creating new photo, Please check your paramters and check again.';
+    }               
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+
+//procees Gift photo
+try {
+    
+     // Check if image was uploaded without errors
+        if (isset($_FILES["photo2"]) && $_FILES["photo2"]["error"] == 0) {
+        $allowedImageType2 = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "gif" => "image/gif");
+        $imageFileName2 = $_FILES['photo2']['name'];
+        $imageFileType2 = $_FILES['photo2']['type'];
+        $imageFileSize = $_FILES['photo2']['size'];
+        $imageExtension2 = pathinfo($imageFileName2, PATHINFO_EXTENSION);
+        if (!array_key_exists($imageExtension2, $allowedImageType2)) ;
+        
+         // Verify MYME type of the file
+        if (in_array($imageFileType2, $allowedImageType2)) {
+            $photo2 = 'gifcard_pic_' . md5(rand()) . '_' . time() . '.' . $imageExtension2;
+            move_uploaded_file($_FILES['photo2']['tmp_name'], "../uploads/raw/" . $photo2);
+            $imageFileName2 = copy('../uploads/raw/' . $photo2, '../uploads/photos/' . $photo2);
+            resize_image("../uploads/photos/" . $photo2, 250, 250);
+        } else {
+            echo 'There was a problem in uploading your file! Please ensure you upload the correct file format.';
+        }
+    } else {
+       echo 'It seems something went wrong in creating new photo, Please check your paramters and check again.';
+    }               
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+
+ $data = array(
+                    ':product_name' => $product_name,
+                    ':description' => $description,
+                    ':photo' => "../uploads/raw/$photo",
+                    ':picture' => "../uploads/raw/$photo2",
+                    ':price' => $price,
+                                   
+                );
+    $query = "INSERT INTO product(id, product_name, description, photo, picture, price) VALUES(null, :product_name, :description, :photo, :picture, :price)";
+            $statement = $connect->prepare($query);
+             if($statement->execute($data)){             
+                header("location: ../admin/phone_upload.php?msg=success");
+             }else{
+                 header("location: ../admin/phone_upload.php?msg=failed");
+             } 

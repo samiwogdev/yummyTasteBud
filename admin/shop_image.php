@@ -57,7 +57,7 @@ include_once '../includes/admin-sidebar.php';
                                                     <i class="fa fa-folder-open m-r-15 text-info" title="attachment"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="add_shop_img?n=<?php // echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
+                                                    <a class="dropdown-item" href="shop_image?n=<?php // echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
                                                     <a class="dropdown-item" href="#"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
                                                 </div>
                                             </div>
@@ -87,7 +87,10 @@ include_once '../includes/admin-sidebar.php';
 <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
-            <form action="../controller/add_shop_item_pics" method="post">
+            <?php
+            if(null != filter_input(INPUT_GET, "n")){
+                $n = filter_input(INPUT_GET, "n"); ?>
+            <form action="../controller/add_shop_item_pics?n=<?php echo $n ?>" method="post">
                 <div class="modal-header">
                     <h4 class="title" id="smallModalLabel">Add New Shop Item Picture</h4>
                 </div>
@@ -110,6 +113,7 @@ include_once '../includes/admin-sidebar.php';
                     <button type="submit" name="shop_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">ADD SHOP ITEM PICTURE</button>
                 </div>
             </form>
+            <?php } ?>
         </div>
     </div>
 </div>
