@@ -78,7 +78,7 @@ class Menu extends Connection {
         return $statement->execute();
     }
 
-    public function getAll() {
+    public function get_all() {
         $sql = "SELECT * FROM " . $this->table_name;
         $statement = $this->getConnection()->prepare($sql);
         $statement->execute();

@@ -83,15 +83,15 @@ class Shop extends Connection {
         return $data;
     }
 
-    public function add($name, $category, $description, $price, $alias) {
-        $sql = "INSERT INTO " . $this->table_name . " (name, category, description, price, alias) VALUES(:name, :category, :description, :price, :alias)";
+    public function add( $category, $name, $alias, $description, $price ) {
+        $sql = "INSERT INTO " . $this->table_name . " (category, name, alias, description, price ) VALUES(:category, :name, :alias, :description, :price)";
         $statement = $this->getConnection()->prepare($sql);
 
-        $this->name = self::sanitize_input($name);
         $this->category = self::sanitize_input($category);
+        $this->name = self::sanitize_input($name);
+        $this->alias = self::sanitize_input($alias);
         $this->description = self::sanitize_input($description);
         $this->price = self::sanitize_input($price);
-        $this->alias = self::sanitize_input($alias);
 
         $statement->bindParam(":name", $this->name);
         $statement->bindParam(":category", $this->category);
@@ -128,6 +128,35 @@ class Shop extends Connection {
 
         $statement->bindParam(":id", $this->id);
         return $statement->execute();
+    }
+    
+        public function get_all() {
+        $sql = "SELECT * FROM " . $this->table_name;
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    
+      public function get_menu_by_id($id) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->id = self::sanitize_input($id);
+        $statement->bindParam(":id", $this->id);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $row = 0;
+        }
+
+        return $row;
     }
 
 }

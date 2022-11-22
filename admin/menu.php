@@ -32,7 +32,7 @@ include_once '../includes/admin-sidebar.php';
                 </div>
             </div>
             <div class="col-12 p-5">
-                <div class="table-responsive text-center">
+                <div class="table-responsive ">
                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable " style="width: 100%">
                         <thead>
                             <tr>
@@ -44,7 +44,7 @@ include_once '../includes/admin-sidebar.php';
                         <tbody>
                             <?php
                             $count = 1;
-                            $menus = $menu->getAll();
+                            $menus = $menu->get_all();
                             if($menus != 0){
                             foreach ($menus as $menu) {
                                 ?>

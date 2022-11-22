@@ -11,6 +11,7 @@ include_once '../convig.php';
 //$assets = Assets::getInstance();
 //$app = Applicant::getInstance();
 $menu = Menu::getInstance();
+$shop = Shop::getInstance();
 ?>
 ﻿<!doctype html>
 <html class="no-js " lang="en">
@@ -30,7 +31,7 @@ $menu = Menu::getInstance();
         <link href="assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
         <link rel="stylesheet" href="assets/css/color_skins.css">
         <link rel="stylesheet" href="assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="../assets/css/fontawesome-free-5.15.3-web/css/all.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.3-web/css/all.css">
         <link href="assets/plugins/dropzone/dropzone.css" rel="stylesheet">
         <link href="../css/sweetalert2/sweetalert2.min.css" rel="stylesheet">
     </head>

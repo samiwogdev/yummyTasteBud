@@ -1,7 +1,7 @@
 <body class="theme-blush">
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img class="zmdi-hc-spin" src="../assets/images/crown-logo.png" width="48" height="48" alt=""></div>
+            <div class="m-t-30"><img class="zmdi-hc-spin" src="../images/pizza-banner-2.png" width="48" height="48" alt=""></div>
             <p>Please wait...</p>        
         </div>
     </div>
@@ -20,3 +20,4 @@
             </li>
         </ul>
     </nav>
+    
