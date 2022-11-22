@@ -25,13 +25,13 @@
                             <li><a href="../admin/shop">Shop</a></li>
                         </ul>
                     </li>
-                      <li class="<?php if($page == "report"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Report</span> </a>
+<!--                      <li class="<?php // if($page == "report"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Report</span> </a>
                         <ul class="ml-menu">
                             <li><a href="../admin/payment_history">Payment History</a></li>
                             <li><a href="../admin/payment-single">Single payment</a></li>
                             <li><a href="../admin/payment-multiple">Multiple Payment </a></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>
