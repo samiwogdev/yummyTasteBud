@@ -157,37 +157,7 @@ include_once '../includes/admin-sidebar.php';
 
 
 <?php include_once '../includes/admin-footer.php'; ?>
-<?php if (isset($auth) && $auth == "deleted") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'success',
-                title: " Asset Deleted!"
-            })
-        });
-    </script> 
-<?php } if (isset($auth) && $auth == "success") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'success',
-                title: " Asset Updated Successfully!"
-            })
-        });
-    </script> 
-<?php }if (isset($auth) && $auth == "invalid") { ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "empty") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -198,10 +168,26 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'error',
-                title: "Auth failed"
+                title: "fill all input!"
             })
         });
     </script> 
+<?php } if (isset($_GET['info']) && $_GET['info'] == "del_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: " Shop item deleted Successfully!"
+            })
+        });
+    </script> 
+
 <?php }if (isset($errorMsg) && $errorMsg == "fee_empty") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({

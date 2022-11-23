@@ -3,11 +3,13 @@ include_once '../convig.php';
 
 if (null == filter_input(INPUT_GET, "n")) {
     header("location: ../admin/shop?info=invalid");
+    exit;
 }
 
 $id = filter_input(INPUT_GET, "n");
 if (!is_numeric($id)) {
     header("location: ../admin/shop?info=invalid");
+    exit;
 }
 
 $shop = Shop::getInstance();
@@ -20,27 +22,27 @@ if (isset($_POST['shop_update'])) {
     $alias = filter_input(INPUT_POST, "alias");
     
     if (empty($name)) {
-        $errorMsg = "name_empty";
+        $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($category)) {
-        $errorMsg = "category_empty";
+    if (($category == 0)) {
+        $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
     if (empty($description)) {
-        $errorMsg = "description_empty";
+        $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
     if (empty($price)) {
-        $errorMsg = "price_empty";
+        $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($alias)) {
-        $errorMsg = "alias_empty";
+    if (($alias == 0)) {
+        $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }

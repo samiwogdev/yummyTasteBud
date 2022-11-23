@@ -120,7 +120,7 @@ include_once '../includes/admin-sidebar.php';
 
 
 <?php include_once '../includes/admin-footer.php'; ?>
-<?php if (isset($auth) && $auth == "deleted") { ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -131,7 +131,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: " Asset Deleted!"
+                title: " Picture added successfully"
             })
         });
     </script> 
