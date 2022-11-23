@@ -15,7 +15,9 @@ if (isset($_POST['menu_update'])) {
     $errorMsg = "";
     $name = filter_input(INPUT_POST, "name");
     if (empty($name)) {
-        $errorMsg = "fee_empty";
+        $errorMsg = "name_empty";
+        header("location: ../admin/menu?info=" . $errorMsg);
+        exit;
     }
     
     if ($menu->update($id, $name)) {

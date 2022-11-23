@@ -34,14 +34,15 @@ if (isset($_POST['shop_image'])) {
 
         $shop_item_pics = ShopItemPics::getInstance();
         if ($shop_item_pics->add($photo, $shop_id)) {
-            header("location: ../admin/shop_image?info=success&n=".$shop_id);
+            header("location: ../admin/shop_image?info=success&n=" . $shop_id);
             exit;
         } else {
             header("location: ../admin/shop_image?info=" . $errorMsg);
             exit;
         }
     }
+    header("location: ../admin/shop_image?info=invalid");
+    exit;
 }
 
-      echo 'no'; exit;
 

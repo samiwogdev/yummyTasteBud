@@ -8,6 +8,8 @@ if (isset($_POST['menu_def'])) {
 
     if (empty($name)) {
         $errorMsg = "name_empty";
+        header("location: ../admin/menu?info=" . $errorMsg);
+        exit;
     }
 
     $menu = Menu::getInstance();
