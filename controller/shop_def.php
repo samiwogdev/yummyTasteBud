@@ -12,6 +12,8 @@ if (isset($_POST['shop_def'])) {
 
     if (empty($category)) {
         $errorMsg = "category_empty";
+          header("location: ../admin/shop?info=" . $errorMsg);
+        exit;
     }
     if (empty($category == 0)) {
         $errorMsg = "category_empty";

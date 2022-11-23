@@ -113,7 +113,7 @@ include_once '../includes/admin-sidebar.php';
                     <div class="col-lg-12 col-12">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="fa fa-cogs"></i>
+                                <i class="fas fa-utensils"></i>
                             </span>
                             <input type="text" value="<?php
                             if (isset($_POST['name'])) {
