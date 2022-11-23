@@ -19,9 +19,15 @@ include_once '../includes/admin-sidebar.php';
 <section class="content profile-page">
     <div class="block-header">
         <div class="row">
-            <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2 style="font-size: 16px">Update Menu Item              
+              <div class="col-lg-7 col-md-6 col-sm-12">
+                      <?php
+                         if(null != filter_input(INPUT_GET, "n")){
+                               $n = filter_input(INPUT_GET, "n"); 
+                        $menus = $menu->get_menu_by_id($n); 
+                             ?>
+                <h2 style="font-size: 16px">  <i class="fa fa-pizza-slice mr-2"></i>Update <?php  echo "<i>". $menus['name']. "</i> "  ?> Menu               
                 </h2>
+                         <?php } ?>
             </div>
         </div>
     </div>

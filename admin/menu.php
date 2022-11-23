@@ -12,7 +12,7 @@ include_once '../includes/admin-sidebar.php';
     <div class="block-header">
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2 style="font-size: 16px">Add New Menu Item               
+                <h2 style="font-size: 16px"><i class="fas fa-utensils mr-2"></i>Menu               
                 </h2>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">
@@ -33,7 +33,7 @@ include_once '../includes/admin-sidebar.php';
             </div>
             <div class="col-12 p-5">
                 <div class="table-responsive ">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable " style="width: 100%">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable shadow " style="width: 100%">
                         <thead>
                             <tr>
                                 <th>SN</th>
@@ -52,8 +52,15 @@ include_once '../includes/admin-sidebar.php';
                                     <td><?php echo $count ?></td>
                                     <td><?php echo $menu['name'] ?></td>
                                     <td>
-                                        <a href="update_menu?n=<?php echo $menu['id'] ?>"><i class="zmdi zmdi-edit m-r-15 text-success" title="update Menu"></i></a>
-                                        <a href="../controller/delete_menu?n=<?php echo $menu['id'] ?>"><i class="zmdi zmdi-delete" title="Delete Menu"></i></a>
+                                        <a href="update_menu?n=<?php echo $menu['id'] ?>"><i class="fa fa-edit m-r-15 text-info" title="update Menu"></i></a>
+                                           <div class="dropdown" style="display: inline !important">
+                                                <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-trash-alt m-r-15 text-danger" title="delete menu"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <a href="../controller/delete_menu?n=<?php echo $menu['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete Menu</a>
+                                                </div>
+                                            </div>
                                     </td>
                                 </tr>
                                 <?php
@@ -79,7 +86,7 @@ include_once '../includes/admin-sidebar.php';
                     <div class="col-lg-12 col-12">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="zmdi zmdi-menu"></i>
+                                <i class="fas fa-utensils"></i>
                             </span>
                             <input type="text" value="<?php
                             if (isset($_POST['name'])) {
@@ -88,61 +95,6 @@ include_once '../includes/admin-sidebar.php';
                             ?>" name="name" class="form-control" placeholder="Enter Menu Name ">
                         </div>
                     </div>
-<!--                    <div class="col-lg-12 col-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-hotel"></i>
-                            </span>
-                            <input type="number" value="<?php
-                            if (isset($_POST['total_price'])) {
-//                                echo $_POST['total_price'];
-                            }
-                            ?>" name="total_price" class="form-control" placeholder="Enter Property Price">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-home"></i>
-                            </span>
-                            <input type="number" value="<?php
-                            if (isset($_POST['initial_payment'])) {
-//                                echo $_POST['initial_payment'];
-                            }
-                            ?>" name="initial_payment" class="form-control" placeholder="Enter Initial Payment">
-                        </div>
-                    </div>
-                         <div class="col-lg-12 col-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-home"></i>
-                            </span>
-                            <input type="number" value="<?php
-                            if (isset($_POST['monthly_payment'])) {
-//                                echo $_POST['monthly_payment'];
-                            }
-                            ?>" name="monthly_payment" class="form-control" placeholder="Enter Monthly Payment">
-                        </div>
-                    </div>
-                     <div class="col-lg-12 col-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-calendar"></i>
-                            </span>
-                            <input type="number" value="<?php
-                            if (isset($_POST['tenure'])) {
-//                                echo $_POST['tenure'];
-                            }
-                            ?>" name="tenure" class="form-control" placeholder="Enter Tenure">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-12 mb-3" id="bigcontainer">
-                        <select name="location" class="form-control m-b-15">
-                            <option value="0" selected="selected">--Select Location--</option>
-                                <option value="AKR">Akure</option>
-                                <option value="OSG">Oshogbo</option>
-                        </select> 
-                    </div>-->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="menu_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">ADD MENU</button>
@@ -151,28 +103,6 @@ include_once '../includes/admin-sidebar.php';
         </div>
     </div>
 </div>
-
-<!--<div class="modal fade" id="delModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <form action="../controller/menu_del" method="post">
-                <div class="modal-header">
-                    <h4 class="title" id="smallModalLabel">Add New Menu</h4>
-                </div>
-                <div class="modal-body"> 
-
-                    <div class="col-lg-12 col-12">
-                     <p>Are you sure you want to delete.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="menu_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">YES</button>
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>-->
 
 <?php include_once '../includes/admin-footer.php'; ?>
 <?php if (isset($auth) && $auth == "deleted") { ?>

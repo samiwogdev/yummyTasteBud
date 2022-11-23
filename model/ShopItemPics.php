@@ -77,6 +77,15 @@ class ShopItemPics extends Connection {
         return $statement->execute();
     }
     
+    public function delete_by_shop_id($shop_id) {
+        $sql = "DELETE FROM " . $this->table_name . " WHERE shop_id = :shop_id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->shop_id = self::sanitize_input($shop_id);
+
+        $statement->bindParam(":shop_id", $this->shop_id);
+        return $statement->execute();
+    }
+    
       public function get_all() {
         $sql = "SELECT * FROM " . $this->table_name;
         $statement = $this->getConnection()->prepare($sql);

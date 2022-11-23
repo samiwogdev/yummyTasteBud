@@ -21,8 +21,8 @@
                     <li class="<?php if($page == "dash"){  echo "active open"; } ?>"><a href="index"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
                     <li class="<?php if($page == "definition"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-border-color"></i><span>Definition</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="../admin/menu">Menu</a></li>
-                            <li><a href="../admin/shop">Shop</a></li>
+                            <li><a href="../admin/menu"><i class="fas fa-utensils mr-2" style="color: #760076 !important;"></i>Menu</a></li>
+                            <li><a href="../admin/shop"><i class="fa fa-shopping-bag mr-2" style="color: #760076;"></i>Shop</a></li>
                         </ul>
                     </li>
 <!--                      <li class="<?php // if($page == "report"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Report</span> </a>
