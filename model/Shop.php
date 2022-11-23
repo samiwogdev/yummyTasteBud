@@ -122,7 +122,7 @@ class Shop extends Connection {
     }
 
     public function delete($id) {
-        $sql = "DELETE FROM " . $this->table_name . " WHERE id = id";
+        $sql = "DELETE FROM " . $this->table_name . " WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
         $this->id = self::sanitize_input($id);
 

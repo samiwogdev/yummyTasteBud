@@ -76,7 +76,7 @@ include_once '../includes/admin-sidebar.php';
                                                     <i class="fa fa-trash-alt m-r-15 text-danger" title="delete item"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a href="../controller/delete_menu?n=<?php  echo $shop_['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete item</a>
+                                                    <a href="../controller/delete_shop_item?n=<?php echo $shop_['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete item</a>
                                                 </div>
                                             </div>
                                         </td>
