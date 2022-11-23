@@ -28,26 +28,59 @@ include_once '../includes/admin-sidebar.php';
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
+                <div class="card shadow">
                     <div class="header">
                         <h2><small>All fields are required</small> </h2>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <?php $menus = $menu->get_menu_by_id($id); ?>
-                                <form action="../controller/update_shop_it?n=<?php echo $id; ?>" method="post" class="form-inline">
-                                    <div class="col-lg-5 col-12">
+                                <?php $shops = $shop->get_menu_by_id($id); ?>
+                                <form action="../controller/update_shop_item?n=<?php echo $id; ?>" method="post" class="form-inline">
+                                    <?php $menus = $menu->get_all(); ?>
+                                    <div class="col-lg-4  mb-3">
+                                        <select name="category" class="form-control m-b-15">
+                                            <option value="0" selected="selected">--Select Category--</option>
+                                            <?php foreach ($menus as $menu_) { ?>
+                                                <option value="<?php echo $menu_['id'] ?>"><?php echo $menu_['name'] ?></option>
+                                            <?php } ?>
+                                        </select> 
+                                    </div>                                    
+									<div class="col-lg-4 col-12">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="zmdi zmdi-pizza"></i>
+                                                <i class="fa fa-pizza-slice"></i>
                                             </span>
-                                            <input type="text" value=" <?php echo $menus['name'] ?>" name="name" class="form-control" placeholder="Enter menu name ">
+                                            <input type="text" value="<?php
+                                            echo $shops['name'];
+                                            ?>" name="name" class="form-control" placeholder="Enter Name ">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-12 mb-3" id="bigcontainer">
+                                        <select name="alias" class="form-control m-b-15">
+                                            <option value="0" selected="selected">--Select Alias--</option>
+                                            <option value="Regular">Regular</option>
+                                            <option value="Special">Special</option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <textarea rows="4" name="description" class="form-control no-resize" placeholder="Description"><?php echo $shops['description'] ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-coins"></i>
+                                            </span>
+                                            <input type="number" value="<?php
+                                            echo $shops['price'];
+                                            ?>" name="price" class="form-control" placeholder="Enter Price ">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-12">
                                         <div class="input-group">
-                                            <button type="submit" name="menu_update" class="btn btn-raised btn-round btn-primary">Update Menu</button>
+                                            <button type="submit" name="shop_update" class="btn btn-raised btn-round btn-primary">Update Item</button>
                                         </div>
                                     </div>
                                 </form>

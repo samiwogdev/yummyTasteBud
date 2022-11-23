@@ -50,33 +50,33 @@ include_once '../includes/admin-sidebar.php';
                             $count = 1;
                             $shops = $shop->get_all();
                             if ($shops != 0) {
-                                foreach ($shops as $shop) {
-                                    $menus = $menu->get_menu_by_id($shop['category']);
+                                foreach ($shops as $shop_) {
+                                    $menus = $menu->get_menu_by_id($shop_['category']);
                                     ?>
                                     <tr>
                                         <td><?php echo $count ?></td>
                                         <td><?php echo $menus['name'] ?></td>
-                                        <td><?php echo $shop['name'] ?></td>
-                                        <td><?php echo $shop['alias'] ?></td>
-                                        <td><?php echo $shop['description'] ?></td>
-                                        <td><?php echo $shop['price'] ?></td>
+                                        <td><?php echo $shop_['name'] ?></td>
+                                        <td><?php echo $shop_['alias'] ?></td>
+                                        <td><?php echo $shop_['description'] ?></td>
+                                        <td><?php echo $shop_['price'] ?></td>
                                         <td>
                                             <div class="dropdown" style="display: inline !important">
                                                 <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-folder-open m-r-15 text-info" title="attachment"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
-                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop['id'] ?>"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
+                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop_['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
+                                                    <a class="dropdown-item" href="shop_image?n=<?php echo $shop_['id'] ?>"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
                                                 </div>
                                             </div>
-                                             <a href="update_shop?n=<?php // echo $menu['id']  ?>"><i class="fa fa-edit m-r-15 text-success" title="update shop item"></i></a>
+                                             <a href="update_shop?n=<?php  echo $shop_['id']  ?>"><i class="fa fa-edit m-r-15 text-success" title="update shop item"></i></a>
                                             <div class="dropdown" style="display: inline !important">
                                                 <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-trash-alt m-r-15 text-danger" title="delete item"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a href="../controller/delete_menu?n=<?php // echo $menu['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete item</a>
+                                                    <a href="../controller/delete_menu?n=<?php  echo $shop_['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete item</a>
                                                 </div>
                                             </div>
                                         </td>
