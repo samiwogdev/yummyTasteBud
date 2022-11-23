@@ -188,7 +188,7 @@ include_once '../includes/admin-sidebar.php';
         });
     </script> 
 
-<?php }if (isset($errorMsg) && $errorMsg == "fee_empty") { ?>
+<?php }if (isset($_GET['info']) && $_GET['info'] == "invalid") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -199,7 +199,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'error',
-                title: "Fee is Empty"
+                title: "Something went wrong, check your internet!"
             })
         });
     </script> 

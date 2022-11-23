@@ -30,8 +30,8 @@ include_once '../includes/admin-sidebar.php';
                                 <a href="" style="color: black">
                                     <div class="icon xl-slategray"><i class="fa fa-store-alt"></i> </div>
                                     <div class="content">
-                                        <div class="text font-weight-bold">Total Asset Sold</div>
-                                        <h5 class="number font-weight-light"><?php // echo $total_asset_sold ?></h5>
+                                        <div class="text font-weight-bold">Total Order</div>
+                                        <h5 class="number font-weight-light"><?php // echo $total_asset_sold ?>45</h5>
                                     </div>
                                 </a>
                             </div>
@@ -44,7 +44,7 @@ include_once '../includes/admin-sidebar.php';
                                     <div class="icon xl-slategray"><i class="fa fa-store"></i> </div>
                                     <div class="content">
                                         <div class="text font-weight-bold">Completed Payment</div>
-                                        <h5 class="number"><?php // echo $completed_payment ?></h5>
+                                        <h5 class="number"><?php // echo $completed_payment ?>5</h5>
                                     </div>
                                 </a>
                             </div>
@@ -61,7 +61,7 @@ include_once '../includes/admin-sidebar.php';
 //                }
 //            }
             ?>
-                     <div class="col-lg-6 col-12">
+<!--                     <div class="col-lg-6 col-12">
                         <div class="card top_counter shadow">
                             <div class="body">
                                 <a href="" style="color: black">
@@ -73,7 +73,7 @@ include_once '../includes/admin-sidebar.php';
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
           <!-- Oshogbo Total Payment-->
             <?php
 //            $osogbo_assets_ids = $assets->get_asset_id_by_location("OSG");
@@ -85,7 +85,7 @@ include_once '../includes/admin-sidebar.php';
 //                }
 //            }
             ?>
-                       <div class="col-lg-6 col-12">
+<!--                       <div class="col-lg-6 col-12">
                         <div class="card top_counter shadow">
                             <div class="body">
                                 <a href="" style="color: black">
@@ -97,7 +97,7 @@ include_once '../includes/admin-sidebar.php';
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="card student-list">
                     <div class="header">
@@ -155,7 +155,7 @@ include_once '../includes/admin-sidebar.php';
                                 <h2><strong>Total</strong> Revenue</h2>
                             </div>
                             <div class="body text-center">
-                                <h4 class="margin-0">&#8358; <span data-speed="2500" data-fresh-interval="700"><?php echo number_format($total_payment) ?></span></h4>
+                                <h4 class="margin-0">&#8358; <span data-speed="2500" data-fresh-interval="700"><?php // echo number_format($total_payment) ?></span></h4>
                                 <h6 class="m-b-20">Total Payment</h6>
                             <!--  Expected Payment-->
                             <?php

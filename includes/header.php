@@ -1,3 +1,9 @@
+<?php
+include_once 'convig.php';
+$menu = Menu::getInstance();
+$shop = Shop::getInstance();
+$shop_img = ShopItemPics::getInstance();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,9 +33,9 @@
     <body>
 
         <!-- Start preloader -->
-        <div id="preloader">
+<!--        <div id="preloader">
             <label>Loading</label>
-        </div>
+        </div>-->
         <!-- End preloader -->
 
         <header id="header">
@@ -57,18 +63,10 @@
                                             <ul class="sub-menu-level1">
                                                 <li class="level2">
                                                     <ul class="sub-menu-level2 ">
-                                                        <li class="level3"><a href="menu"><span>■</span>Shawarma</a>
-                                                        </li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Pizza</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Chicken and Chips</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Spaghetti and Chicken</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Noodles and Egg</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Noodles and Egg</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Noodles and Chicken</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Yam and Egg Sauce( fried or Boiled)</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Plantain Frittata</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Milk-Shake</a></li>
-                                                        <li class="level3"><a href="menu"><span>■</span>Gelato</a></li>
+                                                        <?php $menus = $menu->get_all();
+                                                         foreach ($menus as $menu_){ ?>
+                                                        <li class="level3"><a href="menu"><span>■</span><?php echo $menu_['name'] ?></a></li>
+                                                         <?php } ?>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -85,12 +83,12 @@
                         </div>
                         <div class=" header-right-link">
                             <ul>
-                                <li class="call-icon">
+<!--                                <li class="call-icon">
                                     <a href="menu">
                                         <span class="icon"></span>
                                         <div class="link-text">+234 123 456 789</div>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="cart-icon"> 
                                     <a href="menu"> 
                                         <span class="icon"></span>

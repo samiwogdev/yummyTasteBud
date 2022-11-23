@@ -114,5 +114,20 @@ class ShopItemPics extends Connection {
 
         return $row;
     }
+    public function get_shop_pics_by_id_2($shop_id) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE shop_id = :shop_id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->shop_id = self::sanitize_input($shop_id);
+        $statement->bindParam(":shop_id", $this->shop_id);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+             $row = $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $row = 0;
+        }
+
+        return $row;
+    }
 
 }

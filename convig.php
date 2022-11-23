@@ -3,6 +3,7 @@
 session_start();
 define("DS", DIRECTORY_SEPARATOR);
 
+//P@zzw@rd100$_$
 //Database connection info
 $USERNAME = "root";
 $PASSWORD = "";

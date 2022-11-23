@@ -135,22 +135,7 @@ include_once '../includes/admin-sidebar.php';
             })
         });
     </script> 
-<?php } if (isset($auth) && $auth == "success") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'success',
-                title: " Asset Updated Successfully!"
-            })
-        });
-    </script> 
-<?php }if (isset($auth) && $auth == "invalid") { ?>
+<?php } if (isset($_GET['info']) && $_GET['info'] ==  "invalid") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -161,97 +146,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'error',
-                title: "Auth failed"
-            })
-        });
-    </script> 
-<?php }if (isset($errorMsg) && $errorMsg == "fee_empty") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Fee is Empty"
-            })
-        });
-    </script> 
-<?php }if (isset($errorMsg) && $errorMsg == "amount_invalid") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Invalid amount"
-            })
-        });
-    </script>
-<?php } elseif (isset($errorMsg) && $errorMsg == "amount_empty") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Invalid Amount"
-            })
-        });
-    </script>  
-<?php } elseif (isset($errorMsg) && $errorMsg == "dept_empty") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Invalid Department"
-            })
-        });
-    </script>  
-<?php } elseif (isset($_GET['info']) && $_GET['info'] == "upt_success") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'success',
-                title: "Menu updated successfully"
-            })
-        });
-    </script>  
-<?php } elseif (isset($_GET['info']) && $_GET['info'] == "success") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'success',
-                title: "Item Added Successfully"
+                title: "Something went wrong, check your internet!"
             })
         });
     </script>  
@@ -266,7 +161,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu deleted successfully"
+                title: "Picture deleted successfully"
             })
         });
     </script>  
