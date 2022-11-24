@@ -65,7 +65,7 @@ $shop_img = ShopItemPics::getInstance();
                                                     <ul class="sub-menu-level2 ">
                                                         <?php $menus = $menu->get_all();
                                                          foreach ($menus as $menu_){ ?>
-                                                        <li class="level3"><a href="menu"><span>■</span><?php echo $menu_['name'] ?></a></li>
+                                                        <li class="level3"><a href="menu?n=<?php echo $menu_['id'] ?>"><span>■</span><?php echo $menu_['name'] ?></a></li>
                                                          <?php } ?>
                                                     </ul>
                                                 </li>

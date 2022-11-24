@@ -83,7 +83,7 @@ class Shop extends Connection {
         return $data;
     }
 
-    public function add( $category, $name, $alias, $description, $price ) {
+    public function add($category, $name, $alias, $description, $price) {
         $sql = "INSERT INTO " . $this->table_name . " (category, name, alias, description, price ) VALUES(:category, :name, :alias, :description, :price)";
         $statement = $this->getConnection()->prepare($sql);
 
@@ -129,8 +129,8 @@ class Shop extends Connection {
         $statement->bindParam(":id", $this->id);
         return $statement->execute();
     }
-    
-        public function get_all() {
+
+    public function get_all() {
         $sql = "SELECT * FROM " . $this->table_name;
         $statement = $this->getConnection()->prepare($sql);
         $statement->execute();
@@ -142,8 +142,8 @@ class Shop extends Connection {
         }
         return $row;
     }
-    
-      public function get_menu_by_id($id) {
+
+    public function get_menu_by_id($id) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
         $this->id = self::sanitize_input($id);
@@ -158,5 +158,54 @@ class Shop extends Connection {
 
         return $row;
     }
+       public function get_menu_id_2($id) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->id = self::sanitize_input($id);
+        $statement->bindParam(":id", $this->id);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+
+        return $row;
+    }
+
+    public function get_menu_by_category($category) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE category = :category";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->category = self::sanitize_input($category);
+        $statement->bindParam(":category", $this->category);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $row = 0;
+        }
+
+        return $row;
+    }
+
+    public function get_menu_by_category_2($category) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE category = :category";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->category = self::sanitize_input($category);
+        $statement->bindParam(":category", $this->category);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+
+        return $row;
+    }
+
+
 
 }
