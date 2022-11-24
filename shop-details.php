@@ -18,7 +18,7 @@ $shop_id = filter_input(INPUT_GET, "n");
                     <h1 class="page-headding"><?php echo $menus['name'] ?></h1>
                     <ul>
                         <li><a href="index" class="page-name">Home</a></li>
-                        <li><a href="#" class="page-name"><?php echo $shops['name'] ?></a></li>
+                        <li><a href="menu?n=<?php echo $shops['category'] ?>" class="page-name"><?php echo $shops['name'] ?></a></li>
                         <li><?php echo $shops['description'] ?></li>
                     </ul>
                 </div>
