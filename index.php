@@ -130,8 +130,8 @@
                         if ($shop_imgs != 0) {
                             ?>
                             <div class="col-xl-3 col-lg-3 col-md-4 text-center pt-20">
-                                <div class="menu-img"><a href="shop-details?n=<?php echo $shop_['category'] ?>"><img src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>" alt="menu" class="menu-image"></a></div>
-                                <a href="shop-details" class="menu-title text-uppercase"><?php echo $shop_['name'] ?></a>
+                                <div class="menu-img"><a href="shop-details?n=<?php echo $shop_['id'] ?>"><img src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>" alt="menu" class="menu-image"></a></div>
+                                <a href="shop-details?n=<?php echo $shop_['id'] ?>" class="menu-title text-uppercase"><?php echo $shop_['name'] ?></a>
                                 <p class="menu-des"><?php echo $shop_['description'] ?> </p>
                                 <span class="menu-price"><?php echo $shop_['price'] ?></span>
                             </div>
@@ -155,7 +155,7 @@
                                 ?>
                                 <div class="col-xl-3 col-lg-3 col-md-4 text-center pt-20">
                                     <div class="menu-img"><a href="shop-details?n=<?php echo $shop_['id'] ?>"><img src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>" alt="menu" class="menu-image"></a></div>
-                                    <a href="shop-details" class="menu-title text-uppercase"><?php echo $shop_['name'] ?></a>
+                                    <a href="shop-details?n=<?php echo $shop_['id'] ?>" class="menu-title text-uppercase"><?php echo $shop_['name'] ?></a>
                                     <p class="menu-des"><?php echo $shop_['description'] ?> </p>
                                     <span class="menu-price"><?php echo $shop_['price'] ?></span>
                                 </div>
