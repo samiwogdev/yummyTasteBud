@@ -1,14 +1,25 @@
+<?php
+if (NULL == filter_input(INPUT_GET, "n")) {
+    header("location: index?info=invalid");
+}
+$shop_id = filter_input(INPUT_GET, "n");
+?>
 <?php include_once './includes/header.php'; ?>
+
 <section class="page-banner" style="background: #121619 url(images/blog-9.jpg) no-repeat center / cover;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="page-title">
-                    <h1 class="page-headding">Chicken Breast </h1>
+                    <?php
+                    $shops = $shop->get_menu_by_id($shop_id);
+                    $menus = $menu->get_menu_by_id($shops['category']);
+                            ?>
+                    <h1 class="page-headding"><?php echo $menus['name'] ?></h1>
                     <ul>
                         <li><a href="index" class="page-name">Home</a></li>
                         <li><a href="#" class="page-name">Order Online</a></li>
-                        <li>Chicken bresast</li>
+                        <li><?php echo $shops['name'] ?></li>
                     </ul>
                 </div>
             </div>
