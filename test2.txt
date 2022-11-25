@@ -1,0 +1,3 @@
+if (NULL == filter_input(INPUT_GET, "n")) {
+    header("location: index?info=invalid");
+}
