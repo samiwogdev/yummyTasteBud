@@ -5,11 +5,11 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12">
 					<div class="page-title">
-						<h1 class="page-headding">CHECKOUT</h1>
+						<h1 class="page-headding">Login</h1>
 						<ul>
-							<li><a href="index" class="page-name">Home</a></li>
-							<li><a href="cart" class="page-name">cart</a></li>
-							<li>CHECKOUT</li>
+							<li><a href="index" class="page-name">Type your email to log in or create a YummyTasteBud account.</a></li>
+<!--							<li><a href="cart" class="page-name">cart</a></li>
+							<li>CHECKOUT</li>-->
 						</ul>
 					</div>
 				</div>
