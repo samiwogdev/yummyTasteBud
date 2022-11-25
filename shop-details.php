@@ -53,7 +53,7 @@ $shop_id = filter_input(INPUT_GET, "n");
                         <p class="shop-desc"><?php echo $shops['description'] ?></p>
                     </div>
                     <div class="quantity-product">
-                        <form action='' method="post">
+                        <form action='controller/add_to_cart?n=<?php echo $shops['id']?>' method="post">
                             <label class="quantity">Qty:</label>
                         <input type="number" name='quantity' value="1" min="0" max="10">
                         <button type="submit" class="add-cart pt-3 pb-3"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
