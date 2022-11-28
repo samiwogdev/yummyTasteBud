@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Connection.php</file>
+            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/signin.php</file>
+            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/checkout.php</file>
             <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/admin/shop.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/admin/menu.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Shop.php</file>
+            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/shop-details.php</file>
+            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/controller/add_to_cart.php</file>
         </group>
     </open-files>
 </project-private>
