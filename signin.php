@@ -58,6 +58,13 @@
                                         </span>
                                     </div>
                                 </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <div class="check-box">
+                                        <span>
+                                            <label for="create-account" class="mb-0"><a href="#" style="color: #fd9d3e">Forgot Password?</a></label>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

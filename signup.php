@@ -5,11 +5,9 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="page-title">
-                    <h1 class="page-headding">Login</h1>
+                    <h1 class="page-headding">Signup</h1>
                     <ul>
-                        <li><a href="index" class="page-name">Type your email to log in </a></li>
-                        <!--							<li><a href="cart" class="page-name">cart</a></li>
-                                                                                <li>CHECKOUT</li>-->
+                        <li><a href="index" class="page-name">create a new YummyTasteBud account </a></li>
                     </ul>
                 </div>
             </div>
@@ -27,37 +25,62 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="heading-part mb-30 mb-sm-20">
-                                        <h3 class="text-center"> log in or create a YummyTasteBud account.</h3>
+                                        <h3 class="text-center">Get Started</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="full-name">Email*</label>
-                                        <input id="full-name" type="text" required="">
+                                        <label for="zip">Fullname *</label>
+                                        <input id="zip" type="text" required="">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city">Phone*</label>
+                                        <input id="city" type="text" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city">Email*</label>
+                                        <input id="city" type="email" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city">address*</label>
+                                        <input id="city" type="text" required="">
+                                    </div>
+                                </div>
+                                  <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Password</label>
+                                        <input id="company-name" type="text">
+                                    </div>
+                                </div>
+                                  <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-name">Confirm password</label>
                                         <input id="company-name" type="text">
                                     </div>
                                 </div>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center">
-                                            <button class="btn btn-color" style="width: 50%">Login</button>
+                                            <button class="btn btn-color" style="width: 50%">Signup</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3 text-center">
                                     <div class="check-box">
                                         <span>
-                                            <label for="create-account" class="mb-0"><a href="signup" >Don't have an Account? click here to get Started </a></label>
+                                            <label for="create-account" class="mb-0"><a href="login" >Already have an Account? Login </a></label>
                                         </span>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
 
