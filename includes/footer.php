@@ -44,7 +44,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
-                    <p class="copy-text">© Pizzon all Rights Reserved. Designed by <a href="../../../../templatescoder_default.html" target="_blank">TemplatesCoder</a></p>
+                    <p class="copy-text">© YummyTasteBud all Rights Reserved.</p>
                 </div>
 
                 <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">

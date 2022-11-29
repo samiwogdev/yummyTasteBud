@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="heading-part mb-30 mb-sm-20">
-                                        <h3 class="text-center"> log in or create a YummyTasteBud account.</h3>
+                                        <h3 class="text-center"> log in to continue .</h3>
                                     </div>
                                 </div>
                             </div>
