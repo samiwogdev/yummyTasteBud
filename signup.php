@@ -33,37 +33,37 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="zip">Fullname *</label>
-                                        <input id="zip" type="text" required="">
+                                        <input name="fullname" type="text" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="city">Phone*</label>
-                                        <input id="city" type="text" required="">
+                                        <input name="phone" type="text" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="city">Email*</label>
-                                        <input id="city" type="email" required="">
+                                        <input name="email" type="email" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="city">address*</label>
-                                        <input id="city" type="text" required="">
+                                        <input name="address" type="text" required="">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Password</label>
-                                        <input id="company-name" type="text">
+                                        <input name="password" id="psd" type="text">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Confirm password</label>
-                                        <input id="company-name" type="text">
+                                        <input id="cfm_psd" type="text">
                                     </div>
                                 </div>
                                 <div class="container">
