@@ -44,11 +44,17 @@
                                         <input id="company-name" type="text">
                                     </div>
                                 </div>
-                                <button class="btn full btn-color">Login</button>
-                                <div class="col-12">
-                                    <div class="check-box mt-n2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <button class="btn btn-color" style="width: 50%">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <div class="check-box">
                                         <span>
-                                            <label for="create-account" class="mb-0"><a href="signup" style="color: #fd9d3e;">Don't have an Account? click here to get Started </a></label>
+                                            <label for="create-account" class="mb-0"><a href="signup" >Don't have an Account? click here to get Started </a></label>
                                         </span>
                                     </div>
                                 </div>
