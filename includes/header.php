@@ -74,7 +74,7 @@ $shop_img = ShopItemPics::getInstance();
                                     </div>
                                 </li>
                                 <li class="level">
-                                    <a href="#" class="page-scroll">Login</a>
+                                    <a href="signin" class="page-scroll">Login</a>
                                 </li>
                                 <li class="level">
                                     <a href="contact" class="page-scroll">Contact</a>

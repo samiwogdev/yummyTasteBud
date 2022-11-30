@@ -22,7 +22,7 @@
         <?php
         if (NULL !== filter_input(INPUT_GET, "n")) {
         $shop_id = filter_input(INPUT_GET, "n");?>
-        <form class="main-form"action="controller/cus_login?n=<?php echo $shop_id ?>">
+        <form class="main-form" action="controller/cus_login?n=<?php echo $shop_id ?>" method="post">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="mb-md-30">
@@ -57,7 +57,7 @@
                                 <div class="col-12 mt-3 text-center">
                                     <div class="check-box">
                                         <span>
-                                            <label for="create-account" class="mb-0"><a href="signup" >Don't have an Account? click here to get Started </a></label>
+                                            <label for="create-account" class="mb-0"><a href="signup?n=<?php echo $shop_id ?>" >Don't have an Account? click here to get Started </a></label>
                                         </span>
                                     </div>
                                 </div>

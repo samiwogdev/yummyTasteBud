@@ -12,7 +12,7 @@ class Customer extends Connection {
     private $email;
     private $address;
     private $password;
-    private $table_name = "menu";
+    private $table_name = "customer";
     private static $instance;
 
     public function getFullname() {
@@ -117,7 +117,7 @@ class Customer extends Connection {
         public function checkEmail($email) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $statement = $this->getConnection()->prepare($sql);
-        $this->email = Applicant::sanitize_input($email);
+        $this->email = Customer::sanitize_input($email);
         $statement->bindParam(":email", $this->email);
         $statement->execute();
         $count = $statement->rowCount();
@@ -131,7 +131,7 @@ class Customer extends Connection {
       public function checkPhone($phone) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE phone = :phone";
         $statement = $this->getConnection()->prepare($sql);
-        $this->phone = Applicant::sanitize_input($phone);
+        $this->phone = Customer::sanitize_input($phone);
         $statement->bindParam(":phone", $this->phone);
         $statement->execute();
         $count = $statement->rowCount();
@@ -145,8 +145,8 @@ class Customer extends Connection {
       public function userLogin($email, $password) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $statement = $this->getConnection()->prepare($sql);
-        $this->email = Applicant::sanitize_input($email);
-        $this->password = Applicant::sanitize_input($password);
+        $this->email = Customer::sanitize_input($email);
+        $this->password = Customer::sanitize_input($password);
         $statement->bindParam(":email", $this->email);
         $statement->execute();
         $count = $statement->rowCount();
