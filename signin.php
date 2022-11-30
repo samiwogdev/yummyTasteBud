@@ -50,7 +50,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center">
-                                            <button class="btn btn-color" style="width: 50%">Login</button>
+                                            <button type="input" name="login_but" class="btn btn-color" style="width: 50%">Login</button>
                                         </div>
                                     </div>
                                 </div>
