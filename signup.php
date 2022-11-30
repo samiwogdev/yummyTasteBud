@@ -63,9 +63,11 @@
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Confirm password</label>
-                                        <input id="cfm_psd" type="text">
+                                        <input id="cfm_psd" type="text" onkeyup="validatePass()">
+                                        <p class="text-danger" id="msg" style="display: none"> Password & Confirm password does not match!</p>
                                     </div>
                                 </div>
+
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center">
@@ -91,5 +93,16 @@
         </form>
     </div>
 </section>
-
+<script>
+    function validatePass(){ 
+        var password = document.getElementById("psd");
+        var confirm_password = document.getElementById("cfm_psd");
+        var msg = document.getElementById("msg");
+        if(password.value !== confirm_password.value){
+            msg.style.display = "block";
+        }else{
+            msg.style.display = "none";
+        }
+    }
+</script>
 <?php include_once './includes/footer.php'; ?>
