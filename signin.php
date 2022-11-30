@@ -19,7 +19,10 @@
 
 <section class="checkout-part ptb">
     <div class="container">
-        <form class="main-form">
+        <?php
+        if (NULL !== filter_input(INPUT_GET, "n")) {
+        $shop_id = filter_input(INPUT_GET, "n");?>
+        <form class="main-form"action="controller/cus_login?n=<?php echo $shop_id ?>">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="mb-md-30">
@@ -27,7 +30,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="heading-part mb-30 mb-sm-20">
-                                        <h3 class="text-center"> log in to continue .</h3>
+                                        <h3 class="text-center"> log in to continue.</h3>
                                     </div>
                                 </div>
                             </div>
@@ -35,13 +38,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="full-name">Email*</label>
-                                        <input id="full-name" type="text" required="">
+                                        <input id="full-name" name="email" type="text" required="">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="company-name">Password</label>
-                                        <input id="company-name" type="text">
+                                        <input id="company-name" name="password" type="text">
                                     </div>
                                 </div>
                                 <div class="container">
@@ -73,6 +76,62 @@
 
             </div>
         </form>
+        <?php }else{ ?>
+        <form class="main-form"action="controller/cus_login?n=">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="mb-md-30">
+                        <div class="mb-60">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="heading-part mb-30 mb-sm-20">
+                                        <h3 class="text-center"> log in to continue.</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="full-name">Email*</label>
+                                        <input id="full-name" name="email" type="text" required="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="company-name">Password</label>
+                                        <input id="company-name" name="password" type="text">
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <button class="btn btn-color" style="width: 50%">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <div class="check-box">
+                                        <span>
+                                            <label for="create-account" class="mb-0"><a href="signup" >Don't have an Account? click here to get Started </a></label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <div class="check-box">
+                                        <span>
+                                            <label for="create-account" class="mb-0"><a href="#" style="color: #fd9d3e">Forgot Password?</a></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <?php } ?>
     </div>
 </section>
 
