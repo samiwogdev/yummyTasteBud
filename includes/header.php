@@ -90,61 +90,18 @@ $shop_img = ShopItemPics::getInstance();
                         </div>
                         <div class=" header-right-link">
                             <ul>
-                                <?php  if (isset($_SESSION['email'])) { ?> 
-                                <li class="cart-icon "> 
-                                    <a href="menu"> 
-                                        <span class="icon"></span>
-                                        <div class="link-text">2 items - <span>	&#8358;0.00</span></div>
-                                    </a>
-                                    <div class="cart-dropdown header-link-dropdown">
-                                        <ul class="cart-list link-dropdown-list">
-                                            <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                                <div class="media"> <a href="#" class="pull-left"> <img alt="Pizzon" src="images/1.png"></a>
-                                                    <div class="media-body"> <span><a href="shop-detail&#8358;">Chicken Pizza</a></span>
-                                                        <p class="cart-price">&#8358;1544.99</p>
-                                                        <div class="product-qty">
-                                                            <label>Qty:</label>
-                                                            <div class="custom-qty">
-                                                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty" disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                                <div class="media"> <a class="pull-left"> <img alt="Pizzon" src="images/2.png"></a>
-                                                    <div class="media-body"> <span><a href="menu">Beef Shawarma</a></span>
-                                                        <p class="cart-price">&#8358;1784.99</p>
-                                                        <div class="product-qty">
-                                                            <label>Qty:</label>
-                                                            <div class="custom-qty">
-                                                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty" disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p class="cart-sub-totle"> 
-                                            <span class="pull-left">Cart Subtotal</span> 
-                                            <span class="pull-right"><strong class="price-box">&#8358;3459.98</strong></span> </p>
-                                        <div class="clearfix"></div>
-                                        <div class="mt-20 text-left"> 
-                                            <a href="#" class="btn-color btn">Cart</a> 
-                                            <a href="#" class="btn-color btn right-side">Checkout</a> 
-                                        </div>
-                                    </div>
-                                </li>
-<!--                                 <li class="order-online">
-                                    <a href="#" class="btn btn-green">Order History</a>
-                                </li>-->
-                                 <li class="order-online">
-                                <span class="fa fa-cart-plus fa-2x text-white" ></span> <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #91b842;">4</span>
-                                </li>
-                                <?php }else{ ?>
-                                <li class="order-online">
-                                    <a href="#" class="btn btn-green">Order online</a>
-                                </li>
+                                <?php if (isset($_SESSION['email'])) { ?> 
+                                    <li class="order-online">
+                                        <a href="cart" class="page-scroll text-white" >
+                                            
+                                            <span class="fa fa-cart-arrow-down fa-2x text-white" ></span>
+                                            <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;">4</span>
+                                        </a>
+                                    </li>
+                                <?php } else { ?>
+                                    <li class="order-online">
+                                        <a href="#" class="btn btn-green">Order online</a>
+                                    </li>
                                 <?php } ?>
                                 <li class="side-toggle">
                                     <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><span></span></button>

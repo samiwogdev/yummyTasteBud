@@ -32,12 +32,15 @@ $shop_id = filter_input(INPUT_GET, "n");
             <div class="col-lg-5 col-md-6 col-12">
                 <div class="align-center mb-md-30">
                     <ul id="glasscase" class="gc-start">
-                        <li><img src="images/p-1.png" alt="pizzon" /></li>
-                        <li><img src="images/p-2.png" alt="pizzon" /></li>
-                        <li><img src="images/p-3.png" alt="pizzon" /></li>
-                        <li><img src="images/p-4.png" alt="pizzon" data-gc-caption="Your caption text" /></li>
-                        <li><img src="images/p-5.png" alt="pizzon" /></li>
-                        <li><img src="images/p-6.png" alt="pizzon" /></li>
+                        <?php
+                        $shop_imgs = $shop_img->get_shop_pics_by_id($shop_id);
+                        if ($shop_imgs != 0) {
+                            foreach ($shop_imgs as $shop_img) {
+                                ?>
+                                <li><img src="uploads/shop_item_img/<?php echo $shop_img['picture'] ?>" alt="pizzon" /></li>
+                            <?php }
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -46,18 +49,18 @@ $shop_id = filter_input(INPUT_GET, "n");
                     <div class="shop-name">
                         <h3 class="title-shop"><?php echo $shops['name'] ?></h3>
                         <div class="price-shop">
-                           <?php  $old_price = $shops['price'] * 30/100;?>
-                            <span class="filter-price filter-price-r">&#8358;<?php echo number_format($shops['price'] + $old_price )?></span>
-                            <span class="filter-price">&#8358;<?php echo number_format($shops['price'] )?></span>
+<?php $old_price = $shops['price'] * 30 / 100; ?>
+                            <span class="filter-price filter-price-r">&#8358;<?php echo number_format($shops['price'] + $old_price) ?></span>
+                            <span class="filter-price">&#8358;<?php echo number_format($shops['price']) ?></span>
                         </div>
                         <p class="shop-desc"><?php echo $shops['description'] ?></p>
                     </div>
                     <div class="quantity-product">
-                        <form action='controller/add_to_cart?n=<?php echo $shops['id']?>' method="post">
+                        <form action='controller/add_to_cart?n=<?php echo $shops['id'] ?>' method="post">
                             <label class="quantity">Qty:</label>
-                        <input type="number" name='quantity' value="1" min="0" max="10">
-                        <button type="submit" class="add-cart pt-3 pb-3"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
-<!--                        <a href="cart" class="add-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Add to cart</a>-->
+                            <input type="number" name='quantity' value="1" min="0" max="10">
+                            <button type="submit" class="add-cart pt-3 pb-3"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
+    <!--                        <a href="cart" class="add-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Add to cart</a>-->
                         </form>
                     </div>
                 </div>
