@@ -1,6 +1,6 @@
 <?php
 include_once '../convig.php';
-session_destroy();
+//session_destroy();
 if (NULL == filter_input(INPUT_GET, "n")) {
     header("location: ../shop-details?info=invalid");
     exit;

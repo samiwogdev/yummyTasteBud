@@ -73,9 +73,16 @@ $shop_img = ShopItemPics::getInstance();
                                         </div>
                                     </div>
                                 </li>
+                                <?php
+                                if (!isset($_SESSION['email'])) {?>
                                 <li class="level">
                                     <a href="signin" class="page-scroll">Login</a>
                                 </li>
+                                <?php }else{ ?>
+                                <li class="level">
+                                    <a href="signin" class="page-scroll">Logout</a>
+                                </li>
+                                <?php } ?>
                                 <li class="level">
                                     <a href="contact" class="page-scroll">Contact</a>
                                 </li>
@@ -83,13 +90,8 @@ $shop_img = ShopItemPics::getInstance();
                         </div>
                         <div class=" header-right-link">
                             <ul>
-<!--                                <li class="call-icon">
-                                    <a href="menu">
-                                        <span class="icon"></span>
-                                        <div class="link-text">+234 123 456 789</div>
-                                    </a>
-                                </li>-->
-                                <li class="cart-icon"> 
+                                <?php  if (isset($_SESSION['email'])) { ?> 
+                                <li class="cart-icon "> 
                                     <a href="menu"> 
                                         <span class="icon"></span>
                                         <div class="link-text">2 items - <span>	&#8358;0.00</span></div>
@@ -133,9 +135,19 @@ $shop_img = ShopItemPics::getInstance();
                                         </div>
                                     </div>
                                 </li>
+                                 <li class="order-online">
+                                    <a href="#" class="btn btn-green">View Order History</a>
+                                </li>
+<!--                                 <li class="order-online">
+                                    <button type="button" class="btn btn-primary">
+                                        Notifications <span class="badge badge-light">4</span>
+                                      </button>
+                                </li>-->
+                                <?php }else{ ?>
                                 <li class="order-online">
                                     <a href="#" class="btn btn-green">Order online</a>
                                 </li>
+                                <?php } ?>
                                 <li class="side-toggle">
                                     <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><span></span></button>
                                 </li>

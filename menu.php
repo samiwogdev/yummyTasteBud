@@ -40,7 +40,7 @@ Page Banner End
                         $shop_imgs = $shop_img->get_shop_pics_by_id_2($shop_['id']);
                         if ($shop_imgs != 0) {
                             ?>
-                            <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="menu-list-box">
                                     <div class="list-img"><a href="shop-details?n=<?php echo $shop_['id'] ?>"><img src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>" alt="pizza"></a></div>
                                     <div class="menu-detail">
@@ -50,7 +50,7 @@ Page Banner End
                                             <li><?php echo $shop_['alias'] ?></li>
                                         </ul>
                                         <p class="iteam-desc"><?php echo $shop_['description'] ?></p>
-                                        <a href="shop-details?n=<?php echo $shop_['id'] ?>" class="iteam-order">order now</a>
+                                        <a href="shop-details?n=<?php echo $shop_['id'] ?>" class="order-filter">order now</a>
                                     </div>
                                 </div>
                             </div>
