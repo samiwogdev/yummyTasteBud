@@ -135,14 +135,12 @@ $shop_img = ShopItemPics::getInstance();
                                         </div>
                                     </div>
                                 </li>
-                                 <li class="order-online">
-                                    <a href="#" class="btn btn-green">View Order History</a>
-                                </li>
 <!--                                 <li class="order-online">
-                                    <button type="button" class="btn btn-primary">
-                                        Notifications <span class="badge badge-light">4</span>
-                                      </button>
+                                    <a href="#" class="btn btn-green">Order History</a>
                                 </li>-->
+                                 <li class="order-online">
+                                <span class="fa fa-cart-plus fa-2x text-white" ></span> <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #91b842;">4</span>
+                                </li>
                                 <?php }else{ ?>
                                 <li class="order-online">
                                     <a href="#" class="btn btn-green">Order online</a>
