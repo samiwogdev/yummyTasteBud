@@ -79,8 +79,24 @@ $shop_img = ShopItemPics::getInstance();
                                     <a href="signin" class="page-scroll">Login</a>
                                 </li>
                                 <?php }else{ ?>
-                                <li class="level">
+<!--                                <li class="level">
                                     <a href="signin" class="page-scroll">Logout</a>
+                                </li>-->
+                                   <li class="level dropdown set"> 
+                                    <a href="#" class="page-scroll">Account</a>
+                                    <span class="opener plus"></span> 
+                                    <div class="megamenu mobile-sub-menu content">
+                                        <div class="megamenu-inner-top">
+                                            <ul class="sub-menu-level1">
+                                                <li class="level2">
+                                                    <ul class="sub-menu-level2 ">
+                                                        <li class="level3"><a href="#"> View order history</a>
+                                                             <li class="level"><a href="signin" class="page-scroll">Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </li>
                                 <?php } ?>
                                 <li class="level">
