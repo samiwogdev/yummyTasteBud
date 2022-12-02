@@ -52,9 +52,9 @@
                             </td>
                             <td class="text-left">
                                 <div class="input-box">
-                                    <span class="fa fa-plus-square fa-2x" style="color: #fd9d3e; padding-right: 5px"></span>
+                                    <span class="fa fa-minus-square fa-2x" style="color: #fd9d3e; padding-right: 5px"></span>
                                     <input  class="quantity" name="quantity_cart" value="1" style="width: 30px;">
-                                    <span class="fa fa-minus-square fa-2x" style="color: #fd9d3e; padding-left: 5px ""></span>
+                                    <span class="fa fa-plus-square fa-2x" style="color: #fd9d3e; padding-left: 5px ""></span>
                                 </div>
                             </td>
 
@@ -77,43 +77,6 @@
         <hr>
         <div class="mtb-30">
             <div class="row">
-                <div class="col-md-6 mb-sm-20">
-                    <div class="estimate">
-                        <div class="heading-part mb-20">
-                            <h3 class="sub-heading text-center-r">Estimate shipping and tax</h3>
-                        </div>
-                        <form class="full">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="input-box mb-20">
-                                        <select id="country_id" class="full">
-                                            <option selected="" value="">Select Country</option>
-                                            <option value="1">India</option>
-                                            <option value="2">China</option>
-                                            <option value="3">Pakistan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-box mb-20">
-                                        <select id="state_id" class="full">
-                                            <option selected="" value="1">Select State/Province</option>
-                                            <option value="2">---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-box mb-20">
-                                        <select id="city_id" class="full">
-                                            <option selected="" value="1">Select City</option>
-                                            <option value="2">---</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 <div class="col-md-6">
                     <div class="cart-total-table commun-table">
                         <div class="table-responsive">
@@ -133,7 +96,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Shipping</td>
+                                        <td>Delivery fee</td>
                                         <td>
                                             <div class="price-box"> 
                                                 <span class="price">$0.00</span> 
@@ -171,14 +134,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mt-30 text-center-r"> 
-                        <a href="menu" class="btn btn-color">
+                        <a href="index#menu-list" class="btn btn-color">
                             <i class="fa fa-angle-left"></i><span>Continue Shopping</span>
                         </a> 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mt-30 right-side float-none-sm text-center-r"> 
-                        <a href="javascript:void(0)" class="btn btn-color">Proceed to checkout</a> 
+                        <a href="checkout" class="btn btn-color">Proceed to checkout</a> 
                     </div>
                 </div>
             </div>

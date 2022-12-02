@@ -95,7 +95,7 @@
     </div>
 </section>
 
-<section class="speciality ptb pt-140">
+<section class="speciality ptb pt-140" id="menu-list">
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
