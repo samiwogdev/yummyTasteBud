@@ -3,6 +3,7 @@ include_once 'convig.php';
 $menu = Menu::getInstance();
 $shop = Shop::getInstance();
 $shop_img = ShopItemPics::getInstance();
+$order = Order::getInstance();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,19 +100,22 @@ $shop_img = ShopItemPics::getInstance();
                                     </div>
                                 </li>
                                 <?php } ?>
-                                <li class="level">
+<!--                                <li class="level">
                                     <a href="contact" class="page-scroll">Contact</a>
-                                </li>
+                                </li>-->
                             </ul>
                         </div>
                         <div class=" header-right-link">
                             <ul>
-                                <?php if (isset($_SESSION['email'])) { ?> 
+                                <?php if (isset($_SESSION['email'])) { 
+//                                    echo $_SESSION['email']; exit;
+                                    $orders = $order->getCartCount($_SESSION['email']);
+                                    ?> 
                                     <li class="order-online">
                                         <a href="cart" class="page-scroll text-white" >
                                             
                                             <span class="fa fa-cart-arrow-down fa-2x text-white" ></span>
-                                            <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;">4</span>
+                                            <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;"><?php echo $orders ?></span>
                                         </a>
                                     </li>
                                 <?php } else { ?>

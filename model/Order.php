@@ -93,9 +93,8 @@ class Order extends Connection {
     }
 
     public function add($user_email, $shop_id, $qty, $order_status, $payment_status, $trans_ref) {
-        $sql = "INSERT INTO " . $this->table_name . " (user_email, shop_id, qty, order_status, payment_status, trans_ref) VALUES(:user_email, :shop_id, :qty, :order_status, :payment_status, :trans_ref)";
+        $sql = "INSERT INTO `" . $this->table_name . "` (user_email, shop_id, qty, order_status, payment_status, trans_ref) VALUES(:user_email, :shop_id, :qty, :order_status, :payment_status, :trans_ref)";
         $statement = $this->getConnection()->prepare($sql);
-
         $this->user_email = self::sanitize_input($user_email);
         $this->shop_id = self::sanitize_input($shop_id);
         $this->qty = self::sanitize_input($qty);
@@ -142,6 +141,23 @@ class Order extends Connection {
             $row = 0;
         }
 
+        return $row;
+    }
+
+    public function getCartCount($user_email) {
+        $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->user_email = self::sanitize_input($user_email);
+
+        $statement->bindParam(":user_email", $this->user_email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $row = $result['total'];
+        } else {
+            $row = 0;
+        }
         return $row;
     }
 
