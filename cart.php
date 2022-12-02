@@ -23,9 +23,8 @@
                 <table class="table border mb-0" style="width: 100%">
                     <thead>
                         <tr>
-                            <th class="align-left" style="width: 45%">Menu Details</th>
-                            <th style="width: 40%">Quantity</th>
-                            <th style="width: 15%">Action</th>
+                            <th class="align-left" >Menu Details</th>
+                            <th class="text-left">Quantity</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,80 +44,32 @@
                                 <div class="product-title"> 
                                     <a href="shop-detail"><span class="font-weight-bold">Price:</span> 2,000</a> 
                                 </div>
+                                <div class="product-title"> 
+                                     <a href="javascript:void(0)" class="" style="color: #fd9d3e; font-size: 18px">
+                                     <span class="fa fa-trash" style="color: #fd9d3e; padding-right: 3px "></span>
+                                    Remove</a>
+                                </div>
                             </td>
-                            <td>
+                            <td class="text-left">
                                 <div class="input-box">
-                                    <span class="fa fa-plus-square fa-2x" style="color: #fd9d3e; padding-right: 3px"></span>
+                                    <span class="fa fa-plus-square fa-2x" style="color: #fd9d3e; padding-right: 5px"></span>
                                     <input  class="quantity" name="quantity_cart" value="1" style="width: 30px;">
-                                    <span class="fa fa-minus-square fa-2x" style="color: #fd9d3e; padding-left: 3px ""></span>
+                                    <span class="fa fa-minus-square fa-2x" style="color: #fd9d3e; padding-left: 5px ""></span>
                                 </div>
                             </td>
 
-                            <td>
-                                <a href="javascript:void(0)" class="" style="color: #fd9d3e; font-size: 18px">
-                                     <span class="fa fa-trash" style="color: #fd9d3e; padding-right: 3px "></span>
-                                    Remove</a>
-                            </td>
                         </tr>
-<!--				            <tr>
-                            <td class="align-left">
-                                <a href="shop-detail">
-                                    <div class="product-image">
-                                            <img alt="Eshoper" src="images/4.png">
-                                    </div>
-                                </a>
-                            </td>
-                            <td class="align-left">
-                                <div class="product-title"> 
-                                    <a href="shop-detail">GREEK PIZZA</a> 
-                                </div>
-                            </td>
-                            <td>
-                                <ul>
-                                    <li>
-                                            <div class="base-price price-box"> 
-                                            <span class="price">$20.00</span> 
-                                            </div>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                    <div class="input-box">
-                                    <select data-id="100" class="quantity_cart" name="quantity_cart">
-                                            <option selected="" value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="total-price price-box"> 
-                                    <span class="price">$20.00</span> 
-                                </div>
-                            </td>
-                            <td>
-                                    <a href="javascript:void(0)" class="btn small btn-color">
-                                        <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
-                                    </a>
-                            </td>
-                        </tr>-->
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="mb-30">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="mt-30 text-center-r"> 
                         <a href="menu" class="btn btn-color">
-                            <i class="fa fa-angle-left"></i><span>Continue Shopping</span>
+                            <i class="fa fa-angle-left"></i><span>Update Cart</span>
                         </a> 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mt-30 right-side float-none-sm text-center-r"> 
-                        <a href="javascript:void(0)" class="btn btn-color">Update Cart</a> 
                     </div>
                 </div>
             </div>
@@ -205,13 +156,29 @@
             </div>
         </div>
         <hr>
-        <div class="mt-30">
+<!--        <div class="mt-30">
             <div class="row">
                 <div class="col-12">
                     <div class="right-side float-none-xs text-center-r float-none-sm"> 
                         <a href="checkout" class="btn btn-color">Proceed to checkout
                             <span><i class="fa fa-angle-right"></i></span>
                         </a> 
+                    </div>
+                </div>
+            </div>
+        </div>-->
+     <div class="mb-30">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mt-30 text-center-r"> 
+                        <a href="menu" class="btn btn-color">
+                            <i class="fa fa-angle-left"></i><span>Continue Shopping</span>
+                        </a> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mt-30 right-side float-none-sm text-center-r"> 
+                        <a href="javascript:void(0)" class="btn btn-color">Proceed to checkout</a> 
                     </div>
                 </div>
             </div>
