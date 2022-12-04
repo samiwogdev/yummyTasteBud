@@ -129,20 +129,20 @@ class Order extends Connection {
         return $statement->execute();
     }
 
-    public function getCartItem() {
-        $sql = "SELECT * FROM " . $this->table_name . " WHERE order_status = 0 AND payment_status = 0";
-        $statement = $this->getConnection()->prepare($sql);
-
-        $statement->execute();
-        $count = $statement->rowCount();
-        if ($count > 0) {
-            $row = $statement->fetchAll();
-        } else {
-            $row = 0;
-        }
-
-        return $row;
-    }
+//    public function getCartItem() {
+//        $sql = "SELECT * FROM " . $this->table_name . " WHERE order_status = 0 AND payment_status = 0";
+//        $statement = $this->getConnection()->prepare($sql);
+//
+//        $statement->execute();
+//        $count = $statement->rowCount();
+//        if ($count > 0) {
+//            $row = $statement->fetchAll();
+//        } else {
+//            $row = 0;
+//        }
+//
+//        return $row;
+//    }
 
     public function getCartCount($user_email) {
         $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";
@@ -162,7 +162,7 @@ class Order extends Connection {
     }
     
         public function getCartItemByEmail($user_email) {
-        $sql = "SELECT * FROM " . $this->table_name . " WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $statement->bindParam(":user_email", $this->user_email);

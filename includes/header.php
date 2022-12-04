@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once 'convig.php';
 $menu = Menu::getInstance();
 $shop = Shop::getInstance();

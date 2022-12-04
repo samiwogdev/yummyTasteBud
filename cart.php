@@ -1,19 +1,20 @@
 <?php include_once './includes/header.php'; ?>
 
-	<section class="page-banner" style="background: #121619 url(images/blog-1.jpg) no-repeat center / cover;">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-12 col-lg-12 col-md-12">
-					<div class="page-title">
-						<h1 class="page-headding">SHOPPING CART</h1>
-						<ul>
-							<li><a href="index" class="page-name">Home</a></li>
-							<li>SHOPPING CART</li>
-						</ul>
-					</div>
-				</div>
-			</div=		</div>
-	</section>
+<section class="page-banner" style="background: #121619 url(images/blog-1.jpg) no-repeat center / cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="page-title">
+                    <h1 class="page-headding">SHOPPING CART</h1>
+                    <ul>
+                        <li><a href="index" class="page-name">Home</a></li>
+                        <li>SHOPPING CART</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="shopping-cart ptb">
     <div class="container">
@@ -27,6 +28,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                           $orders =  $order->getCartItemByEmail($_SESSION['email']);
+                           foreach ($orders as $order_){
+                               $shop_item = $shop->get_menu_by_id($order_['shop_id']);
+                        ?>
                         <tr>
                             <td class="text-left">
                                 <a href="shop-detail">
@@ -35,16 +41,16 @@
                                     </div>
                                 </a>
                                 <div class="product-title"> 
-                                    <a href="shop-detail" class="font-weight-bold">margherita pizza</a> 
+                                    <a href="shop-detail" class="font-weight-bold"><?php echo $shop_item['name'] ?></a> 
                                 </div>
                                 <div class="product-title"> 
-                                    <a href="shop-detail">Without Sausage</a> 
+                                    <a href="shop-detail"><?php echo $shop_item['descrption'] ?></a> 
                                 </div>
                                 <div class="product-title"> 
-                                    <a href="shop-detail"><span class="font-weight-bold">Price:</span> 2,000</a> 
+                                    <a href="shop-detail"><span class="font-weight-bold">Price:</span><?php echo $shop_item['price'] ?></a> 
                                 </div>
                                 <div class="product-title"> 
-                                     <a href="javascript:void(0)" class="" style="color: #fd9d3e; font-size: 18px">
+                                     <a href="controller/delete_cart_item?n=<?php echo $order_['id'] ?>" class="" style="color: #fd9d3e; font-size: 18px">
                                      <span class="fa fa-trash" style="color: #fd9d3e; padding-right: 3px "></span>
                                     Remove</a>
                                 </div>
@@ -58,6 +64,7 @@
                             </td>
 
                         </tr>
+                           <?php } ?>
                     </tbody>
                 </table>
             </div>
