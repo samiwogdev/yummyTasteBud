@@ -12,8 +12,7 @@
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
+			</div=		</div>
 	</section>
 
 <section class="shopping-cart ptb">
@@ -52,9 +51,9 @@
                             </td>
                             <td class="text-left">
                                 <div class="input-box">
-                                    <span class="fa fa-minus-square fa-2x" style="color: #fd9d3e; padding-right: 5px"></span>
-                                    <input  class="quantity" name="quantity_cart" value="1" style="width: 30px;">
-                                    <span class="fa fa-plus-square fa-2x" style="color: #fd9d3e; padding-left: 5px ""></span>
+                                    <span class="fa fa-minus-square fa-2x" id="reduce" onclick="decrementQty()" style="color: #fd9d3e; padding-right: 5px; cursor: pointer"></span>
+                                    <input  class="quantity" id="qty" name="quantity_cart" value="1" style="width: 70px;">
+                                    <span class="fa fa-plus-square fa-2x" id="increase" onclick="incrementQty()" style="color: #fd9d3e; padding-left: 5px; cursor: pointer "></span>
                                 </div>
                             </td>
 
@@ -148,5 +147,24 @@
         </div>
     </div>
 </section>
+<script>
+        var qtyInput = document.getElementById("qty");
+    function decrementQty(){
+        var qtyValue = parseInt(qtyInput.value);
+            qtyValue --;
+            if(qtyValue < 1){
+              qtyValue = 1; 
+            }
+             qtyInput.value =  qtyValue;            
 
+    }
+    
+    function incrementQty(){
+        var qtyValue = parseInt(qtyInput.value);
+            qtyValue ++;
+            qtyInput.value =  qtyValue;            
+    }
+
+
+</script>
 	<?php include_once './includes/footer.php'; ?>

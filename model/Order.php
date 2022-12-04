@@ -160,5 +160,20 @@ class Order extends Connection {
         }
         return $row;
     }
+    
+        public function getCartItemByEmail($user_email) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->user_email = self::sanitize_input($user_email);
+        $statement->bindParam(":user_email", $this->user_email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
 
 }
