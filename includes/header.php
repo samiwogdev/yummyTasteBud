@@ -46,7 +46,7 @@ $order = Order::getInstance();
                         <div class="navbar-header">
                             <a class="navbar-brand page-scroll" href="index">
 <!--                                <img alt="pizzon" src="images/header-logo.png">-->
-                                <h2 class="banner-headding" style="font-size: 30px; ">Yummy<span>Taste</span>Bud</h2>
+                                <h2 class="banner-headding" style="font-size: 24px; ">Yummy<span>Taste</span>Bud</h2>
                             </a> 
                         </div>
                     </div>
