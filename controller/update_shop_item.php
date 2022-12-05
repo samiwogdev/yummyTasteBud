@@ -21,7 +21,7 @@ if (isset($_POST['shop_update'])) {
     $price = filter_input(INPUT_POST, "price");
     $alias = filter_input(INPUT_POST, "alias");
     
-    if (empty($name)) {
+    if (!isset($name)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
@@ -31,12 +31,12 @@ if (isset($_POST['shop_update'])) {
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($description)) {
+    if (!isset($description)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($price)) {
+    if (!isset($price)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;

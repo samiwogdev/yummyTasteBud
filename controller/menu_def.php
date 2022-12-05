@@ -6,7 +6,7 @@ if (isset($_POST['menu_def'])) {
     $info = "";
     $name = filter_input(INPUT_POST, "name");
 
-    if (empty($name)) {
+    if (!isset($name)) {
         $errorMsg = "name_empty";
         header("location: ../admin/menu?info=" . $errorMsg);
         exit;
@@ -20,5 +20,8 @@ if (isset($_POST['menu_def'])) {
         header("location: ../admin/menu?info=" . $errorMsg);
         exit;
     }
+}else{
+      header("location: ../admin/menu?info=" . $errorMsg);
+        exit;  
 }
 

@@ -10,7 +10,7 @@ if (isset($_POST['shop_def'])) {
     $description = filter_input(INPUT_POST, "description");
     $price = filter_input(INPUT_POST, "price");
 
-    if (empty($category)) {
+    if (!isset($category)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
@@ -20,12 +20,12 @@ if (isset($_POST['shop_def'])) {
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($name)) {
+    if (!isset($name)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($alias)) {
+    if (!isset($alias)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
@@ -35,12 +35,12 @@ if (isset($_POST['shop_def'])) {
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($description)) {
+    if (!isset($description)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
-    if (empty($price)) {
+    if (!isset($price)) {
         $errorMsg = "empty";
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
@@ -54,5 +54,8 @@ if (isset($_POST['shop_def'])) {
         header("location: ../admin/shop?info=" . $errorMsg);
         exit;
     }
+}else{
+     header("location: ../admin/shop?info=" . $errorMsg);
+        exit;
 }
 
