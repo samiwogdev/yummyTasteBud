@@ -44,14 +44,13 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <h3 class="font-weight-bold mb-3">Delivery Address</h3>
-                            <div class="notes p-4">
-                                <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
+                            <h3 class="font-weight-bold mb-3">Your Delivery Address</h3>
+                            <div class="notes p-4 shadow mb-5">
+                                <p><span class="font-weight-bold pr-2" style="color: black">Location:</span>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
+                                <p><span class="font-weight-bold pr-2 text-black" style="color: black">Phone:</span>0907891085</p>
                                 <a href="shop-detail" class="btn btn-color mt-2">Change Address</a>
                             </div>
-                            <div class="heading-part mb-30 mb-sm-20">
-                                <h3>Your order</h3>
-                            </div>
+                                <h3 class="font-weight-bold mb-3">Your Order</h3>
                             <div class="checkout-products sidebar-product mb-60">
                                 <ul>
                                     <li>
@@ -95,13 +94,12 @@
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-
+                <h3 class="font-weight-bold mb-3">Order Summary</h3>
                 <div class="complete-order-detail commun-table gray-bg mb-30">
                     <div class="table-responsive">
                         <table class="table m-0">
