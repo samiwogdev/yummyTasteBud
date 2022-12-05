@@ -105,21 +105,21 @@
             </div>
             <hr>
             <div class="mb-30">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mt-30 right-side float-none-sm text-center-r"> 
-                            <a href="checkout" class="btn btn-color">Proceed to checkout</a> 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mt-30 text-center-r"> 
+                                <a href="checkout" class="btn btn-color">Proceed to checkout</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-30 right-side float-none-sm text-center-r"> 
+                                <a href="index#menu-list" class="btn btn-color">
+                                    <i class="fa fa-angle-left"></i><span>Continue Shopping</span>
+                                </a> 
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="mt-30 text-center-r"> 
-                        <a href="index#menu-list" class="btn btn-color">
-                            <i class="fa fa-angle-left"></i><span>Continue Shopping</span>
-                        </a> 
-                    </div>
-                </div>
-            </div>
         <?php } else { ?>
             <div class="mb-30">
                 <div class="row mb-5">
