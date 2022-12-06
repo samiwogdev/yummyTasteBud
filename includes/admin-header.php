@@ -13,6 +13,7 @@ include_once '../convig.php';
 $menu = Menu::getInstance();
 $shop = Shop::getInstance();
 $shop_pic = ShopItemPics::getInstance();
+$delivery = Delivery::getInstance();
 ?>
 ﻿<!doctype html>
 <html class="no-js " lang="en">

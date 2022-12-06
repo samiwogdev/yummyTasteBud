@@ -37,28 +37,30 @@ include_once '../includes/admin-sidebar.php';
                         <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Name</th>
+                                <th>City</th>
+                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>                            
                         <tbody>
                             <?php
                             $count = 1;
-                            $menus = $menu->get_all();
-                            if($menus != 0){
-                            foreach ($menus as $menu) {
+                            $delivers = $delivery->get_all();
+                            if($delivers != 0){
+                            foreach ($delivers as $deliver) {
                                 ?>
                                 <tr>
                                     <td><?php echo $count ?></td>
-                                    <td><?php echo $menu['name'] ?></td>
+                                    <td><?php echo $deliver['city'] ?></td>
+                                    <td><?php echo $deliver['amount'] ?></td>
                                     <td>
-                                        <a href="update_menu?n=<?php echo $menu['id'] ?>"><i class="fa fa-edit m-r-15 text-info" title="update Menu"></i></a>
+                                        <a href="update_delivery?n=<?php echo $deliver['id'] ?>"><i class="fa fa-edit m-r-15 text-info" title="update delivery"></i></a>
                                            <div class="dropdown" style="display: inline !important">
                                                 <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa fa-trash-alt m-r-15 text-danger" title="delete menu"></i>
+                                                    <i class="fa fa-trash-alt m-r-15 text-danger" title="delete delivery"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a href="../controller/delete_menu?n=<?php echo $menu['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete Menu</a>
+                                                    <a href="../controller/delete_delivery?n=<?php echo $deliver['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete</a>
                                                 </div>
                                             </div>
                                     </td>
@@ -80,7 +82,7 @@ include_once '../includes/admin-sidebar.php';
         <div class="modal-content">
             <form action="../controller/delivery_def" method="post">
                 <div class="modal-header">
-                    <h4 class="title" id="smallModalLabel">Add New Menu</h4>
+                    <h4 class="title" id="smallModalLabel">Add New Delivery</h4>
                 </div>
                 <div class="modal-body"> 
                     <div class="col-lg-12 col-12">
