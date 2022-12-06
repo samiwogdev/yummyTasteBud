@@ -23,7 +23,7 @@ include_once '../includes/admin-sidebar.php';
         </div>
     </div>
     <div class="container-fluid mx-auto">
-        <div class="row">
+        <div class="row shadow">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card shadow ">
                     <div class="header">
@@ -33,7 +33,7 @@ include_once '../includes/admin-sidebar.php';
             </div>
             <div class="col-12 p-5">
                 <div class="table-responsive ">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable shadow " style="width: 100%">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable " style="width: 100%">
                         <thead>
                             <tr>
                                 <th>SN</th>

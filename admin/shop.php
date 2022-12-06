@@ -23,9 +23,9 @@ include_once '../includes/admin-sidebar.php';
         </div>
     </div>
     <div class="container-fluid mx-auto">
-        <div class="row">
+        <div class="row shadow">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card shadow ">
+                <div class="card">
                     <div class="header">
                         <h2><strong>List of </strong> Shop Item </h2>
                     </div>

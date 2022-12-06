@@ -23,9 +23,9 @@ include_once '../includes/admin-sidebar.php';
         </div>
     </div>
     <div class="container-fluid mx-auto">
-        <div class="row">
+        <div class="row shadow">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card shadow ">
+                <div class="card">
                     <div class="header">
                         <h2><strong>List of </strong> Delivery Price </h2>
                     </div>
@@ -33,7 +33,7 @@ include_once '../includes/admin-sidebar.php';
             </div>
             <div class="col-12 p-5">
                 <div class="table-responsive ">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable shadow " style="width: 100%">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable  " style="width: 100%">
                         <thead>
                             <tr>
                                 <th>SN</th>
@@ -60,7 +60,7 @@ include_once '../includes/admin-sidebar.php';
                                                     <i class="fa fa-trash-alt m-r-15 text-danger" title="delete delivery"></i>
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a href="../controller/delete_delivery?n=<?php echo $deliver['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete</a>
+                                                    <a href="../controller/delete_delivery?n=<?php echo $deliver['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete delivery info</a>
                                                 </div>
                                             </div>
                                     </td>
