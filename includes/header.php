@@ -109,14 +109,14 @@ $order = Order::getInstance();
                             <ul>
                                 <?php if (isset($_SESSION['email'])) { 
 //                                    echo $_SESSION['email']; exit;
-                                    $orders = $order->getCartCount($_SESSION['email']);
+                                    $orders_ = $order->getCartCount($_SESSION['email']);
                                     ?> 
                                     <li class="order-online">
                                         <a href="cart" class="page-scroll text-white" >
                                             
                                             <span class="fa fa-cart-arrow-down fa-2x text-white" ></span>
-                                            <?php if ($orders > 0){ ?>
-                                            <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;"><?php echo $orders ?></span>
+                                            <?php if ($orders_ > 0){ ?>
+                                            <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;"><?php echo $orders_ ?></span>
                                             <?php }?>
                                         </a>
                                     </li>

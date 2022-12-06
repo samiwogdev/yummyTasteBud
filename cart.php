@@ -21,6 +21,7 @@
             <form action="controller/update_cart_item" method="post">
                 <div class="table-responsive">
                     <?php
+                    if(isset($_SESSION['email'])){
                     $orders = $order->getCartItemByEmail($_SESSION['email']);
                     if ($orders != 0) {
                         ?>
@@ -63,7 +64,7 @@
                                         <td class="text-left">
                                             <div class="input-box">
                                                 <span class="fa fa-minus-square fa-2x mr-3" id="reduce" onclick="decrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e;  cursor: pointer;"></span>
-                                                <input  class="quantity mr-3" type="number" onfocus="displayBut(<?php echo $order_['id'] ?>)" id="qty_<?php echo $order_['id'] ?>" name="quantity_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none;  text-align: center; background-color: transparent;">
+                                                <input  class="quantity mr-3"  type="number" onfocus="displayBut(<?php echo $order_['id'] ?>)" id="qty_<?php echo $order_['id'] ?>" name="quantity_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none;  text-align: center; background-color: transparent;">
                                                 <span class="fa fa-plus-square fa-2x" id="increase" onclick="incrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e; cursor: pointer "></span>
                                             </div>
                                         </td>
@@ -89,7 +90,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Item's(3) Subtotal</td>
+                                            <td>Item's(<?php echo $orders_ ?>) Subtotal</td>
                                             <td>
                                                 <div class="price-box"> 
                                                     <span class="price">$71.00</span> 
@@ -120,8 +121,8 @@
                         </div>
                     </div>
                 </div>
-        <?php } else { ?>
-            <div class="mb-30">
+        <?php }else { ?>
+                        <div class="mb-30">
                 <div class="row mb-5">
                     <div class="col-md-12 mb-5">
                         <div class="mt-30 text-center-r"> 
@@ -130,7 +131,9 @@
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php }
+        
+        } ?>
     </div>
 </section>
 <script>
