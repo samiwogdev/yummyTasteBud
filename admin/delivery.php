@@ -12,7 +12,7 @@ include_once '../includes/admin-sidebar.php';
     <div class="block-header">
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2 style="font-size: 16px"><i class="fas fa-utensils mr-2"></i>Delivery               
+                <h2 style="font-size: 16px"><i class="fas fa-cart-plus mr-2"></i>Delivery               
                 </h2>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">

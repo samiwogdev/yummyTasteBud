@@ -14,7 +14,7 @@ $menu = Menu::getInstance();
 if (isset($_POST['menu_update'])) {
     $errorMsg = "";
     $name = filter_input(INPUT_POST, "name");
-    if (empty($name)) {
+    if (!isset($name)) {
         $errorMsg = "name_empty";
         header("location: ../admin/menu?info=" . $errorMsg);
         exit;

@@ -7,25 +7,32 @@ if (null == filter_input(INPUT_GET, "n")) {
 
 $id = filter_input(INPUT_GET, "n");
 if (!is_numeric($id)) {
-    header("location: ../admin/menu?info=invalid");
+    header("location: ../admin/delivery?info=invalid");
 }
 
-$menu = Menu::getInstance();
-if (isset($_POST['menu_update'])) {
+$deliver = Delivery::getInstance();
+if(isset($_POST['delivery_update'])) {
     $errorMsg = "";
-    $name = filter_input(INPUT_POST, "name");
-    if (empty($name)) {
-        $errorMsg = "name_empty";
-        header("location: ../admin/menu?info=" . $errorMsg);
+    $city = filter_input(INPUT_POST, "city");
+    $amount = filter_input(INPUT_POST, "amount");
+    
+    if (!isset($city)) {
+        $errorMsg = "city_empty";
+        header("location: ../admin/delivery?info=" . $errorMsg);
+        exit;
+    }
+    if (!isset($amount)) {
+        $errorMsg = "amount_empty";
+        header("location: ../admin/deliverys?info=" . $errorMsg);
         exit;
     }
     
-    if ($menu->update($id, $name)) {
-        header("location: ../admin/menu?info=upt_success");
+    if ($deliver->update($id, $city, $amount)) {
+        header("location: ../admin/delivery?info=upt_success");
     } else {
-        header("location: ../admin/menu?info=" . $errorMsg);
+        header("location: ../admin/delivery?info=" . $errorMsg);
     }
 } else {
-    header("location: ../admin/menu?info=invalid");
+    header("location: ../admin/delivery?info=invalid");
 }
 ?>
