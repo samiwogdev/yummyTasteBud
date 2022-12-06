@@ -24,7 +24,7 @@
                     $orders = $order->getCartItemByEmail($_SESSION['email']);
                     if ($orders != 0) {
                         ?>
-                        <table class="table table-striped table-bordered mb-0">
+                        <table class="table table-striped mb-0">
                             <thead>
                                 <tr>
                                     <th class="align-center" >Menu Details</th>
@@ -63,7 +63,7 @@
                                         <td class="text-left">
                                             <div class="input-box">
                                                 <span class="fa fa-minus-square fa-2x mr-3" id="reduce" onclick="decrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e;  cursor: pointer;"></span>
-                                                <input  class="quantity mr-3" type="number" id="qty_<?php echo $order_['id'] ?>" name="quantity_cart_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none; text-align: center; background-color: transparent;">
+                                                <input  class="quantity mr-3" type="number" id="qty_<?php echo $order_['id'] ?>" name="quantity_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none; text-align: center; background-color: transparent;">
                                                 <span class="fa fa-plus-square fa-2x" id="increase" onclick="incrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e; cursor: pointer "></span>
                                             </div>
                                         </td>
@@ -72,7 +72,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-color mt-3" type="submit" style="display:none" id="updt_cart"><i class="fa fa-angle-left"></i><span>Update Cart</span></button>
+                    <button name="updt_cart_item" class="btn btn-color mt-3" type="submit" style="display:none" id="updt_cart"><i class="fa fa-angle-left"></i><span>Update Cart</span></button>
                 </form>
             </div>
             <hr>

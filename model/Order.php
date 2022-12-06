@@ -112,9 +112,11 @@ class Order extends Connection {
     }
 
     public function updateQty($id, $qty) {
-        $sql = "UPDATE " . $this->table_name . " SET qty = :qty WHERE id = :id";
+        $sql = "UPDATE `" . $this->table_name . "` SET qty = :qty WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
         $this->qty = self::sanitize_input($qty);
+        $this->id = self::sanitize_input($id);
+        
         $statement->bindParam(":id", $this->id);
         $statement->bindParam(":qty", $this->qty);
         return $statement->execute();
