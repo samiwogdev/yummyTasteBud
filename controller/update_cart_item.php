@@ -7,6 +7,9 @@ if (isset($_POST['updt_cart_item'])) {
         $id = substr($key, 9);
         $qty = $value;
         if ($key !== "updt_cart_item") {
+            if ($qty == "" || $qty == 0) {
+                $qty = 1;
+            }
             echo $id . " => " . $qty . "</br>";
             $order->updateQty($id, $qty);
         }

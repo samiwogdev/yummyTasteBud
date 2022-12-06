@@ -63,7 +63,7 @@
                                         <td class="text-left">
                                             <div class="input-box">
                                                 <span class="fa fa-minus-square fa-2x mr-3" id="reduce" onclick="decrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e;  cursor: pointer;"></span>
-                                                <input  class="quantity mr-3" type="number" id="qty_<?php echo $order_['id'] ?>" name="quantity_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none; text-align: center; background-color: transparent;">
+                                                <input  class="quantity mr-3" type="number" onfocus="displayBut(<?php echo $order_['id'] ?>)" id="qty_<?php echo $order_['id'] ?>" name="quantity_<?php echo $order_['id'] ?>" value="<?php echo $order_['qty'] ?>" style="width: 80px; border: none;  text-align: center; background-color: transparent;">
                                                 <span class="fa fa-plus-square fa-2x" id="increase" onclick="incrementQty(<?php echo $order_['id'] ?>)" style="color: #fd9d3e; cursor: pointer "></span>
                                             </div>
                                         </td>
@@ -139,6 +139,9 @@
         var qtyInput = document.getElementById("qty_" + id);
         
         var qtyValue = parseInt(qtyInput.value);
+            if(isNaN(qtyValue)){
+              qtyValue = 1;  
+            }
             qtyValue --;
             if(qtyValue < 1){
               qtyValue = 1; 
@@ -149,9 +152,16 @@
     function incrementQty(id){
         var qtyInput = document.getElementById("qty_" + id);
         var qtyValue = parseInt(qtyInput.value);
+              if(isNaN(qtyValue)){
+              qtyValue = 1;  
+            }
             qtyValue ++;
             qtyInput.value =  qtyValue; 
             updt_cart.style.display = "block";
+    }
+    
+    function displayBut(id){
+           updt_cart.style.display = "block";   
     }
 </script>
 	<?php include_once './includes/footer.php'; ?>

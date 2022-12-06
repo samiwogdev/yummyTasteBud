@@ -115,7 +115,9 @@ $order = Order::getInstance();
                                         <a href="cart" class="page-scroll text-white" >
                                             
                                             <span class="fa fa-cart-arrow-down fa-2x text-white" ></span>
+                                            <?php if ($orders > 0){ ?>
                                             <span class="badge badge-light text-white" style="font-size: 100% !important; background-color: #fd9d3e;;"><?php echo $orders ?></span>
+                                            <?php }?>
                                         </a>
                                     </li>
                                 <?php } else { ?>
