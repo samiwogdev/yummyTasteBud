@@ -14,7 +14,6 @@
         </div>
     </div>
 </section>
-
 <section class="shopping-cart ptb">
     <div class="container">
         <div class="cart-item-table commun-table">
@@ -40,7 +39,7 @@
                                     ?>
                                     <tr>
                                         <td class="text-left">
-                                            <a href="shop-detail">
+                                            <a href="#!" style=" cursor: default">
                                                 <div class="product-image">
                                                     <img alt="<?php echo $shop_item['name'] ?>" src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>">
                                                 </div>
@@ -92,7 +91,11 @@
                                         <tr>
                                             <td>Item's(<?php echo $orders_ ?>) Subtotal</td>
                                             <td>
-                                                <div class="price-box"> 
+                                                <div class="price-box">
+                                                    <?php
+                                                    $cartIds = $order->getCartItemID($_SESSION['email']);
+                                                    var_dump($cartIds); exit;
+                                                    ?>
                                                     <span class="price">$71.00</span> 
                                                 </div>
                                             </td>
