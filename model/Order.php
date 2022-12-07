@@ -132,7 +132,7 @@ class Order extends Connection {
     }
     
     public function getCartItemID($user_email) {
-        $sql = "SELECT shop_id FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $statement->bindParam(":user_email", $this->user_email);

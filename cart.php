@@ -51,7 +51,7 @@
                                                 <a href="shop-detail"><?php echo $shop_item['description'] ?></a> 
                                             </div>
                                             <div class="product-title"> 
-                                                <a href="shop-detail"><span class="font-weight-bold">Price:</span><?php echo $shop_item['price'] ?></a> 
+                                                <a href="shop-detail"><span class="font-weight-bold">Price: </span>&#8358;<?php echo number_format($shop_item['price']) ?></a> 
                                             </div>
                                             <div class="product-title"> 
                                                 <a href="controller/delete_cart_item?n=<?php echo $order_['id'] ?>" class="" style="color: #fd9d3e; font-size: 18px">
@@ -94,9 +94,14 @@
                                                 <div class="price-box">
                                                     <?php
                                                     $cartIds = $order->getCartItemID($_SESSION['email']);
-                                                    var_dump($cartIds); exit;
+                                                    $cartSubTotal = 0;
+                                                    foreach ($cartIds as $cartId){
+                                                        $cartItem =  $shop->get_menu_by_id($cartId['shop_id']);
+                                                        $cartSubTotal += $cartItem['price'] * $cartId['qty']; ; 
+                                                    }
                                                     ?>
-                                                    <span class="price">$71.00</span> 
+                                                    <span class="price">&#8358;<?php echo number_format($cartSubTotal) ?></span> 
+                                                    <?php $_SESSION['cartSubTotal'] = $cartSubTotal ?>
                                                 </div>
                                             </td>
                                         </tr>
