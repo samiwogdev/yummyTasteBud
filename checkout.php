@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="estimate">
-                                        <h3 class="font-weight-bold mb-3">Delivery Details</h3>
+                                        <h3 class="font-weight-bold mb-3 text-danger">Delivery Details</h3>
                                     <form class="full main-form">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -36,10 +36,11 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 mt-3" id="location_id" style="display: none">
+                                            <div class="col-md-12 mt-5" id="location_id" style="display: none">
                                                 <div class="input-box">
-                                                    <select id="country_id" class="full">
-                                                        <option selected="" value="">Select Delivery location</option>
+                                                    <label class="font-weight-bold">Location</label>
+                                                    <select id="country_id">
+                                                        <option selected="" value="">Select your location</option>
                                                         <option value="1">Pick up at our shop</option>
                                                         <option value="2">Door delivery</option>
                                                     </select>
@@ -53,19 +54,19 @@
                     </div>
                     <div class="row">
                         <div class="col-12" id="del_address_id" style="display: none">
-                            <h3 class="font-weight-bold mb-3">Your Address</h3>
+<!--                            <h3 class="font-weight-bold mb-3">Your Address</h3>-->
+                            <label class="font-weight-bold">Your Address</label>
                             <div class="notes p-4 mb-5">
                                 <p><span class="font-weight-bold pr-2" style="color: black">Location:</span>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
                                 <p><span class="font-weight-bold pr-2 text-black" style="color: black">Phone:</span>0907891085</p>
                                 <a href="shop-detail" class="btn btn-color mt-2" data-toggle="modal" data-target="#smallModal">Change Address</a>
                             </div>
                         </div>
-                       <div class="col-12" id="pickup_address_id" style="display: none">
-                            <h3 class="font-weight-bold mb-3">Pickup Address</h3>
+                       <div class="col-12 mt-5" id="pickup_address_id" style="display: none">
+<!--                            <h3 class="font-weight-bold mb-3">Pickup Address</h3>-->
+                            <label class="font-weight-bold">Pickup Address </label>
                             <div class="notes p-4 mb-5">
-                                <p><span class="font-weight-bold pr-2" style="color: black">Location:</span>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
-                                <p><span class="font-weight-bold pr-2 text-black" style="color: black">Phone:</span>0907891085</p>
-                                <a href="shop-detail" class="btn btn-color mt-2" data-toggle="modal" data-target="#smallModal">Change Address</a>
+                                <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
                             </div>
                         </div>
                         <div class="col-12">
