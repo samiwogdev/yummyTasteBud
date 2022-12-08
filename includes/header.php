@@ -4,6 +4,7 @@ $menu = Menu::getInstance();
 $shop = Shop::getInstance();
 $shop_img = ShopItemPics::getInstance();
 $order = Order::getInstance();
+$delivery = Delivery::getInstance();
 ?>
 <!DOCTYPE html>
 <html lang="en">
