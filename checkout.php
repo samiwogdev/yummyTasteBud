@@ -24,13 +24,22 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="estimate">
-                                        <h3 class="font-weight-bold mb-3">Delivery Options</h3>
+                                        <h3 class="font-weight-bold mb-3">Delivery Details</h3>
                                     <form class="full main-form">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-box">
                                                     <select id="country_id" class="full">
                                                         <option selected="" value="">Select Delivery Method</option>
+                                                        <option value="1">Pick up at our shop</option>
+                                                        <option value="2">Door delivery</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="input-box">
+                                                    <select id="country_id" class="full">
+                                                        <option selected="" value="">Select Delivery location</option>
                                                         <option value="1">Pick up at our shop</option>
                                                         <option value="2">Door delivery</option>
                                                     </select>
