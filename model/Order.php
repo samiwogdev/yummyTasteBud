@@ -92,22 +92,16 @@ class Order extends Connection {
         return $data;
     }
 
-    public function add($user_email, $shop_id, $qty, $order_status, $payment_status, $trans_ref) {
-        $sql = "INSERT INTO `" . $this->table_name . "` (user_email, shop_id, qty, order_status, payment_status, trans_ref) VALUES(:user_email, :shop_id, :qty, :order_status, :payment_status, :trans_ref)";
+    public function add($user_email, $shop_id, $qty) {
+        $sql = "INSERT INTO `" . $this->table_name . "` (user_email, shop_id, qty) VALUES(:user_email, :shop_id, :qty)";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $this->shop_id = self::sanitize_input($shop_id);
         $this->qty = self::sanitize_input($qty);
-        $this->order_status = self::sanitize_input($order_status);
-        $this->payment_status = self::sanitize_input($payment_status);
-        $this->trans_ref = self::sanitize_input($trans_ref);
 
         $statement->bindParam(":user_email", $this->user_email);
         $statement->bindParam(":shop_id", $this->shop_id);
         $statement->bindParam(":qty", $this->qty);
-        $statement->bindParam(":order_status", $this->order_status);
-        $statement->bindParam(":payment_status", $this->payment_status);
-        $statement->bindParam(":trans_ref", $this->trans_ref);
         return $statement->execute();
     }
 

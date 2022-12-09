@@ -24,7 +24,7 @@ if (NULL == filter_input(INPUT_POST, "quantity")) {
 $qty = filter_input(INPUT_POST, "quantity");
 $order = Order::getInstance();
 
-if ($order->add($_SESSION['email'], $shop_id, $qty, 0, 0, 0)) {
+if ($order->add($_SESSION['email'], $shop_id, $qty)) {
     header("location: ../cart?info=success&n=" . $shop_id);
     exit;
 } else {

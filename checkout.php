@@ -60,7 +60,7 @@
                             <label class="font-weight-bold text-danger">Your Address *</label>
                             <div class="notes p-4 mb-5">
                                 <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
-                                <p><span class="font-weight-bold pr-2 text-black">Phone:</span>0907891085</p>
+                                <p><span class=" pr-2 text-black text-dark">Phone:</span>0907891085</p>
                                 <a href="shop-detail" class="btn btn-color mt-2" data-toggle="modal" data-target="#smallModal">Change</a>
                             </div>
                         </div>
