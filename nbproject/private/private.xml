@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/includes/header.php</file>
             <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/checkout.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/index.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/controller/add_shop_item_pics.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Order.php</file>
+            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Delivery.php</file>
             <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/controller/add_to_cart.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/shop-details.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/cart.php</file>
             <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Menu.php</file>
-            <file>file:/C:/xampp/htdocs/api/yummytastebud/yummyTasteBud/model/Shop.php</file>
         </group>
     </open-files>
 </project-private>
