@@ -15,6 +15,130 @@
         </div>
     </div>
 </section>
+<?php 
+if (null !== filter_input(INPUT_GET, "n")) { ?>
+<section class="checkout-part ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="mb-md-30">
+    
+                    <div class="row">
+                        <div class="col-12" id="del_address_id">
+<!--                            <h3 class="font-weight-bold mb-3">Your Address</h3>-->
+                            <label class="font-weight-bold text-danger">Your Address *</label>
+                            <div class="notes p-4 mb-5">
+                                <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
+                                <p><span class=" pr-2 text-black text-dark">Phone:</span>0907891085</p>
+                                <a href="shop-detail" class="btn btn-color mt-2" data-toggle="modal" data-target="#smallModal">Change</a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                                <h3 class="font-weight-bold mb-3 mt-2">Your Order</h3>
+                            <div class="checkout-products sidebar-product mb-60">
+                                <ul>
+                                    <li>
+                                        <div class="pro-media"> <a href="shop-detail"><img alt="pizzon" src="images/2-1.png"></a> </div>
+                                        <div class="pro-detail-info"> <a href="shop-detail" class="product-title">Margherita Pizza</a>
+                                            <div class="price-box"> 
+                                                <span class="price">$20.00</span>
+                                                <del class="price old-price">$22.00</del>
+                                            </div>
+                                            <div class="checkout-qty">
+                                                <div>
+                                                    <label>Qty: </label>
+                                                    <span class="info-deta">1</span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <h3 class="font-weight-bold mb-3">Order Summary</h3>
+                <div class="complete-order-detail commun-table gray-bg mb-30">
+                    <div class="table-responsive">
+                        <table class="table m-0">
+                            <tbody>
+                                <tr>
+                                    <td><b>Order Places :</b></td>
+                                    <td>17 February 2020</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Total :</b></td>
+                                    <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Payment :</b></td>
+                                    <td>COD</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Order No. :</b></td>
+                                    <td>#011052</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button class="btn full btn-color" id="place_order_id">Place order</button>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <form action="../controller/menu_def" method="post">
+                <div class="modal-header">
+                    <h4 class="title" id="smallModalLabel">Update Delivery Details</h4>
+                </div>
+                <div class="modal-body"> 
+                    <div class="col-lg-12 col-12">
+                        <?php $citys = $delivery->get_all(); ?>
+                         <select name="city" class="form-control m-b-15">
+                           <option value="0" selected="selected">-- Pick your location --</option>
+                            <?php foreach ($citys as $city){ ?>
+                            <option value="<?php echo $city['id']?>"><?php echo $city['city'] ?></option>
+                            <?php } ?>
+                        </select> 
+                    </div>
+                      <div class="col-lg-12 col-12 mt-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fas fa-utensils"></i>
+                            </span>
+                            <input type="number" value="<?php
+                            if (isset($_POST['phone'])) {
+                                echo $_POST['phone'];
+                            }
+                            ?>" name="phone" class="form-control" placeholder="phone">
+                        </div>
+                    </div>
+                      <div class="col-lg-12 col-12 mt-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fas fa-utensils"></i>
+                            </span>
+                            <input type="text" value="<?php
+                            if (isset($_POST['address'])) {
+                                echo $_POST['address'];
+                            }
+                            ?>" name="address" class="form-control" placeholder="address">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="delivey_def" class="btn btn-default btn-round waves-effect text-light" style="background-color: #fd9d3e;">Update delivery details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php }else{ ?>
 <section class="checkout-part ptb">
     <div class="container">
         <div class="row">
@@ -39,11 +163,11 @@
                                             <div class="col-md-12 mt-5 text-danger" id="location_id" style="display: none">
                                                 <div class="input-box">
                                                     <label class="font-weight-bold">Location *</label>
-                                                    <select id="country_id">
+                                                    <select id="del_location_id" onchange="changeLocation()">
                                                         <?php $citys = $delivery->get_all(); ?>
                                                         <option selected="" value="">Select location</option>
                                                          <?php foreach ($citys as $city){ ?>
-                                                        <option value="<?php echo $city['amount']?>"><?php echo $city['city'] ?></option>
+                                                        <option value="<?php echo $city['id']?>"><?php echo $city['city'] ?></option>
                                                          <?php } ?>
                                                     </select>
                                                 </div>
@@ -140,7 +264,7 @@
                          <select name="city" class="form-control m-b-15">
                            <option value="0" selected="selected">-- Pick your location --</option>
                             <?php foreach ($citys as $city){ ?>
-                            <option value="<?php echo $city['amount']?>"><?php echo $city['city'] ?></option>
+                            <option value="<?php echo $city['id']?>"><?php echo $city['city'] ?></option>
                             <?php } ?>
                         </select> 
                     </div>
@@ -194,8 +318,26 @@
           place_order_but.style.display = "block";
           address.style.display = "block";
           pickup_address.style.display = "none";
+        }else{
+         location.style.display = "none"; 
+          place_order_but.style.display = "none";
+          address.style.display = "none";
+          pickup_address.style.display = "none"; 
         }
     }
     
+    function changeLocation(){
+         var del_location = document.getElementById('del_location_id');
+         var place_order_but = document.getElementById('place_order_id');
+         if(del_location.value == 0){
+            place_order_but.style.display = "none";
+         }else{
+           window.location.href = "controller/update_del_location?n=" + del_location.value;
+         }
+        
+    }
+    
 </script>
+<?php }?>
+
 <?php include_once './includes/footer.php'; ?>

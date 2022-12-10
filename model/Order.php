@@ -14,6 +14,8 @@ class Order extends Connection {
     private $order_status;
     private $payment_status;
     private $trans_ref;
+    private $amount_paid;
+    private $delivery_id;
     private $table_name = "order";
     private static $instance;
 
@@ -72,7 +74,24 @@ class Order extends Connection {
     public function setTrans_ref($trans_ref): void {
         $this->trans_ref = $trans_ref;
     }
+    
+    public function getAmount_paid() {
+        return $this->amount_paid;
+    }
 
+    public function getDelivery_id() {
+        return $this->delivery_id;
+    }
+
+    public function setAmount_paid($amount_paid): void {
+        $this->amount_paid = $amount_paid;
+    }
+
+    public function setDelivery_id($delivery_id): void {
+        $this->delivery_id = $delivery_id;
+    }
+
+    
     public static function getInstance() {
         if (!isset(self::$instance) || is_null(self::$instance)) {
             try {
@@ -113,6 +132,17 @@ class Order extends Connection {
 
         $statement->bindParam(":id", $this->id);
         $statement->bindParam(":qty", $this->qty);
+        return $statement->execute();
+    }
+    
+    public function updateDeliveryID($delivery_id, $email) {
+        $sql = "UPDATE `" . $this->table_name . "` SET delivery_id = :delivery_id WHERE user_email = :user_email";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->delivery_id = self::sanitize_input($delivery_id);
+        $this->user_email = self::sanitize_input($email);
+
+        $statement->bindParam(":delivery_id", $this->delivery_id);
+        $statement->bindParam(":user_email", $this->user_email);
         return $statement->execute();
     }
 
