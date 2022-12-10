@@ -16,7 +16,9 @@
     </div>
 </section>
 <?php 
-if (null !== filter_input(INPUT_GET, "n")) { ?>
+if (null !== filter_input(INPUT_GET, "n")) { 
+    $del_id = filter_input(INPUT_GET, "n");
+    ?>
 <section class="checkout-part ptb">
     <div class="container">
         <div class="row">
@@ -92,20 +94,11 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
 <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
-            <form action="../controller/menu_def" method="post">
+            <form action="controller/update_delivery_address?n=<?php echo $del_id ?>" method="post">
                 <div class="modal-header">
                     <h4 class="title" id="smallModalLabel">Update Delivery Details</h4>
                 </div>
                 <div class="modal-body"> 
-                    <div class="col-lg-12 col-12">
-                        <?php $citys = $delivery->get_all(); ?>
-                         <select name="city" class="form-control m-b-15">
-                           <option value="0" selected="selected">-- Pick your location --</option>
-                            <?php foreach ($citys as $city){ ?>
-                            <option value="<?php echo $city['id']?>"><?php echo $city['city'] ?></option>
-                            <?php } ?>
-                        </select> 
-                    </div>
                       <div class="col-lg-12 col-12 mt-3">
                         <div class="input-group">
                             <span class="input-group-addon">
@@ -179,15 +172,15 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12" id="del_address_id" style="display: none">
-<!--                            <h3 class="font-weight-bold mb-3">Your Address</h3>-->
+<!--                        <div class="col-12" id="del_address_id" style="display: none">
+                            <h3 class="font-weight-bold mb-3">Your Address</h3>
                             <label class="font-weight-bold text-danger">Your Address *</label>
                             <div class="notes p-4 mb-5">
                                 <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
                                 <p><span class=" pr-2 text-black text-dark">Phone:</span>0907891085</p>
                                 <a href="shop-detail" class="btn btn-color mt-2" data-toggle="modal" data-target="#smallModal">Change</a>
                             </div>
-                        </div>
+                        </div>-->
                        <div class="col-12 mt-5" id="pickup_address_id" style="display: none">
 <!--                            <h3 class="font-weight-bold mb-3">Pickup Address</h3>-->
                             <label class="font-weight-bold text-danger">Pickup Address </label>
@@ -195,7 +188,7 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
                                 <p>49, Joel Ogunnaike Street, Ikeja, Lagos, Nigeria.</p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" id="order_list" style="display: none">
                                 <h3 class="font-weight-bold mb-3 mt-2">Your Order</h3>
                             <div class="checkout-products sidebar-product mb-60">
                                 <ul>
@@ -220,7 +213,7 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4" id="order_summary" style="display: none">
                 <h3 class="font-weight-bold mb-3">Order Summary</h3>
                 <div class="complete-order-detail commun-table gray-bg mb-30">
                     <div class="table-responsive">
@@ -304,24 +297,22 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
     function deliveryMethod(){
         var deliveryOption = document.getElementById("del_option_id").value;
          var location = document.getElementById('location_id');
-        var address = document.getElementById('del_address_id');
+        var order_summary = document.getElementById('order_summary');
         var pickup_address = document.getElementById('pickup_address_id');
+        var order_list = document.getElementById('order_list');
         var place_order_but = document.getElementById('place_order_id');
         if (deliveryOption == 1) {
             pickup_address.style.display = "block";
-            place_order_but.style.display = "block";
+            order_summary.style.display = "block";
             location.style.display = "none"; 
-            address.style.display = "none"; 
+            order_list.style.display = "block"; 
+            place_order_but.style.display = "block"; 
         }
         else if(deliveryOption == 2){
           location.style.display = "block"; 
-          place_order_but.style.display = "block";
-          address.style.display = "block";
           pickup_address.style.display = "none";
         }else{
          location.style.display = "none"; 
-          place_order_but.style.display = "none";
-          address.style.display = "none";
           pickup_address.style.display = "none"; 
         }
     }
@@ -329,10 +320,8 @@ if (null !== filter_input(INPUT_GET, "n")) { ?>
     function changeLocation(){
          var del_location = document.getElementById('del_location_id');
          var place_order_but = document.getElementById('place_order_id');
-         if(del_location.value == 0){
-            place_order_but.style.display = "none";
-         }else{
-           window.location.href = "controller/update_del_location?n=" + del_location.value;
+         if(del_location.value !== 0){
+             window.location.href = "controller/update_del_location?n=" + del_location.value;
          }
         
     }

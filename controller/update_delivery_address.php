@@ -1,20 +1,28 @@
 <?php
 include_once '../convig.php';
 
+echo 'yes'; exit;
 if (null == filter_input(INPUT_GET, "n")) {
-    header("location: ../admin/delivery?info=invalid");
+    header("location: ../checkout?info=invalid");
 }
 
-$id = filter_input(INPUT_GET, "n");
+$delivery_id = filter_input(INPUT_GET, "n");
 if (!is_numeric($id)) {
     header("location: ../admin/delivery?info=invalid");
 }
 
 $deliver = Delivery::getInstance();
-if(isset($_POST['delivery_update'])) {
-    $errorMsg = "";
+
     $city = filter_input(INPUT_POST, "city");
-    $amount = filter_input(INPUT_POST, "amount");
+    $phone = filter_input(INPUT_POST, "phone");
+    $address = filter_input(INPUT_POST, "address");
+    
+    
+    if (!isset($city)) {
+        $errorMsg = "city_empty";
+        header("location: ../checkout?info=" . $errorMsg);
+        exit;
+    }
     
     if (!isset($city)) {
         $errorMsg = "city_empty";
