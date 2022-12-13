@@ -13,8 +13,8 @@
                             </div>
                         </div>
                     </li>
-                    <li class="active open"><a href="#!"><i class="zmdi zmdi-home"></i><span>order</span></a></li>
-                    <li class=""><a href="index"><i class="zmdi zmdi-home"></i><span>Support</span></a></li>
+                    <li class="active open"><a href="index"><i class="zmdi zmdi-home"></i><span>order</span></a></li>
+                    <li class=""><a href="#!"><i class="zmdi zmdi-home"></i><span>Support</span></a></li>
                 </ul>
             </div>
         </div>

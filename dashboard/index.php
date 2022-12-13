@@ -1,10 +1,5 @@
 <?php 
 include_once '../includes/dash-header.php';
-$page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 include_once '../includes/dash-nav-bar.php';
 include_once '../includes/dash-aside.php';
 ?>
@@ -12,7 +7,7 @@ include_once '../includes/dash-aside.php';
     <div class="block-header">
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2 style="font-size: 16px"><i class="fas fa-utensils mr-2"></i>Order               
+                <h2 style="font-size: 16px"><i class="fas fa-cart-plus mr-2"></i>Order               
                 </h2>
             </div>
 <!--            <div class="col-lg-5 col-md-6 col-sm-12">
@@ -41,68 +36,12 @@ include_once '../includes/dash-aside.php';
                                 <th>Action</th>
                             </tr>
                         </thead>                            
-                        <tbody>
-                            <?php
-                            $count = 1;
-                            $menus = $menu->get_all();
-                            if($menus != 0){
-                            foreach ($menus as $menu) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $count ?></td>
-                                    <td><?php echo $menu['name'] ?></td>
-                                    <td>
-                                        <a href="update_menu?n=<?php echo $menu['id'] ?>"><i class="fa fa-edit m-r-15 text-info" title="update Menu"></i></a>
-                                           <div class="dropdown" style="display: inline !important">
-                                                <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa fa-trash-alt m-r-15 text-danger" title="delete menu"></i>
-                                                </a>
-                                                <div class="dropdown-menu">
-                                                    <a href="../controller/delete_menu?n=<?php echo $menu['id']  ?> " class="dropdown-item"><i class="fa fa-trash m-r-15 text-danger"></i>Delete Menu</a>
-                                                </div>
-                                            </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                $count++;
-                            }
-                            }
-                            ?>
-                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <form action="../controller/menu_def" method="post">
-                <div class="modal-header">
-                    <h4 class="title" id="smallModalLabel">Add New Menu</h4>
-                </div>
-                <div class="modal-body"> 
-                    <div class="col-lg-12 col-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fas fa-utensils"></i>
-                            </span>
-                            <input type="text" value="<?php
-                            if (isset($_POST['name'])) {
-                                echo $_POST['name'];
-                            }
-                            ?>" name="name" class="form-control" placeholder="Enter Menu Name ">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="menu_def" class="btn btn-default btn-round waves-effect" style="background-color: #ed5a0b">ADD MENU</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <?php include_once '../includes/dash-footer.php'; ?>
   
