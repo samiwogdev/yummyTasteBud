@@ -9,7 +9,7 @@
                             <div class="image"><a href="index"><img src="../uploads/nopic.jpg" alt="User" style="height: 90px"></a></div>
                               <div class="detail">
                                 <h4 style="font-size: 12px"><?php // echo $row['lastname']. " ". $row['firstname']. " ". $row['othername'] ?></h4>
-                                <small><?php // echo $row['matricno'] ?></small>
+                                <small><?php echo $_SESSION['email'] ?></small>
                             </div>
                         </div>
                     </li>
