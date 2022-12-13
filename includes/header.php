@@ -5,6 +5,8 @@ $shop = Shop::getInstance();
 $shop_img = ShopItemPics::getInstance();
 $order = Order::getInstance();
 $delivery = Delivery::getInstance();
+$customer = Customer::getInstance();
+$settings = Settings::getInstance();
 ?>
 <!DOCTYPE html>
 <html lang="en">

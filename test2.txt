@@ -1,3 +1,14 @@
 if (NULL == filter_input(INPUT_GET, "n")) {
     header("location: index?info=invalid");
 }
+
+
+reference: '829050306', trans: '2357557682', status: 'success', message: 'Approved', transaction: '2357557682', …}
+
+
+redirecturl
+: 
+"?trxref=829050306&reference=829050306"
+trxref
+: 
+"829050306"

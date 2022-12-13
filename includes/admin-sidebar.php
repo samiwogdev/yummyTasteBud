@@ -24,6 +24,7 @@
                             <li><a href="../admin/menu"><i class="fas fa-utensils mr-2" style="color: #760076 !important;"></i>Menu</a></li>
                             <li><a href="../admin/shop"><i class="fa fa-shopping-bag mr-2" style="color: #760076;"></i>Shop</a></li>
                             <li><a href="../admin/delivery"><i class="fa fa-cart-plus mr-2" style="color: #760076;"></i>Delivery</a></li>
+                            <li><a href="../admin/settings"><i class="fa fa-cog mr-2" style="color: #760076;"></i>Settings</a></li>
                         </ul>
                     </li>
 <!--                      <li class="<?php // if($page == "report"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Report</span> </a>

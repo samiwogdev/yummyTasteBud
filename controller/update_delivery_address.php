@@ -1,46 +1,38 @@
 <?php
 include_once '../convig.php';
 
-echo 'yes'; exit;
 if (null == filter_input(INPUT_GET, "n")) {
     header("location: ../checkout?info=invalid");
 }
 
 $delivery_id = filter_input(INPUT_GET, "n");
-if (!is_numeric($id)) {
-    header("location: ../admin/delivery?info=invalid");
+if (!is_numeric($delivery_id)) {
+        header("location: ../checkout?info=invalid");
 }
 
-$deliver = Delivery::getInstance();
-
-    $city = filter_input(INPUT_POST, "city");
+if(isset($_POST['delivey_def'])){
     $phone = filter_input(INPUT_POST, "phone");
     $address = filter_input(INPUT_POST, "address");
-    
-    
-    if (!isset($city)) {
-        $errorMsg = "city_empty";
+
+    if (!isset($phone)) {
+        $errorMsg = "phone_empty";
+        header("location: ../checkout?info=" . $errorMsg);
+        exit;
+    }
+    if (!isset($address)) {
+        $errorMsg = "address_empty";
         header("location: ../checkout?info=" . $errorMsg);
         exit;
     }
     
-    if (!isset($city)) {
-        $errorMsg = "city_empty";
-        header("location: ../admin/delivery?info=" . $errorMsg);
-        exit;
-    }
-    if (!isset($amount)) {
-        $errorMsg = "amount_empty";
-        header("location: ../admin/deliverys?info=" . $errorMsg);
-        exit;
-    }
-    
-    if ($deliver->update($id, $city, $amount)) {
-        header("location: ../admin/delivery?info=upt_success");
+    $customer = Customer::getInstance();
+    if ($customer->updateByEmail($phone, $_SESSION['email'], $address)) {
+        header("location: ../checkout?info=upt_success&n=$delivery_id");
     } else {
-        header("location: ../admin/delivery?info=" . $errorMsg);
+        header("location: ../checkout?info=" . $errorMsg);
     }
 } else {
-    header("location: ../admin/delivery?info=invalid");
+    echo 'no'; exit;
+    header("location: ../index");
 }
 ?>

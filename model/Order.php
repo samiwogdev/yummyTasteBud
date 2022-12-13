@@ -145,9 +145,28 @@ class Order extends Connection {
         $statement->bindParam(":user_email", $this->user_email);
         return $statement->execute();
     }
+    
+    public function updatecompleteOrder($order_status, $payment_status,$trans_ref, $amount_paid, $user_email) {
+        $sql = "UPDATE `" . $this->table_name . "` SET order_status = :order_status, payment_status = :payment_status, trans_ref = :trans_ref, amount_paid = :amount_paid WHERE user_email = :user_email";
+        $statement = $this->getConnection()->prepare($sql);
+        
+        $this->order_status = self::sanitize_input($order_status);
+        $this->payment_status = self::sanitize_input($payment_status);
+        $this->trans_ref = self::sanitize_input($trans_ref);
+        $this->amount_paid = self::sanitize_input($amount_paid);
+        $this->payment_status = self::sanitize_input($payment_status);
+        $this->user_email = self::sanitize_input($user_email);
+
+        $statement->bindParam(":order_status", $this->order_status);
+        $statement->bindParam(":payment_status", $this->payment_status);
+        $statement->bindParam(":trans_ref", $this->trans_ref);
+        $statement->bindParam(":amount_paid", $this->amount_paid);
+        $statement->bindParam(":user_email", $this->user_email);
+        return $statement->execute();
+    }
 
     public function delete($id) {
-        $sql = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $sql = "DELETE FROM `" . $this->table_name . "` WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
         $this->id = self::sanitize_input($id);
 
@@ -196,6 +215,20 @@ class Order extends Connection {
         $count = $statement->rowCount();
         if ($count > 0) {
             $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    public function getCartItemByEmail_v2($user_email) {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->user_email = self::sanitize_input($user_email);
+        $statement->bindParam(":user_email", $this->user_email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
         } else {
             $row = 0;
         }

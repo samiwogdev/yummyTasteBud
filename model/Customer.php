@@ -114,6 +114,20 @@ class Customer extends Connection {
         return $statement->execute();
     }
     
+    public function updateByEmail($phone, $email, $address) {
+        $sql = "UPDATE " . $this->table_name . " SET phone = :phone, address = :address WHERE email = :email";
+        $statement = $this->getConnection()->prepare($sql);
+
+        $this->phone = self::sanitize_input($phone);
+        $this->email = self::sanitize_input($email);
+        $this->address = self::sanitize_input($address);
+
+        $statement->bindParam(":phone", $this->phone);
+        $statement->bindParam(":email", $this->email);
+        $statement->bindParam(":address", $this->address);
+        return $statement->execute();
+    }
+    
         public function checkEmail($email) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $statement = $this->getConnection()->prepare($sql);
@@ -162,10 +176,11 @@ class Customer extends Connection {
         }
     }
     
-    public function get_user_by_username() {
-        $sql = "SELECT * FROM " . $this->table_name . " WHERE username = :username";
+    public function get_user_by_email($email) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $statement = $this->getConnection()->prepare($sql);
-        $statement->bindParam(":username", $this->username);
+        $this->email = self::sanitize_input($email);
+        $statement->bindParam(":email", $this->email);
         $statement->execute();
         $count = $statement->rowCount();
         if ($count > 0) {
@@ -190,20 +205,6 @@ class Customer extends Connection {
         }
         return $row;
     }
-
-//    public function get_user_by_username() {
-//        $sql = "SELECT * FROM " . $this->table_name . " WHERE username = :username";
-//        $statement = $this->getConnection()->prepare($sql);
-//        $statement->bindParam(":username", $this->username);
-//        $statement->execute();
-//        $count = $statement->rowCount();
-//        if ($count > 0) {
-//            $row = $statement->fetch(PDO::FETCH_ASSOC);
-//        } else {
-//            $row = 0;
-//        }
-//        return $row;
-//    }
     
 
 }
