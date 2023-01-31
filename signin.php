@@ -43,8 +43,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="company-name">Password</label>
-                                        <input id="company-name" name="password" type="text">
+                                        <label >Password</label>
+                                        <input type="password" name="password" type="text">
                                     </div>
                                 </div>
                                 <div class="container">
@@ -98,8 +98,8 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="company-name">Password</label>
-                                        <input id="company-name" name="password" type="text">
+                                        <label >Password</label>
+                                        <input type="password"  name="password" type="text">
                                     </div>
                                 </div>
                                 <div class="container">

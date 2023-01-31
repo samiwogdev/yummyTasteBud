@@ -39,7 +39,7 @@ include_once '../includes/dash-aside.php';
                                 <th>Order ID</th>
                                 <th>Amount paid</th>
                                 <th>Status</th>
-                                <th>Action</th>
+<!--                                <th>Action</th>-->
                             </tr>
                         </thead>                            
                         <tbody>
@@ -68,7 +68,7 @@ include_once '../includes/dash-aside.php';
                                 <?php } else { ?>
                                     <td><span class=" bg-danger text-white p-2">Cancelled</span></td> 
                                 <?php } ?>
-                                    <td></td>
+<!--                                    <td></td>-->
                                 </tr>
                                 <?php
                                 $counter++;
@@ -124,10 +124,10 @@ include_once '../includes/dash-aside.php';
                                               <?php } ?>
                                         
                                     </tr>
-                                    <tr>
+<!--                                    <tr>
                                         <th><a href="pay_summary?auth=1" class="btn btn-sm">Select</a></th>
 
-                                    </tr>
+                                    </tr>-->
                                 </tbody>
                             <?php 
                             $counter ++;

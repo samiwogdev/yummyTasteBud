@@ -16,7 +16,7 @@
             </li>
             <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true" title="Full Screen"><i class="zmdi zmdi-window-restore"></i></a></li>        
             <li class="float-right">
-                <a href="#" class="mega-menu" data-close="true" title="Logout"><i class="zmdi zmdi-power"></i></a>
+                <a href="log" class="mega-menu" data-close="true" title="Logout"><i class="zmdi zmdi-power"></i></a>
             </li>
         </ul>
     </nav>
