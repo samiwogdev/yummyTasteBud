@@ -50,7 +50,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center">
-                                            <button type="input" name="login_but" class="btn btn-color" style="width: 50%">Login</button>
+                                            <button type="input" name="cus_login" class="btn btn-color" style="width: 50%">Login</button>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
             </div>
         </form>
         <?php }else{ ?>
-        <form class="main-form"action="controller/cus_login?n=">
+        <form class="main-form" action="controller/cus_login" method="post">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="mb-md-30">
@@ -105,7 +105,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col text-center">
-                                            <button class="btn btn-color" style="width: 50%">Login</button>
+                                            <button type="input" name="cus_login" class="btn btn-color" style="width: 50%">Login</button>
                                         </div>
                                     </div>
                                 </div>

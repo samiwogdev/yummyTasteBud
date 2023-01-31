@@ -188,6 +188,21 @@ class Order extends Connection {
         }
         return $row;
     }
+    
+    public function getOrderPayed($user_email) {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 1 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->user_email = self::sanitize_input($user_email);
+        $statement->bindParam(":user_email", $this->user_email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
 
     public function getCartCount($user_email) {
         $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";

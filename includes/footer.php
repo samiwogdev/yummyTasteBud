@@ -5,9 +5,9 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
                     <div class="footer-logo">
                         <h2 class="banner-headding" style="font-size: 30px; ">Yummy<span>Taste</span>Bud</h2>
-                        <p class="footer-des">20 Carrochan Rd, Balloch, Alexandria G83 8EG, UK 69QJ+2F Alexandria, United Kingdom</p>
+                        <p class="footer-des">Auchi, Edo state</p>
                         <ul>
-                            <li>phone - <a href="http://themes.templatescoder.com/pizzon/html/demo/1-0/+911234567890">+91 123 456 789 0 , +91 123 456 789 0</a></li>
+                            <li>phone - <a href="http://themes.templatescoder.com/pizzon/html/demo/1-0/+911234567890">+234 123 456 789 0</a></li>
                             <li>email - <a href="../../../../cdn-cgi/l/email-protection.htm#75060005051a070135051c0f0f1a1b5b161a18"><span class="__cf_email__" data-cfemail="89fafcf9f9e6fbfdc9f9e0f3f3e6e7a7eae6e4">[email&#160;protected]</span></a></li>
                         </ul>
                     </div>

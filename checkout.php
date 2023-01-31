@@ -95,6 +95,10 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                 <table class="table m-0">
                                     <tbody>
                                         <tr>
+                                            <td><b>Quantity :</b></td>
+                                            <td><?php echo $order_['qty'] ?></td>
+                                        </tr>
+                                        <tr>
                                             <td><b>SubTotal :</b></td>
                                             <td>&#8358;<?php echo number_format($subTotal) ?></td>
                                         </tr>
@@ -285,11 +289,6 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-
                                         </ul>
                                     </div>
                                 </div>
@@ -308,6 +307,14 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                 ?>
                                 <table class="table m-0">
                                     <tbody>
+                                          <tr>
+                                            <td><b>Quantity :</b></td>
+                                            <td><?php echo $order_['qty']  ?></td>
+                                        </tr>
+                                                  <?php
+                                                }
+                                            }
+                                            ?>
                                         <tr>
                                             <td><b>SubTotal :</b></td>
                                             <td>&#8358;<?php echo number_format($subTotal) ?></td>

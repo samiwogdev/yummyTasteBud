@@ -135,8 +135,8 @@ if($status = "success"){
                             <hr>
                             <p class="" style="font-size: 12px">Your issuance certificate has been sent to your email <strong>[<?php echo $_SESSION['email'] ?>]</strong></p>
                             <p class="" style="font-size: 12px">Transfer Reference:<strong> <?php echo $txnref ?></strong></p>
-                            <a href="dashboard/order-history" class="btn btn-success" data-dismiss="modal"><span>View order Details</span> <i class="material-icons"></i></a>
-                            <a href="index#menu-list" class="btn btn-success" data-dismiss="modal"><span>Continue Shopping</span> <i class="material-icons"></i></a>
+                            <a href="dashboard/index" class="btn btn-success" data-dismiss="modal"><span>View order Details</span> <i class="material-icons"></i></a>
+                            <a href="#" class="btn btn-success" data-dismiss="modal"><span>Continue Shopping</span> <i class="material-icons"></i></a>
                         </div>
                     </div>
                 </div>
@@ -153,8 +153,8 @@ if($status = "success"){
                             <hr>
                             <p class="" style="font-size: 12px">Reason: <strong>Incomplete Transaction</strong></p>
                             <p class="" style="font-size: 12px">Transfer Reference: <strong> <?php echo $txnref ?></strong></p>
-                            <a href="dashboard/order-history" class="btn btn-success" data-dismiss="modal"><span>View order Details</span> <i class="material-icons"></i></a>
-                            <a href="index#menu-list" class="btn btn-success" data-dismiss="modal"><span>Continue Shopping</span> <i class="material-icons"></i></a>
+                            <a href="dashboard/index" class="btn btn-success" data-dismiss="modal"><span>View order Details</span> <i class="material-icons"></i></a>
+                            <a href="#" class="btn btn-success" data-dismiss="modal"><span>Continue Shopping</span> <i class="material-icons"></i></a>
                         </div>
                     </div>
                 </div>

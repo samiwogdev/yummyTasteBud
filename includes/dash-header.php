@@ -1,10 +1,9 @@
 <?php
 include_once '../convig.php';
-//echo $_SESSION['username']; exit;
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
+if (!isset($_SESSION['email'])) {
+    header("location: ../");
+    exit;
+}
 
 //$pmtlog = PmtLog::getInstance();
 //$cus_assets_repo = CusAssetsRepo::getInstance();
@@ -15,6 +14,7 @@ $shop = Shop::getInstance();
 $shop_pic = ShopItemPics::getInstance();
 $delivery = Delivery::getInstance();
 $settings = Settings::getInstance();
+$order = Order::getInstance();
 ?>
 ﻿<!doctype html>
 <html class="no-js " lang="en">

@@ -94,8 +94,8 @@ $settings = Settings::getInstance();
                                             <ul class="sub-menu-level1">
                                                 <li class="level2">
                                                     <ul class="sub-menu-level2 ">
-                                                        <li class="level3"><a href="#"> View order history</a>
-                                                             <li class="level"><a href="signin" class="page-scroll">Logout</a></li>
+                                                        <li class="level3"><a href="dashboard/">Order history</a>
+                                                             <li class="level"><a href="log" class="page-scroll">Logout</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
