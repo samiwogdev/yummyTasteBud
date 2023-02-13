@@ -115,7 +115,7 @@
                         foreach ($menus as $menu_) {
                             ?>                                                    
                             <li role="presentation" class="text-uppercase font-weight-bold tab-link" data-tab="tab-<?php echo $menu_['id'] ?>"><a href="#tab-<?php echo $menu_['id'] ?>" role="tab" data-toggle="tab"> <?php echo $menu_['name'] ?></a></li>
-<?php } ?>
+                     <?php } ?>
                     </ul>
                 </div>
             </div>

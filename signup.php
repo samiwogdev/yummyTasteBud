@@ -39,38 +39,38 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="zip">Fullname *</label>
+                                        <label>Fullname *</label>
                                         <input name="fullname" type="text" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">Phone*</label>
-                                        <input name="phone" type="text" required="">
+                                        <label>Phone*</label>
+                                        <input name="phone" type="number" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">Email*</label>
+                                        <label>Email*</label>
                                         <input name="email" type="email" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">address*</label>
+                                        <label >address*</label>
                                         <input name="address" type="text" required="">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Password</label>
-                                        <input name="password" id="psd" type="text">
+                                        <input name="password" id="psd" type="password" required="">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Confirm password</label>
-                                        <input id="cfm_psd" type="text" onkeyup="validatePass()">
+                                        <input id="cfm_psd" type="password" onkeyup="validatePass()" required="">
                                         <p class="text-danger" id="msg" style="display: none"> Password & Confirm password does not match!</p>
                                     </div>
                                 </div>
@@ -91,7 +91,6 @@
                                 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -112,38 +111,38 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="zip">Fullname *</label>
+                                        <label>Fullname *</label>
                                         <input name="fullname" type="text" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">Phone*</label>
-                                        <input name="phone" type="text" required="">
+                                        <label >Phone*</label>
+                                        <input name="phone" type="number" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">Email*</label>
+                                        <label >Email*</label>
                                         <input name="email" type="email" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="city">address*</label>
+                                        <label >address*</label>
                                         <input name="address" type="text" required="">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Password</label>
-                                        <input name="password" id="psd" type="text">
+                                        <input name="password" type="password" id="psd" required="">
                                     </div>
                                 </div>
                                   <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-name">Confirm password</label>
-                                        <input id="cfm_psd" type="text" onkeyup="validatePass()">
+                                        <input id="cfm_psd" type="password" onkeyup="validatePass()" required="">
                                         <p class="text-danger" id="msg" style="display: none"> Password & Confirm password does not match!</p>
                                     </div>
                                 </div>
@@ -187,3 +186,50 @@
     }
 </script>
 <?php include_once './includes/footer.php'; ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "empty") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Please, fill all form inputs "
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "phoneExist") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Phone number already exist"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "emailExist") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Email already exist, please login"
+            })
+        });
+    </script> 
+<?php } ?>
+

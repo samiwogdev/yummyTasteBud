@@ -36,5 +36,5 @@ $order = Order::getInstance();
         <link rel="stylesheet" href="assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.3-web/css/all.css">
         <link href="assets/plugins/dropzone/dropzone.css" rel="stylesheet">
-        <link href="../css/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+        <link type="text/css" href="../css/sweetalert2/sweetalert2.min.css" rel="stylesheet" media="all">
     </head>

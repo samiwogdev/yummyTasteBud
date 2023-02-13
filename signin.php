@@ -93,13 +93,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="full-name">Email*</label>
-                                        <input id="full-name" name="email" type="text" required="">
+                                        <input id="full-name" name="email" type="email" required="">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label >Password</label>
-                                        <input type="password"  name="password" type="text">
+                                        <input type="password"  name="password" required="">
                                     </div>
                                 </div>
                                 <div class="container">
@@ -119,7 +119,7 @@
                                 <div class="col-12 mt-3 text-center">
                                     <div class="check-box">
                                         <span>
-                                            <label for="create-account" class="mb-0"><a href="#" style="color: #fd9d3e">Forgot Password?</a></label>
+                                            <label for="create-account" class="mb-0"><a href="forgot_pass" style="color: #fd9d3e">Forgot Password?</a></label>
                                         </span>
                                     </div>
                                 </div>
@@ -134,5 +134,66 @@
         <?php } ?>
     </div>
 </section>
-
 <?php include_once './includes/footer.php'; ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "empty") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Please, fill all form inputs "
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "invalidUser") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Email or password is incorrect !"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "pass_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Password reset Successfully, please login"
+            })
+        });
+    </script> 
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "login") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: " please login, to continue"
+            })
+        });
+    </script> 
+<?php } ?>
+

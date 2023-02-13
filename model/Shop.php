@@ -13,6 +13,7 @@ class Shop extends Connection {
     private $description;
     private $price;
     private $alias;
+    private $status;
     private $table_name = "shop";
     private static $instance;
 
@@ -62,6 +63,14 @@ class Shop extends Connection {
 
     public function setAlias($alias): void {
         $this->alias = $alias;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function setStatus($status): void {
+        $this->status = $status;
     }
 
     public static function getInstance() {
@@ -121,6 +130,18 @@ class Shop extends Connection {
         return $statement->execute();
     }
 
+    public function updateStatusbyID($id, $status) {
+        $sql = "UPDATE " . $this->table_name . " SET status = :status WHERE id = :id";
+        $statement = $this->getConnection()->prepare($sql);
+
+        $this->id = self::sanitize_input($id);
+        $this->status = self::sanitize_input($status);
+
+        $statement->bindParam(":status", $this->status);
+        $statement->bindParam(":id", $this->id);
+        return $statement->execute();
+    }
+
     public function delete($id) {
         $sql = "DELETE FROM " . $this->table_name . " WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
@@ -158,7 +179,8 @@ class Shop extends Connection {
 
         return $row;
     }
-       public function get_menu_id_2($id) {
+
+    public function get_menu_id_2($id) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
         $statement = $this->getConnection()->prepare($sql);
         $this->id = self::sanitize_input($id);
@@ -205,7 +227,5 @@ class Shop extends Connection {
 
         return $row;
     }
-
-
 
 }

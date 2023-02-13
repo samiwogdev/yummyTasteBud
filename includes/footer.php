@@ -4,16 +4,21 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
                     <div class="footer-logo">
+                        <?php
+                        $address =  $settings->get_settings_by_title("address");
+                        $phone =  $settings->get_settings_by_title("phone");
+                        $email =  $settings->get_settings_by_title("email");
+                        ?>
                         <h2 class="banner-headding" style="font-size: 30px; ">Yummy<span>Taste</span>Bud</h2>
-                        <p class="footer-des">Auchi, Edo state</p>
+                        <p class="footer-des"><?php echo $address['definition']  ?></p>
                         <ul>
-                            <li>phone - <a href="http://themes.templatescoder.com/pizzon/html/demo/1-0/+911234567890">+234 123 456 789 0</a></li>
-                            <li>email - <a href="../../../../cdn-cgi/l/email-protection.htm#75060005051a070135051c0f0f1a1b5b161a18"><span class="__cf_email__" data-cfemail="89fafcf9f9e6fbfdc9f9e0f3f3e6e7a7eae6e4">[email&#160;protected]</span></a></li>
+                            <li>phone - <a href="<?php echo $phone['definition'] ?>"><?php echo $phone['definition'] ?></a></li>
+                            <li>email - <a href="<?php echo $email['definition'] ?>"><span class="__cf_email__"><?php echo $email['definition'] ?></span></a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
+<!--                <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
                     <div class="opening-hours">
                         <h2>Opening Hours</h2>
                         <ul>
@@ -23,19 +28,15 @@
                             <li>Sunday :  <span class="footer-close">Closed</span></li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="col-xl-4 col-lg-4 col-md-4 footer-box">
                     <div class="useful-links">
                         <h2>useful links</h2>
                         <ul>
-                            <!--                                    <li><a href="#">Privacy Policy</a></li>
-                                                                <li><a href="#">Order Tracking</a></li>
-                                                                <li><a href="#">Warranty and Services</a></li>-->
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Menu</a></li>
-                            <li><a href="contact">Contact Us</a></li>
-                            <li><a href="#">Signup</a></li>
+                            <li><a href="./">Home</a></li>
+                            <li><a href="signin">Login</a></li>
+                            <li><a href="signup">Signup</a></li>
                         </ul>
                     </div>
                 </div>
@@ -49,10 +50,14 @@
 
                 <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
                     <ul>
-                        <li><a href="shop-detail.html#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="shop-detail.html#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="shop-detail.html#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="shop-detail.html#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <?php
+                       $facebook =  $settings->get_settings_by_title("facebook");
+                       $twitter =  $settings->get_settings_by_title("twitter");
+                       $instagram =  $settings->get_settings_by_title("instagram");
+                        ?>
+                        <li><a href="<?php echo $facebook['definition']  ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $twitter['definition'] ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $instagram['definition'] ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -65,6 +70,8 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/modernizr.js"></script>
+<script src="css/sweetalert2/sweetalert2.min.js"></script>
+
 <script>
     $(document).ready(function () {
         //If your <ul> has the id "glasscase"
@@ -76,6 +83,21 @@
     });
 </script>
 <script src="js/script.js"></script>
-
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+2348066695469", // WhatsApp number
+            call_to_action: "Pre order your Menu", // Call to action
+            button_color: "#FF6550", // Color of button
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /GetButton.io widget -->
 </body>
 </html>

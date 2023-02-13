@@ -1,10 +1,6 @@
 <?php 
 include_once '../includes/admin-header.php';
-$page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
+$page = "settings";
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>
@@ -118,7 +114,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu updated successfully"
+                title: "Settings updated successfully"
             })
         });
     </script>  
@@ -133,7 +129,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu Added Successfully"
+                title: "Settings Added Successfully"
             })
         });
     </script>  
@@ -148,7 +144,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu deleted successfully"
+                title: "Settings deleted successfully"
             })
         });
     </script> 

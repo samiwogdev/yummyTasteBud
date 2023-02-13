@@ -1,10 +1,6 @@
 <?php 
 include_once '../includes/admin-header.php';
 $page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>

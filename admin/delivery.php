@@ -1,10 +1,6 @@
 <?php 
 include_once '../includes/admin-header.php';
 $page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>
@@ -94,7 +90,7 @@ include_once '../includes/admin-sidebar.php';
                             if (isset($_POST['name'])) {
                                 echo $_POST['name'];
                             }
-                            ?>" name="location" class="form-control" placeholder="Enter Location Name ">
+                            ?>" name="location" class="form-control" placeholder="Enter Location Name " required="">
                         </div>
                     </div>
                     <div class="col-lg-12 col-12">
@@ -106,7 +102,7 @@ include_once '../includes/admin-sidebar.php';
                             if (isset($_POST['amount'])) {
                                 echo $_POST['amount'];
                             }
-                            ?>" name="amount" class="form-control" placeholder="Enter Delivery Amount ">
+                            ?>" name="amount" class="form-control" placeholder="Enter Delivery Amount " required="">
                         </div>
                     </div>
                 </div>
@@ -131,7 +127,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu updated successfully"
+                title: "Delivery info updated successfully"
             })
         });
     </script>  
@@ -146,7 +142,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu Added Successfully"
+                title: "Delivery info Added Successfully"
             })
         });
     </script>  
@@ -161,7 +157,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu deleted successfully"
+                title: "Delivery info deleted successfully"
             })
         });
     </script> 

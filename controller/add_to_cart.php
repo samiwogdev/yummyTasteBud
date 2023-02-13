@@ -9,7 +9,7 @@ if (NULL == filter_input(INPUT_GET, "n")) {
 
 $shop_id = filter_input(INPUT_GET, "n");
 if (!isset($_SESSION['email'])) {
-    header("location: ../signin?n=" . $shop_id);
+    header("location: ../signin?info=login&n=" . $shop_id);
     exit;
 }
 if (!isset($_POST['addcart'])) {
@@ -25,10 +25,9 @@ $qty = filter_input(INPUT_POST, "quantity");
 $order = Order::getInstance();
 
 if ($order->add($_SESSION['email'], $shop_id, $qty)) {
-    header("location: ../cart?info=success&n=" . $shop_id);
+    header("location: ../cart?info=cartsuccess&n=" . $shop_id);
     exit;
 } else {
-    header("location: ../shop-details?info=invalid&n=" . $shop_id);
     header("location: ../shop-details?info=invalid&n=" . $shop_id);
     exit;
 }

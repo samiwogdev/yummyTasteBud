@@ -1,9 +1,4 @@
 <?php
-//include_once '../convig.php';
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 $page = "def";
 if (!isset($_GET['n'])) {
     header("location: delivery?info=invalid");

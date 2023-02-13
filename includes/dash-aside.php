@@ -14,6 +14,7 @@
                         </div>
                     </li>
                     <li class="active open"><a href="index"><i class="fa fa-shopping-bag mr-2"></i><span>order</span></a></li>
+                    <li class=""><a href="../"><i class="fa fa-home mr-2"></i><span>Home</span></a></li>
                     <li class=""><a href="log"><i class="text-danger zmdi zmdi-power"></i><span>logout</span></a></li>
                 </ul>
             </div>

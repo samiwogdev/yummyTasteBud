@@ -1,10 +1,6 @@
 <?php 
 include_once '../includes/admin-header.php';
 $page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>
@@ -92,7 +88,7 @@ include_once '../includes/admin-sidebar.php';
                             if (isset($_POST['name'])) {
                                 echo $_POST['name'];
                             }
-                            ?>" name="name" class="form-control" placeholder="Enter Menu Name ">
+                            ?>" name="name" class="form-control" placeholder="Enter Menu Name" required="">
                         </div>
                     </div>
                 </div>
@@ -105,8 +101,7 @@ include_once '../includes/admin-sidebar.php';
 </div>
 
 <?php include_once '../includes/admin-footer.php'; ?>
-  
-<?php if (isset($_GET['info']) && $_GET['info'] == "upt_success") { ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "name_empty") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -116,12 +111,12 @@ include_once '../includes/admin-sidebar.php';
         });
         $(document).ready(function () {
             Toast.fire({
-                icon: 'success',
-                title: "Menu updated successfully"
+                icon: 'error',
+                title: "Please enter name"
             })
         });
     </script>  
-<?php } elseif (isset($_GET['info']) && $_GET['info'] == "success") { ?>
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "menu_success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -163,6 +158,21 @@ include_once '../includes/admin-sidebar.php';
             Toast.fire({
                 icon: 'error',
                 title: "fill all input"
+            })
+        });
+    </script> 
+    <?php } elseif (isset($_GET['info']) && $_GET['info'] == "upt_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Menu updated successfully"
             })
         });
     </script> 

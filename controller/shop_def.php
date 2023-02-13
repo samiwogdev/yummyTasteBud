@@ -48,7 +48,7 @@ if (isset($_POST['shop_def'])) {
 
     $shop = Shop::getInstance();
     if ($shop->add($category, $name, $alias, $description, $price)) {
-        header("location: ../admin/shop?info=success");
+        header("location: ../admin/shop?info=shop_success");
         exit;
     } else {
         header("location: ../admin/shop?info=" . $errorMsg);

@@ -22,6 +22,7 @@ $settings = Settings::getInstance();
         <link rel="stylesheet" type="text/css" href="css/glass-case.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <link type="text/css" href="css/sweetalert2/sweetalert2.min.css" rel="stylesheet" media="all">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142494086-2"></script>
         <script>
@@ -33,6 +34,15 @@ $settings = Settings::getInstance();
 
             gtag('config', 'UA-142494086-2');
         </script>
+        <style>
+   .overlay-div{
+   height:100%;
+   width: 100%;
+   position:absolute;
+   background-color:#000;
+   opacity:.7;
+}
+        </style>
     </head>
     <body>
 
@@ -125,7 +135,7 @@ $settings = Settings::getInstance();
                                     </li>
                                 <?php } else { ?>
                                     <li class="order-online">
-                                        <a href="#" class="btn btn-green">Order online</a>
+                                        <a href="index#menu-list" class="btn btn-green">Order online</a>
                                     </li>
                                 <?php } ?>
                                 <li class="side-toggle">

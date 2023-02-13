@@ -26,13 +26,16 @@ if(isset($_POST['delivey_def'])){
     }
     
     $customer = Customer::getInstance();
+    if($customer->checkPhone($phone) == '1'){
+     header("location: ../checkout?info=phoneExist&n=$delivery_id");
+     exit;
+    }
     if ($customer->updateByEmail($phone, $_SESSION['email'], $address)) {
-        header("location: ../checkout?info=upt_success&n=$delivery_id");
+        header("location: ../checkout?info=del_upt_success&n=$delivery_id");
     } else {
-        header("location: ../checkout?info=" . $errorMsg);
+        header("location: ../checkout?info=failed");
     }
 } else {
-    echo 'no'; exit;
     header("location: ../index");
 }
 ?>

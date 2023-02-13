@@ -60,12 +60,12 @@ if (NULL !== filter_input(INPUT_GET, "n")) {
     $email_check = $customer->checkEmail($email);
 
     if ($email_check > 0) {
-        header("location: ../signup?info=invalid2");
+        header("location: ../signup?info=emailExist");
         exit;
     }
 
     if ($phone_check > 0) {
-        header("location: ../signup?info=invalid3");
+        header("location: ../signup?info=phoneExist");
         exit;
     }
 

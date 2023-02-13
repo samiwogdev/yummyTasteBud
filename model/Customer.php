@@ -113,6 +113,18 @@ class Customer extends Connection {
         $statement->bindParam(":password", $this->password);
         return $statement->execute();
     }
+    public function updatePasswordByEmail($email, $password) {
+        $sql = "UPDATE " . $this->table_name . " SET password = :password WHERE email = :email";
+        $statement = $this->getConnection()->prepare($sql);
+
+        $this->email = self::sanitize_input($email);
+        $temp_pswd = self::sanitize_input($password);
+        $this->password = password_hash($temp_pswd , PASSWORD_DEFAULT);
+
+        $statement->bindParam(":email", $this->email);
+        $statement->bindParam(":password", $this->password);
+        return $statement->execute();
+    }
     
     public function updateByEmail($phone, $email, $address) {
         $sql = "UPDATE " . $this->table_name . " SET phone = :phone, address = :address WHERE email = :email";

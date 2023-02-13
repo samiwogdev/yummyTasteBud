@@ -1,10 +1,6 @@
 <?php 
 include_once '../includes/admin-header.php';
 $page = "def";
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
 include_once '../includes/admin-nav-bar.php';
 include_once '../includes/admin-sidebar.php';
 ?>
@@ -42,6 +38,7 @@ include_once '../includes/admin-sidebar.php';
                                 <th>Alias</th>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>                            
@@ -60,6 +57,14 @@ include_once '../includes/admin-sidebar.php';
                                         <td><?php echo $shop_['alias'] ?></td>
                                         <td><?php echo $shop_['description'] ?></td>
                                         <td><?php echo $shop_['price'] ?></td>
+                                        <?php
+                                        if($shop_['status'] == 1){
+                                            $status = "Available";
+                                        }else{
+                                            $status = "Out of Stock";
+                                        }
+                                        ?>
+                                        <td><?php echo $status ?></td>
                                         <td>
                                             <div class="dropdown" style="display: inline !important">
                                                 <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -69,6 +74,18 @@ include_once '../includes/admin-sidebar.php';
                                                     <a class="dropdown-item" href="shop_image?n=<?php echo $shop_['id'] ?>"><i class="fa fa-plus m-r-15 text-info"></i>Add new image</a>
                                                     <a class="dropdown-item" href="shop_image?n=<?php echo $shop_['id'] ?>"><i class="fa fa-location-arrow m-r-15 text-info"></i>View all images</a>
                                                 </div>
+                                              
+                                            </div>
+                                            <div class="dropdown" style="display: inline !important">
+                                                <a class="dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-cogs m-r-15 text-warning" title="status"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="../controller/shop_status?n2=<?php echo $shop_['id'] ?>&n=<?php echo $shop_['status'] ?>"><i class="fa fa-check-circle m-r-15 text-primary"></i>Available</a>
+                                                    <hr class="m-0 p-0">
+                                                    <a class="dropdown-item" href="../controller/shop_status?n2=<?php echo $shop_['id'] ?>&n=<?php echo $shop_['status'] ?>"><i class="fa fa-circle m-r-15 text-secondary"></i>Out of stock</a>
+                                                </div>
+                                              
                                             </div>
                                              <a href="update_shop?n=<?php  echo $shop_['id']  ?>"><i class="fa fa-edit m-r-15 text-success" title="update shop item"></i></a>
                                             <div class="dropdown" style="display: inline !important">
@@ -103,7 +120,7 @@ include_once '../includes/admin-sidebar.php';
                 <?php $menus = $menu->get_all(); ?>
                 <div class="modal-body"> 
                     <div class="col-lg-12 col-12 mb-3">
-                        <select name="category" class="form-control m-b-15">
+                        <select name="category" class="form-control m-b-15" required="">
                            <option value="0" selected="selected">--Select Category--</option>
                             <?php foreach ($menus as $menu_){ ?>
                             <option value="<?php echo $menu_['id']?>"><?php echo $menu_['name'] ?></option>
@@ -119,11 +136,11 @@ include_once '../includes/admin-sidebar.php';
                             if (isset($_POST['name'])) {
 //                                echo $_POST['name'];
                             }
-                            ?>" name="name" class="form-control" placeholder="Enter Name ">
+                            ?>" name="name" class="form-control" placeholder="Enter Name " required="">
                         </div>
                     </div>
                     <div class="col-lg-12 col-12 mb-3" id="bigcontainer">
-                        <select name="alias" class="form-control m-b-15">
+                        <select name="alias" class="form-control m-b-15" required="">
                             <option value="0" selected="selected">--Select Alias--</option>
                             <option value="Regular">Regular</option>
                             <option value="Special">Special</option>
@@ -131,7 +148,7 @@ include_once '../includes/admin-sidebar.php';
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <textarea rows="4" name="description" class="form-control no-resize" placeholder="Description"></textarea>
+                            <textarea rows="4" name="description" class="form-control no-resize" placeholder="Description" required=""></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12 col-12">
@@ -143,7 +160,7 @@ include_once '../includes/admin-sidebar.php';
                             if (isset($_POST['price'])) {
 //                                echo $_POST['name'];
                             }
-                            ?>" name="price" class="form-control" placeholder="Enter Price ">
+                            ?>" name="price" class="form-control" placeholder="Enter Price " required="">
                         </div>
                     </div>
                 </div>
@@ -157,7 +174,7 @@ include_once '../includes/admin-sidebar.php';
 
 
 <?php include_once '../includes/admin-footer.php'; ?>
-<?php if (isset($_GET['info']) && $_GET['info'] == "empty") { ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "shop_success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -167,8 +184,8 @@ include_once '../includes/admin-sidebar.php';
         });
         $(document).ready(function () {
             Toast.fire({
-                icon: 'error',
-                title: "fill all input!"
+                icon: 'success',
+                title: "Shop item added successfuly"
             })
         });
     </script> 
@@ -188,7 +205,7 @@ include_once '../includes/admin-sidebar.php';
         });
     </script> 
 
-<?php }if (isset($_GET['info']) && $_GET['info'] == "invalid") { ?>
+<?php }if (isset($_GET['info']) && $_GET['info'] == "failed") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -232,22 +249,7 @@ include_once '../includes/admin-sidebar.php';
                 title: "Invalid Amount"
             })
         });
-    </script>  
-<?php } elseif (isset($errorMsg) && $errorMsg == "dept_empty") { ?>
-    <script type="text/javascript">
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
-        $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
-                title: "Invalid Department"
-            })
-        });
-    </script>  
+    </script>   
 <?php } elseif (isset($_GET['info']) && $_GET['info'] == "upt_success") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
@@ -259,7 +261,7 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu updated successfully"
+                title: "Item updated successfully"
             })
         });
     </script>  
@@ -278,7 +280,7 @@ include_once '../includes/admin-sidebar.php';
             })
         });
     </script>  
-<?php } elseif (isset($_GET['info']) && $_GET['info'] == "del_success") { ?>
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "status_updt") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
             toast: true,
@@ -289,7 +291,22 @@ include_once '../includes/admin-sidebar.php';
         $(document).ready(function () {
             Toast.fire({
                 icon: 'success',
-                title: "Menu deleted successfully"
+                title: "Item status updated successfully"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "empty") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Please fill all input form"
             })
         });
     </script>  

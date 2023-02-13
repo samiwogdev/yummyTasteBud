@@ -457,44 +457,43 @@ button.news-more {border: unset; background: transparent;}
 .about-pizzon-img .pizzon-ab {max-height: 580px;}
 /* About Block css End */
 
-/*Menu Page  //----------------------------*/
-.page-banner{padding-top: 185px; padding-bottom: 120px;}
-.page-title{text-align: center;}
+/* -------------// Menu Page //------------- */
+.page-banner{padding-top: 185px; padding-bottom: 120px;position: relative;}
+.page-title{text-align: center;position: relative;z-index: 9;}
+.page-banner::after {content: "";position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;background: #121619;opacity: 0.8;}
 .page-headding{font-size: 50px; color: #fff; font-weight: 700; text-transform: uppercase;}
 .page-name:hover{color: #fd9d3e;}
-.page-title ul li{position: relative; padding: 0px 10px; display: inline-block; padding-top: 10px; color: #fff;}
+.page-title ul li{position: relative; padding: 0px 10px; display: inline-block; padding-top: 10px; color: #fff;text-transform: capitalize;}
 .page-title ul li:before{content: ""; position: absolute; width: 1px; height: 15px; background: #fff; top: 16px; left: -2px; transform: rotate(15deg);}
 .page-title ul li:first-child:before{content: unset;}
-.page-title ul li a{font-size: 16px; color: #fff; display: block;}
-.menu-list.pt-100 {padding-bottom: 50px;}
+.page-title ul li a{font-size: 16px; color: #fff; display: block;text-transform: capitalize;}
 .menu-tabbing{text-align: center; padding-bottom: 50px;}
 .menu-tabbing ul{background: #ebebeb; display: inline-block; border-radius: 50px;}
 .menu-tabbing ul li{display: inline-block;}
-.menu-tabbing ul li a{font-size: 14px; color: #121619; font-weight: 700; padding: 15px 28px; display: block; text-transform: uppercase;}
-.menu-tabbing ul li a.active{background: #fd9d3e; border-radius: 50px;}
+.menu-tabbing .nav-tabs li a{font-size: 14px; color: #121619; font-weight: 700; padding: 15px 28px; display: block; text-transform: uppercase; border: unset; border-radius: 50px;}
+.menu-tabbing .nav-tabs li a.active{background: #fd9d3e; border-radius: 50px;color: #fff;}
 .menu-list-box{margin-bottom: 20px;}
 .list-img img{width: 100%; object-fit: cover;}
 .menu-detail{text-align: center; padding: 20px 30px;}
-.iteam-name{font-size: 20px; color: #121619; font-weight: 700; text-transform: uppercase; padding-bottom: 10px; letter-spacing: 1px;}
+.iteam-name{font-size: 20px; color: #121619; font-weight: 700; text-transform: uppercase; padding-bottom: 4px; letter-spacing: 1px;display: inline-block;}
 .iteam-name:hover{color: #fd9d3e;}
 .list-img-2 img:hover{transform: scale(1.1);}
 .menu-detail ul li{font-size: 16px; color: #888888; display: inline-block; padding: 0px 10px; position: relative;}
 .menu-detail ul li:before{content: ""; background: #888888; position: absolute; top: 5px; width: 1px; height: 15px; left: 0; transform: rotate(20deg);}
 .menu-detail ul li:first-child:before{content: unset;}
 .iteam-desc{font-size: 14px; color: #888888; padding-top: 8px; padding-bottom: 15px;}
-.menu-list-box-2 .iteam-desc{height: 55px; overflow: hidden;}
 .iteam-order{font-size: 16px; color: #fd9d3e; font-weight: 700; text-transform: uppercase; text-decoration: underline;}
 .iteam-order:hover {color: #121619; text-decoration: underline;}
 .list-img {position: relative; overflow: hidden; top: 0; transition: all 400ms ease;}
 .list-img::before { position: absolute; top: 50%; left: 50%; z-index: 2; display: block; content: ''; width: 0; height: 0; background: rgba(255,255,255,.2); border-radius: 100%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 0;}
-.list-img:hover{top: -10px;}
+.menu-list-box:hover .list-img{top: -10px;}
 .menu-list-box-2{display: flex; align-items: center; padding: 0px 20px; margin-bottom: 30px;}
 .list-img-2{width: 105px; height: 105px; border-radius: 100%; float: left; overflow: hidden;}
 .list-img-2 img{width: 100%; object-fit: cover; transition: all 400ms ease;}
 .menu-detail-2{width: calc(100% - 105px); float: left; padding-left: 20px;}
+.menu-detail-2 .iteam-name{padding-bottom: 0px;padding-top: 0px;}
 .iteam-name-list{border-bottom: 1px solid #e4e4e4; padding-bottom: 10px; margin-bottom: 3px;}
 .iteam-srice{font-size: 20px; font-weight: 700; color: #fd9d3e; float: right;}
-/*Menu Page End*/
 
 
 /*Blog Page  //----------------------------*/

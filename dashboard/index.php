@@ -38,6 +38,7 @@ include_once '../includes/dash-aside.php';
                                 <th>Quantity</th>
                                 <th>Order ID</th>
                                 <th>Amount paid</th>
+                                <th>Delivery</th>
                                 <th>Status</th>
 <!--                                <th>Action</th>-->
                             </tr>
@@ -60,15 +61,24 @@ include_once '../includes/dash-aside.php';
                                 <td><?php echo $shop_item['description'] ?></td>
                                 <td><?php echo $myOrder['qty'] ?></td>
                                 <td><?php echo $myOrder['trans_ref'] ?></td>
-                                <td><?php echo $myOrder['amount_paid'] ?></td>            
-                                <?php if ($myOrder['order_status'] == 1) { ?>
-                                    <td><span class=" bg-warning text-white p-2">...Waiting</span></td> 
-                                <?php } elseif ($myOrder['order_status'] == 2) { ?>
-                                    <td><span class=" bg-success text-white p-2">Completed</span></td>         
-                                <?php } else { ?>
-                                    <td><span class=" bg-danger text-white p-2">Cancelled</span></td> 
+                                <td><?php echo $myOrder['amount_paid'] ?></td> 
+                                  <?php
+                                    if ($myOrder['delivery_id'] == 0) {
+                                        $del_method = "Pick up";
+                                    } else {
+                                        $del_method = "Door delivery";
+                                    }
+                                    ?>
+                                <td><?php echo $del_method ?></td>            
+                                <?php if ($myOrder['order_status'] == 0) { ?>
+                                    <td><span class=" bg-info text-white p-2">Pending</span></td> 
+                                <?php } elseif ($myOrder['order_status'] == 1) { ?>
+                                    <td><span class=" bg-warning text-white p-2">..In progress</span></td>         
+                                <?php } elseif ($myOrder['order_status'] == 2){ ?>
+                                    <td><span class=" bg-success text-white p-2">Completed</span></td> 
+                                <?php }else{ ?>
+                                    <td><span class=" bg-danger text-white p-2">Canceled</span></td>
                                 <?php } ?>
-<!--                                    <td></td>-->
                                 </tr>
                                 <?php
                                 $counter++;
@@ -83,7 +93,7 @@ include_once '../includes/dash-aside.php';
                 <div class="table-responsive">
                     <table class="table table-borderless" style="width: 100%; ">
                         <?php
-                         $myOrders = $order->getOrderPayed($_SESSION['email']);
+                        $myOrders = $order->getOrderPayed($_SESSION['email']);
                         if ($myOrders != 0) {
                             $counter = 1;
                             foreach ($myOrders as $myOrder) {
@@ -92,7 +102,7 @@ include_once '../includes/dash-aside.php';
                                 ?>
                                 <tbody>
                                     <tr class="text-dark" style="border: solid 2px #036494"> 
-                                        <td><?php echo $counter. '.'. " ". $shop_item['name'] ?> </td>
+                                        <td><?php echo $counter . '.' . " " . $shop_item['name'] ?> </td>
                                     </tr>
                                     <tr> 
                                         <td>
@@ -101,36 +111,42 @@ include_once '../includes/dash-aside.php';
                                             </div>
                                         </td>
                                     </tr>
-                                      <tr>
-                                        <td><span class="font-weight-bold">Description:</span> <?php echo $shop_item['description']?></td> 
+                                    <tr>
+                                        <td><span class="font-weight-bold">Description:</span> <?php echo $shop_item['description'] ?></td> 
                                     </tr>
                                     <tr>
-                                        <td><span class="font-weight-bold">Quantity:</span> <?php echo $myOrder['qty']?></td> 
+                                        <td><span class="font-weight-bold">Quantity:</span> <?php echo $myOrder['qty'] ?></td> 
                                     </tr>
                                     <tr>
-                                        <td><span class="font-weight-bold">Order ID:</span> <?php echo $myOrder['trans_ref']?></td> 
+                                        <td><span class="font-weight-bold">Order ID:</span> <?php echo $myOrder['trans_ref'] ?></td> 
                                     </tr>
                                     <tr>
-                                        <td><span class="font-weight-bold">Amount paid:</span> <?php echo $myOrder['amount_paid']?></td> 
+                                        <td><span class="font-weight-bold">Amount paid:</span> <?php echo $myOrder['amount_paid'] ?></td> 
                                     </tr>
                                     <tr>
                                         <?php
-                                        if($myOrder['order_status'] == 1){ ?>
-                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-warning text-white p-2">... In progress</span></td> 
-                                      <?php  }elseif ($myOrder['order_status'] == 2) { ?>
-                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-success text-white p-2">Completed</span></td>         
-                                              <?php      }else{  ?>
-                                                  <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-danger text-white p-2">Cancelled</span></td> 
-                                              <?php } ?>
-                                        
+                                        if ($myOrder['delivery_id'] == 0) {
+                                            $del_method = "Pick up";
+                                        } else {
+                                            $del_method = "Door delivery";
+                                        }
+                                        ?>
+                                        <td><span class="font-weight-bold">Delivery:</span> <?php echo $del_method ?></td> 
                                     </tr>
-<!--                                    <tr>
-                                        <th><a href="pay_summary?auth=1" class="btn btn-sm">Select</a></th>
-
-                                    </tr>-->
+                                    <tr>
+                                        <?php if ($myOrder['order_status'] == 0) { ?>
+                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-info text-white p-2">Pending</span></td> 
+                                        <?php } elseif ($myOrder['order_status'] == 1) { ?>
+                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-warning text-white p-2">...Ongoing</span></td>         
+                                        <?php } elseif ($myOrder['order_status'] == 2) { ?>
+                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-success text-white p-2">Completed</span></td> 
+                                        <?php } else { ?>
+                                            <td><span class="font-weight-bold mr-2">Status:</span><span class=" bg-danger text-white p-2">Canceled</span></td> 
+                                        <?php } ?>
+                                    </tr>
                                 </tbody>
-                            <?php 
-                            $counter ++;
+                                <?php
+                                $counter++;
                             }
                         }
                         ?>

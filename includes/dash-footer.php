@@ -15,5 +15,5 @@
 <script src="assets/bundles/mainscripts.bundle.js"></script>
 <script src="assets/js/pages/index.js"></script>
 <script src="assets/js/pages/tables/jquery-datatable.js"></script>
-<script src="../assets/bundles/sweetalert2/sweetalert2.min.js"></script>
+<script src="../css/sweetalert2/sweetalert2.min.js"></script>
 <script src="../assets/js/lensScript.js"></script>

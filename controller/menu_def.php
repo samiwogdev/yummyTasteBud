@@ -14,7 +14,7 @@ if (isset($_POST['menu_def'])) {
 
     $menu = Menu::getInstance();
     if ($menu->add($name)) {
-        header("location: ../admin/menu?info=success");
+        header("location: ../admin/menu?info=menu_success");
         exit;
     } else {
         header("location: ../admin/menu?info=" . $errorMsg);

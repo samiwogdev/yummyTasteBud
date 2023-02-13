@@ -1,19 +1,18 @@
 <?php 
-include_once '../configuration.php';
-$role = Role::getInstance();
+include_once '../convig.php';
+$user = UserAdmin::getInstance();
+
 if(isset($_POST['login'])){
     if(empty($_POST['username'])){
         $error = "username_invalid";
     }elseif(empty($_POST['password'])) {
         $error = "password_invalid";
     }else{
-        $username = Role::sanitize_input($_POST['username']);
-        $password = Role::sanitize_input($_POST['password']);
-        $role->setUsername($username);
-        $role->setPassword($password);
-        if ($role->login()){
+        $username = UserAdmin::sanitize_input($_POST['username']);
+        $password = UserAdmin::sanitize_input($_POST['password']);
+        if ($user->adminLogin($username, $password)){
             $_SESSION['username'] = $username ;
-            header("location: index");
+            header("location: ../admin/");
             exit;
         } else {
             $error = "failed";
@@ -47,7 +46,7 @@ if(isset($_POST['login'])){
                     </div>
                     <div class="footer text-center">
                         <button type="submit" name="login" class="btn btn-primary btn-round btn-lg btn-block ">SIGN IN</button>
-                        <h5><a href="forgot-password" class="link">Forgot Password?</a></h5>
+                        <h5><a href="#" class="link">Forgot Password?</a></h5>
                     </div>
                 </form>
             </div>
@@ -66,7 +65,7 @@ if(isset($_POST['login'])){
         $(document).ready(function () {
             Toast.fire({
                 icon: 'error',
-                title: " Invalid registration Number!"
+                title: " Invalid username!"
             })
         });
     </script> 

@@ -14,7 +14,7 @@ if (isset($_POST['updt_cart_item'])) {
             $order->updateQty($id, $qty);
         }
     }
-    header("location: ../cart?info=success");
+    header("location: ../cart?info=cart_updt_success");
     exit;
 } else {
     header("location: ../index");

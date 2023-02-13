@@ -63,7 +63,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                                     $shop_imgs = $shop_img->get_shop_pics_by_id_2($shop_item['id']);
                                                     ?>
                                                     <li>
-                                                        <div class="pro-media"> <a href="shop-detail"><img alt="pizzon" src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>"></a> </div>
+                                                        <div class="pro-media"> <a href="shop-detail"><img alt="" src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>"></a> </div>
                                                         <div class="pro-detail-info"> <a href="shop-detail" class="product-title"><?php echo $shop_item['name'] ?></a>
                                                             <div class="price-box"> 
                                                             <?php $old_price = $shop_item['price'] * 30 / 100; ?>
@@ -72,10 +72,15 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                                             </div>
                                                             <div class="checkout-qty">
                                                                 <div>
-                                                                    <label>Qty: </label>
+                                                                    <label class="font-weight-bold text-dark">Qty: </label>
                                                                     <span class="info-deta"><?php echo $order_['qty'] ?></span> 
                                                                 </div>
+                                                                  <div>
+                                                                      <label class="font-weight-bold text-dark">Subtotal: </label>
+                                                                    <span class="info-deta">&#8358;<?php echo number_format($shop_item['price'] * $order_['qty']) ?></span> 
+                                                                </div>
                                                             </div>
+                                                            
                                                         </div>
                                                     </li>
                                                 <?php }
@@ -94,10 +99,6 @@ if (null !== filter_input(INPUT_GET, "n")) {
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <tbody>
-                                        <tr>
-                                            <td><b>Quantity :</b></td>
-                                            <td><?php echo $order_['qty'] ?></td>
-                                        </tr>
                                         <tr>
                                             <td><b>SubTotal :</b></td>
                                             <td>&#8358;<?php echo number_format($subTotal) ?></td>
@@ -180,7 +181,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                 if (isset($_POST['phone'])) {
                                     echo $_POST['phone'];
                                 }
-                                ?>" name="phone" class="form-control" placeholder="phone">
+                                ?>" name="phone" class="form-control" placeholder="phone" required="">
                             </div>
                         </div>
                         <div class="col-lg-12 col-12 mt-3">
@@ -192,7 +193,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                 if (isset($_POST['address'])) {
                                     echo $_POST['address'];
                                 }
-                                ?>" name="address" class="form-control" placeholder="address">
+                                ?>" name="address" class="form-control" placeholder="address" required="">
                             </div>
                         </div>
                     </div>
@@ -274,7 +275,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                                     $shop_imgs = $shop_img->get_shop_pics_by_id_2($shop_item['id']);
                                                     ?>
                                                     <li>
-                                                        <div class="pro-media"> <a href="shop-detail"><img alt="pizzon" src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>"></a> </div>
+                                                        <div class="pro-media"> <a href="shop-detail"><img alt="" src="uploads/shop_item_img/<?php echo $shop_imgs['picture'] ?>"></a> </div>
                                                         <div class="pro-detail-info"> <a href="shop-detail" class="product-title"><?php echo $shop_item['name'] ?></a>
                                                             <div class="price-box"> 
                                                              <?php $old_price = $shop_item['price'] * 30 / 100; ?>
@@ -283,12 +284,20 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                                             </div>
                                                             <div class="checkout-qty">
                                                                 <div>
-                                                                    <label>Qty: </label>
+                                                                    <label class="font-weight-bold text-dark">Qty: </label>
                                                                     <span class="info-deta"><?php echo $order_['qty'] ?></span> 
+                                                                </div>
+                                                                  <div>
+                                                                      <label class="font-weight-bold text-dark">Subtotal: </label>
+                                                                    <span class="info-deta">&#8358;<?php echo number_format($shop_item['price'] * $order_['qty']) ?></span> 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </li>
+                                                 <?php
+                                                }
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -307,14 +316,6 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                 ?>
                                 <table class="table m-0">
                                     <tbody>
-                                          <tr>
-                                            <td><b>Quantity :</b></td>
-                                            <td><?php echo $order_['qty']  ?></td>
-                                        </tr>
-                                                  <?php
-                                                }
-                                            }
-                                            ?>
                                         <tr>
                                             <td><b>SubTotal :</b></td>
                                             <td>&#8358;<?php echo number_format($subTotal) ?></td>
@@ -374,7 +375,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
         <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
-                    <form action="../controller/menu_def" method="post">
+                    <form action="../controller/update_del_location" method="post">
                         <div class="modal-header">
                             <h4 class="title" id="smallModalLabel">Update Delivery Details</h4>
                         </div>
@@ -397,7 +398,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                     if (isset($_POST['phone'])) {
                                         echo $_POST['phone'];
                                     }
-                                    ?>" name="phone" class="form-control" placeholder="phone">
+                                    ?>" name="phone" class="form-control" placeholder="phone" required="">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-12 mt-3">
@@ -409,7 +410,7 @@ if (null !== filter_input(INPUT_GET, "n")) {
                                     if (isset($_POST['address'])) {
                                         echo $_POST['address'];
                                     }
-                                    ?>" name="address" class="form-control" placeholder="address">
+                                    ?>" name="address" class="form-control" placeholder="address" required="">
                                 </div>
                             </div>
                         </div>
@@ -457,3 +458,80 @@ if (null !== filter_input(INPUT_GET, "n")) {
 <?php } ?>
 
 <?php include_once './includes/footer.php'; ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "del_upt_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Delivery address updated successfully "
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "phone_empty") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Please enter phone number"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "address_empty") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "please enter address"
+            })
+        });
+    </script> 
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "phoneExist") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Phone number already exist"
+            })
+        });
+    </script> 
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "failed") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Something went wrong, please try again"
+            })
+        });
+    </script> 
+<?php } ?>
+ 

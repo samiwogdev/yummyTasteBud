@@ -54,6 +54,9 @@
                                                 <a href="shop-detail"><span class="font-weight-bold">Price: </span>&#8358;<?php echo number_format($shop_item['price']) ?></a> 
                                             </div>
                                             <div class="product-title"> 
+                                                <a href="shop-detail"><span class="font-weight-bold">Subtotal: </span>&#8358;<?php echo number_format($shop_item['price'] * $order_['qty']) ?></a> 
+                                            </div>
+                                            <div class="product-title"> 
                                                 <a href="controller/delete_cart_item?n=<?php echo $order_['id'] ?>" class="" style="color: #fd9d3e; font-size: 18px">
                                                     <span class="fa fa-trash" style="color: #fd9d3e; padding-right: 3px "></span>
                                                     Remove</a>
@@ -89,7 +92,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Item's(<?php echo $orders_ ?>) Subtotal</td>
+                                            <td>Item's Subtotal</td>
                                             <td>
                                                 <div class="price-box">
                                                     <?php
@@ -175,4 +178,66 @@
            updt_cart.style.display = "block";   
     }
 </script>
-	<?php include_once './includes/footer.php'; ?>
+<?php include_once './includes/footer.php'; ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "cartsuccess") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "cart updated successfully "
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "pass_failed") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Something went wrong, please try again"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "emailExist") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Email already exist, please login"
+            })
+        });
+    </script> 
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "cart_updt_success") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Cart item(s) updated successfully"
+            })
+        });
+    </script> 
+<?php } ?>
+ 

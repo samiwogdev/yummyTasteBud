@@ -19,10 +19,10 @@ if (NULL !== filter_input(INPUT_GET, "n")) {
     $customer = Customer::getInstance();
     if ($customer->userLogin($email, $password)) {
         $_SESSION['email'] = $email;
-        header("location: ../shop-details?info=success&n=" . $shop_id);
+        header("location: ../shop-details?info=loginSuccessful&n=" . $shop_id);
         exit;
     } else {
-        header("location: ../signin?info=invalid2&n=" . $shop_id);
+        header("location: ../signin?info=invalidUser&n=" . $shop_id);
         exit;
     }
 } else {
@@ -40,10 +40,10 @@ if (NULL !== filter_input(INPUT_GET, "n")) {
     $customer = Customer::getInstance();
     if ($customer->userLogin($email, $password)) {
         $_SESSION['email'] = $email;
-        header("location: ../");
+        header("location: ../?info=loginSuccessful");
         exit;
     } else {
-        header("location: ../signin");
+        header("location: ../signin?info=invalidUser");
         exit;
     }
 }

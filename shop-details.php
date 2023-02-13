@@ -5,7 +5,6 @@ if (NULL == filter_input(INPUT_GET, "n")) {
 $shop_id = filter_input(INPUT_GET, "n");
 ?>
 <?php include_once './includes/header.php'; ?>
-
 <section class="page-banner" style="background: #121619 url(images/blog-9.jpg) no-repeat center / cover;">
     <div class="container">
         <div class="row">
@@ -37,7 +36,7 @@ $shop_id = filter_input(INPUT_GET, "n");
                         if ($shop_imgs != 0) {
                             foreach ($shop_imgs as $shop_img) {
                                 ?>
-                                <li><img src="uploads/shop_item_img/<?php echo $shop_img['picture'] ?>" alt="pizzon" /></li>
+                                <li><img src="uploads/shop_item_img/<?php echo $shop_img['picture'] ?>" alt="" /></li>
                             <?php }
                         }
                         ?>
@@ -49,7 +48,7 @@ $shop_id = filter_input(INPUT_GET, "n");
                     <div class="shop-name">
                         <h3 class="title-shop"><?php echo $shops['name'] ?></h3>
                         <div class="price-shop">
-<?php $old_price = $shops['price'] * 30 / 100; ?>
+                        <?php $old_price = $shops['price'] * 30 / 100; ?>
                             <span class="filter-price filter-price-r">&#8358;<?php echo number_format($shops['price'] + $old_price) ?></span>
                             <span class="filter-price">&#8358;<?php echo number_format($shops['price']) ?></span>
                         </div>
@@ -59,8 +58,13 @@ $shop_id = filter_input(INPUT_GET, "n");
                         <form action='controller/add_to_cart?n=<?php echo $shops['id'] ?>' method="post">
                             <label class="quantity">Qty:</label>
                             <input type="number" name='quantity' value="1" min="0" max="10000000">
+                            <?php 
+                            if($shops['status'] == 0){ ?>
+                            <button type="button" disabled class="add-cart pt-3 pb-3 bg-secondary" disabled="true"><i class="fa fa-shopping-bag"></i>Add to cart</button> 
+                            <br><label class="quantity mt-4"style="color: #fd9d3e">Menu not currently available, please click on the Whatsapp chat button below to pre-order</label>
+                         <?php }else{ ?>
                             <button type="submit" name="addcart" class="add-cart pt-3 pb-3"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Add to cart</button>
-    <!--                        <a href="cart" class="add-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Add to cart</a>-->
+                         <?php } ?>
                         </form>
                     </div>
                 </div>
@@ -73,3 +77,49 @@ $shop_id = filter_input(INPUT_GET, "n");
     <a href="shop-detailsheader" class="scrollTo"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 </div>
 <?php include_once './includes/footer.php'; ?>
+<?php if (isset($_GET['info']) && $_GET['info'] == "loginSuccessful") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'success',
+                title: "Login succsssful "
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "pass_failed") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Something went wrong, please try again"
+            })
+        });
+    </script>  
+<?php } elseif (isset($_GET['info']) && $_GET['info'] == "emailExist") { ?>
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        $(document).ready(function () {
+            Toast.fire({
+                icon: 'error',
+                title: "Email already exist, please login"
+            })
+        });
+    </script> 
+<?php } ?>

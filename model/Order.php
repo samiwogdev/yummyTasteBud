@@ -136,7 +136,7 @@ class Order extends Connection {
     }
     
     public function updateDeliveryID($delivery_id, $email) {
-        $sql = "UPDATE `" . $this->table_name . "` SET delivery_id = :delivery_id WHERE user_email = :user_email";
+        $sql = "UPDATE `" . $this->table_name . "` SET delivery_id = :delivery_id WHERE user_email = :user_email AND payment_status = 0";
         $statement = $this->getConnection()->prepare($sql);
         $this->delivery_id = self::sanitize_input($delivery_id);
         $this->user_email = self::sanitize_input($email);
@@ -146,8 +146,19 @@ class Order extends Connection {
         return $statement->execute();
     }
     
-    public function updatecompleteOrder($order_status, $payment_status,$trans_ref, $amount_paid, $user_email) {
-        $sql = "UPDATE `" . $this->table_name . "` SET order_status = :order_status, payment_status = :payment_status, trans_ref = :trans_ref, amount_paid = :amount_paid WHERE user_email = :user_email";
+    public function updateOrderStatus($status, $shop_id) {
+        $sql = "UPDATE `" . $this->table_name . "` SET order_status = :order_status WHERE shop_id = :shop_id";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->order_status = self::sanitize_input($status);
+        $this->shop_id = self::sanitize_input($shop_id);
+
+        $statement->bindParam(":order_status", $this->order_status);
+        $statement->bindParam(":shop_id", $this->shop_id);
+        return $statement->execute();
+    }
+    
+    public function updatecompleteOrder($order_status, $payment_status,$trans_ref, $amount_paid, $user_email, $shop_id) {
+        $sql = "UPDATE `" . $this->table_name . "` SET order_status = :order_status, payment_status = :payment_status, trans_ref = :trans_ref, amount_paid = :amount_paid, order_date = now() WHERE user_email = :user_email AND payment_status = 0 AND shop_id = :shop_id";
         $statement = $this->getConnection()->prepare($sql);
         
         $this->order_status = self::sanitize_input($order_status);
@@ -156,12 +167,14 @@ class Order extends Connection {
         $this->amount_paid = self::sanitize_input($amount_paid);
         $this->payment_status = self::sanitize_input($payment_status);
         $this->user_email = self::sanitize_input($user_email);
+        $this->shop_id = self::sanitize_input($shop_id);
 
         $statement->bindParam(":order_status", $this->order_status);
         $statement->bindParam(":payment_status", $this->payment_status);
         $statement->bindParam(":trans_ref", $this->trans_ref);
         $statement->bindParam(":amount_paid", $this->amount_paid);
         $statement->bindParam(":user_email", $this->user_email);
+        $statement->bindParam(":shop_id", $this->shop_id);
         return $statement->execute();
     }
 
@@ -176,6 +189,20 @@ class Order extends Connection {
     
     public function getCartItemID($user_email) {
         $sql = "SELECT * FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->user_email = self::sanitize_input($user_email);
+        $statement->bindParam(":user_email", $this->user_email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    public function getCartItemIDv2($user_email) {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE user_email = :user_email AND payment_status = 0 AND trans_ref = 0 ";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $statement->bindParam(":user_email", $this->user_email);
@@ -222,7 +249,7 @@ class Order extends Connection {
     }
 
     public function getCartItemByEmail($user_email) {
-        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 0 AND user_email = :user_email";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $statement->bindParam(":user_email", $this->user_email);
@@ -236,7 +263,7 @@ class Order extends Connection {
         return $row;
     }
     public function getCartItemByEmail_v2($user_email) {
-        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE order_status = 0 AND payment_status = 0 AND user_email = :user_email";
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 0 AND user_email = :user_email";
         $statement = $this->getConnection()->prepare($sql);
         $this->user_email = self::sanitize_input($user_email);
         $statement->bindParam(":user_email", $this->user_email);
@@ -248,6 +275,133 @@ class Order extends Connection {
             $row = 0;
         }
         return $row;
+    }
+    public function getAllNewOrders() {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 1 AND order_status = 0";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    public function getAllOngoingOrders() {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 1 AND order_status = 1";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    public function getAllCompletedOrders() {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 1 AND order_status = 2";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    public function getAllCanceledOrders() {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 1 AND order_status = 3";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+     public function getAllOrders() {
+        $sql = "SELECT * FROM `" . $this->table_name . "` WHERE payment_status = 1";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetchAll();
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
+    
+        public function getPendingOrderCount() {
+        $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE order_status = 0 AND payment_status = 1 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $row['total']; 
+        } else {
+            $result = 0;
+        }
+        return $result;
+    }
+        public function getOngoingOrderCount() {
+        $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE order_status = 1 AND payment_status = 1 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $row['total']; 
+        } else {
+            $result = 0;
+        }
+        return $result;
+    }
+        public function getCompletedOrderCount() {
+        $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE order_status = 2 AND payment_status = 1 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $row['total']; 
+        } else {
+            $result = 0;
+        }
+        return $result;
+    }
+        public function getCanceledOrderCount() {
+        $sql = "SELECT COUNT(id) AS total FROM `" . $this->table_name . "` WHERE order_status = 3 AND payment_status = 1 ";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $row['total']; 
+        } else {
+            $result = 0;
+        }
+        return $result;
+    }
+    
+      public function getTotalOrderPayment() { 
+        $sql = "SELECT SUM(amount_paid) AS total FROM  `" . $this->table_name . "` WHERE payment_status = 1";
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $row['total'];
+        } else {
+            $result = 0;
+        }
+        return $result;
     }
 
 }

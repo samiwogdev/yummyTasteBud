@@ -1,20 +1,19 @@
 <?php
 include_once '../convig.php';
-//echo $_SESSION['username']; exit;
-//if (!isset($_SESSION['username'])) {
-//    header("location: signin");
-//    exit;
-//}
+if (!isset($_SESSION['username'])) {
+    header("location: signin");
+    exit;
+}
 
-//$pmtlog = PmtLog::getInstance();
-//$cus_assets_repo = CusAssetsRepo::getInstance();
-//$assets = Assets::getInstance();
-//$app = Applicant::getInstance();
 $menu = Menu::getInstance();
 $shop = Shop::getInstance();
 $shop_pic = ShopItemPics::getInstance();
 $delivery = Delivery::getInstance();
 $settings = Settings::getInstance();
+$order = Order::getInstance();
+$customer = Customer::getInstance();
+$user_admin = UserAdmin::getInstance();
+
 ?>
 ﻿<!doctype html>
 <html class="no-js " lang="en">
@@ -24,7 +23,7 @@ $settings = Settings::getInstance();
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
         <title>Yummy:: Taste Buds</title>
-        <link rel="icon" href="../assets/images/crown-logo.png" type="image/x-icon"> <!-- Favicon-->
+        <link type="image/x-icon" href="../images/fav-icon.png" rel="icon">
         <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
         <link rel="stylesheet" href="assets/plugins/morrisjs/morris.min.css" />
@@ -36,5 +35,5 @@ $settings = Settings::getInstance();
         <link rel="stylesheet" href="assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="assets/css/fontawesome-free-5.15.3-web/css/all.css">
         <link href="assets/plugins/dropzone/dropzone.css" rel="stylesheet">
-        <link href="../css/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+        <link type="text/css" href="../css/sweetalert2/sweetalert2.min.css" rel="stylesheet" media="all">
     </head>
