@@ -1,22 +1,27 @@
-<?php 
+<?php
 include_once '../convig.php';
 $user = UserAdmin::getInstance();
 
-if(isset($_POST['login'])){
-    if(empty($_POST['username'])){
+if (isset($_POST['login'])) {
+    if (empty($_POST['username'])) {
         $error = "username_invalid";
-    }elseif(empty($_POST['password'])) {
+    } elseif (empty($_POST['password'])) {
         $error = "password_invalid";
-    }else{
+    } else {
         $username = UserAdmin::sanitize_input($_POST['username']);
         $password = UserAdmin::sanitize_input($_POST['password']);
-        if ($user->adminLogin($username, $password)){
-            $_SESSION['username'] = $username ;
-            header("location: ../admin/");
-            exit;
-        } else {
-            $error = "failed";
-        }       
+        if ($user->adminLogin($username, $password)) {
+            $user_info = $user->getByUsername($username);
+            $_SESSION['username'] = $username;
+            $_SESSION['role'] = $user_info['role'];
+            if ($user_info['role'] == 1) {
+                header("location: ../admin/");
+                exit;
+            } else {
+                header("location: ../admin/order");
+                exit;
+            }
+        }
     }
 }
 ?>
@@ -53,50 +58,50 @@ if(isset($_POST['login'])){
         </div>
     </div>
 </div>
-    <?php include_once '../includes/other-footer.php'; ?>
+<?php include_once '../includes/other-footer.php'; ?>
 <?php if (isset($error) && $error == "username_invalid") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
+        toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
         });
         $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
+        Toast.fire({
+        icon: 'error',
                 title: " Invalid username!"
-            })
+        })
         });
     </script> 
 <?php } if (isset($error) && $error == "password_invalid") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
+        toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
         });
         $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
+        Toast.fire({
+        icon: 'error',
                 title: "Invalid Password "
-            })
+        })
         });
     </script> 
 <?php } if (isset($error) && $error == "failed") { ?>
     <script type="text/javascript">
         const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
+        toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
         });
         $(document).ready(function () {
-            Toast.fire({
-                icon: 'error',
+        Toast.fire({
+        icon: 'error',
                 title: "Username or password incorrect "
-            })
+        })
         });
     </script> 
 <?php } ?>

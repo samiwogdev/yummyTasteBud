@@ -3,7 +3,7 @@
 //$role = Role::getInstance();
 //$user_role = $role->getUserByUsername($_SESSION['username']);
 //if ($user_role['user_type'] == 1){ ?>
-
+<?php if($_SESSION['role'] == 1){ ?>
 <aside id="leftsidebar" class="sidebar">
     <div class="tab-content">
         <div class="tab-pane stretchRight active" id="dashboard">
@@ -13,7 +13,7 @@
                         <div class="user-info">
                             <div class="image"><a href="index"><img src="../uploads/nopic.jpg" alt="User" style="height: 90px"></a></div>
                             <div class="detail">
-                                <h4>Admin</h4>
+                                <h4><?php echo $_SESSION['username'] ?></h4>
 <!--                                <small>Bursar</small>-->
                             </div>
                         </div>
@@ -44,6 +44,35 @@
         </div>
     </div>    
 </aside>
+<?php } elseif ($_SESSION['role'] == 2) { ?>
+<aside id="leftsidebar" class="sidebar">
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+                            <div class="image"><a href="index"><img src="../uploads/nopic.jpg" alt="User" style="height: 90px"></a></div>
+                            <div class="detail">
+                                <h4><?php echo $_SESSION['username'] ?></h4>
+<!--                                <small>Bursar</small>-->
+                            </div>
+                        </div>
+                    </li>
+                      <li class="<?php if($page == "transaction"){ echo "active open"; }?>"><a href="javascript:void(0);" class="menu-toggle"><i class="fa fa-money-check"></i><span>Transactions</span></a>
+                        <ul class="ml-menu">
+                            <li><a href="../admin/order"><i class="fa fa-shopping-bag mr-2 text-info"></i>New Orders</a></li>
+                            <li><a href="../admin/ongoing_orders"><i class="fa fa-cart-plus mr-2 text-warning"></i>Ongoing Orders</a></li>
+                            <li><a href="../admin/completed_orders"><i class="fas fa-check-circle mr-2 text-success"></i>Completed Orders </a></li>
+                            <li><a href="../admin/canceled_orders"><i class="fas fa-window-close mr-2 text-danger"></i>Canceled Orders </a></li>
+                            <li><a href="../admin/delivery_charges"><i class="fas fa-credit-card mr-2" style="color: #760076 !important;"></i>Delivery Payment </a></li>
+                        </ul>
+                    </li>
+                    <li class="<?php if($page == "report"){  echo "active open"; } ?>"><a href="#"><i class="fa fa-file-import"></i><span>Report</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>    
+</aside>
 
-
-<?php ?>
+<?php } ?>

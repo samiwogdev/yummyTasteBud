@@ -117,7 +117,7 @@ include_once '../includes/admin-sidebar.php';
                     <div class="col-lg-12 col-12 mb-3" id="bigcontainer">
                         <select name="role" class="form-control m-b-15" required>
                             <option value="0" selected="selected">--Select User Role--</option>
-                            <option value="3">User</option>
+<!--                            <option value="3">User</option>-->
                             <option value="2">Admin</option>
                             <option value="1">Super Admin</option>
                         </select> 

@@ -117,6 +117,20 @@ class UserAdmin extends Connection {
         }
         return $row;
     }
+    public function getByUsername($username) {
+        $sql = "SELECT * FROM " . $this->table_name . " WHERE username = :username";
+        $statement = $this->getConnection()->prepare($sql);
+        $this->username = self::sanitize_input($username);
+        $statement->bindParam(":username", $this->username);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $row = 0;
+        }
+        return $row;
+    }
 
     public function checkUsername($username) {
         $sql = "SELECT * FROM " . $this->table_name . " WHERE username = :username";
